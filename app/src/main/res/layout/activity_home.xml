@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:text="Consulter"
         android:textSize="10pt"
         android:textColor="#4d4d4d"
@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:text="Voter"
         android:textColor="#4d4d4d"
         android:textSize="10pt"
@@ -95,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:text="Rechercher"
         android:textColor="#4d4d4d"
         android:textSize="10pt"
@@ -111,5 +111,41 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label4" />
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_query1">
+
+        <RadioButton
+            android:id="@+id/radio_votation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Votation" />
+
+        <RadioButton
+            android:id="@+id/radio_politician"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Politicien" />
+
+        <RadioButton
+            android:id="@+id/radio_party"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parti" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="70pt"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="25dp"
+        android:text="Rechercher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_query1" />
 
 </android.support.constraint.ConstraintLayout>
