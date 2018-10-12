@@ -102,7 +102,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/button4" />
 
-    <!--Zone de recherche/edit_query1-->
+    <!--Zone de recherche/edit_query111-->
     <EditText
         android:id="@+id/edit_query1"
         android:layout_width="200dp"
