@@ -17,9 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".PartiesActivity" />
         <activity android:name=".PoliticiansActivity" />
         <activity android:name=".VotingObjectActivity"></activity>
+=======
+        <activity android:name=".Party.PartiesActivity"></activity>
+>>>>>>> 8d24cfa3fcb507ec550a84107a122b618b779a92
     </application>
 
 </manifest>
