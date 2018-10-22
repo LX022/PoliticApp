@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class PartieAdapter extends ArrayAdapter<Partie> {
+public class PartyAdapter extends ArrayAdapter<Party> {
 
-    //tweets est la liste des models à afficher
-    public PartieAdapter(Context context, List<Partie> parties) {
+    //parties est la liste des models à afficher
+    public PartyAdapter(Context context, List<Party> parties) {
         super(context, 0, parties);
     }
 
@@ -29,18 +29,18 @@ public class PartieAdapter extends ArrayAdapter<Partie> {
         if(viewHolder == null){
             viewHolder = new PartieViewHolder();
             viewHolder.shortName = (TextView) convertView.findViewById(R.id.shortName);
-            viewHolder.longName = (TextView) convertView.findViewById(R.id.text);
+            viewHolder.longName = (TextView) convertView.findViewById(R.id.longName);
             viewHolder.logo = (ImageView) convertView.findViewById(R.id.logo);
             convertView.setTag(viewHolder);
         }
 
         //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
-        Partie partie = getItem(position);
+        Party party = getItem(position);
 
         //il ne reste plus qu'à remplir notre vue
-        viewHolder.shortName.setText(partie.getShortName());
-        //viewHolder.longName.setText(partie.getLongName());
-        viewHolder.logo.setImageDrawable(new ColorDrawable(partie.getColor()));
+        viewHolder.shortName.setText(party.getShortName());
+        viewHolder.longName.setText(party.getLongName());
+        viewHolder.logo.setImageDrawable(new ColorDrawable(party.getColor()));
 
         return convertView;
     }

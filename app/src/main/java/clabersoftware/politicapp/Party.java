@@ -1,12 +1,12 @@
 package clabersoftware.politicapp;
 
-public class Partie {
+public class Party {
     private int color;
     private String shortName;
     private String longName;
 
     //constructor
-    public Partie (int color, String shortName, String longName){
+    public Party(int color, String shortName, String longName){
         this.color = color;
         this.shortName = shortName;
         this.longName = longName;

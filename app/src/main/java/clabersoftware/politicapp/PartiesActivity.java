@@ -3,7 +3,6 @@ package clabersoftware.politicapp;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -20,9 +19,9 @@ public class PartiesActivity extends AppCompatActivity {
 
         mListView = (ListView) findViewById(R.id.listView);
 
-        List<Partie> parties = genererParties();
+        List<Party> parties = genererParties();
 
-        PartieAdapter adapter = new PartieAdapter(PartiesActivity.this, parties);
+        PartyAdapter adapter = new PartyAdapter(PartiesActivity.this, parties);
 
         mListView.setAdapter(adapter);
 
@@ -30,13 +29,13 @@ public class PartiesActivity extends AppCompatActivity {
 
     }
 
-    private List<Partie> genererParties(){
-        List<Partie> parties = new ArrayList<Partie>();
-        parties.add(new Partie(Color.BLACK, "Florent", "Mon premier tweet !"));
-        parties.add(new Partie(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
-        parties.add(new Partie(Color.GREEN, "Logan", "Que c'est beau..."));
-        parties.add(new Partie(Color.RED, "Mathieu", "Il est quelle heure ??"));
-        parties.add(new Partie(Color.GRAY, "Willy", "On y est presque"));
+    private List<Party> genererParties(){
+        List<Party> parties = new ArrayList<Party>();
+        parties.add(new Party(Color.BLACK, "PDC", "Parti Démocrate Chrétien"));
+        parties.add(new Party(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
+        parties.add(new Party(Color.GREEN, "Logan", "Que c'est beau..."));
+        parties.add(new Party(Color.RED, "Mathieu", "Il est quelle heure ??"));
+        parties.add(new Party(Color.GRAY, "Willy", "On y est presque"));
         return parties;
     }
 }
