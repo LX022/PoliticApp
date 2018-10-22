@@ -20,4 +20,9 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PoliticiansActivity.class);
         startActivity(intent);
     }
+
+    public void showVotingObjectList(View view) {
+        Intent intent = new Intent(this, VotingObjectActivity.class);
+        startActivity(intent);
+    }
 }

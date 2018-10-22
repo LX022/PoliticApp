@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PartiesActivity" />
-        <activity android:name=".PoliticiansActivity"></activity>
+        <activity android:name=".PoliticiansActivity" />
+        <activity android:name=".VotingObjectActivity"></activity>
     </application>
 
 </manifest>
