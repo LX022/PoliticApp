@@ -1,4 +1,4 @@
-package clabersoftware.politicapp;
+package clabersoftware.politicapp.Party;
 
 public class Party {
     private int color;
