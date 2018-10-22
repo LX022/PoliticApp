@@ -38,6 +38,21 @@ public class PartiesActivity extends AppCompatActivity {
         parties.add(new Party(Color.GREEN, "Logan", "Que c'est beau..."));
         parties.add(new Party(Color.RED, "Mathieu", "Il est quelle heure ??"));
         parties.add(new Party(Color.GRAY, "Willy", "On y est presque"));
+        parties.add(new Party(Color.BLACK, "PDC", "Parti Démocrate Chrétien"));
+        parties.add(new Party(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
+        parties.add(new Party(Color.GREEN, "Logan", "Que c'est beau..."));
+        parties.add(new Party(Color.RED, "Mathieu", "Il est quelle heure ??"));
+        parties.add(new Party(Color.GRAY, "Willy", "On y est presque"));
+        parties.add(new Party(Color.BLACK, "PDC", "Parti Démocrate Chrétien"));
+        parties.add(new Party(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
+        parties.add(new Party(Color.GREEN, "Logan", "Que c'est beau..."));
+        parties.add(new Party(Color.RED, "Mathieu", "Il est quelle heure ??"));
+        parties.add(new Party(Color.GRAY, "Willy", "On y est presque"));
+        parties.add(new Party(Color.BLACK, "PDC", "Parti Démocrate Chrétien"));
+        parties.add(new Party(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
+        parties.add(new Party(Color.GREEN, "Logan", "Que c'est beau..."));
+        parties.add(new Party(Color.RED, "Mathieu", "Il est quelle heure ??"));
+        parties.add(new Party(Color.GRAY, "Willy", "On y est presque"));
         return parties;
     }
 }
