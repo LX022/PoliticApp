@@ -16,5 +16,8 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PartiesActivity.class);
         startActivity(intent);
     }
-
+    public void showPoliticiansList(View view) {
+        Intent intent = new Intent(this, PoliticiansActivity.class);
+        startActivity(intent);
+    }
 }
