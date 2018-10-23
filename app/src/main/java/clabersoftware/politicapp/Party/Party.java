@@ -5,6 +5,7 @@ public class Party {
     private String shortName;
     private String longName;
 
+
     //constructor
     public Party(int color, String shortName, String longName){
         this.color = color;

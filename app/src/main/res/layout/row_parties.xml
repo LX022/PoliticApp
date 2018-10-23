@@ -26,4 +26,5 @@
         android:layout_below="@+id/shortName"
         tools:text="Texte de mon tweet" />
 
+
 </RelativeLayout>
