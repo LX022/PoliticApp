@@ -1,8 +1,10 @@
 package clabersoftware.politicapp.Party;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -52,5 +54,10 @@ public class PartiesActivity extends AppCompatActivity {
         parties.add(new Party(Color.RED, "Mathieu", "Il est quelle heure ??"));
         parties.add(new Party(Color.GRAY, "Willy", "On y est presque"));
         return parties;
+    }
+
+    public void addParty(View view) {
+        Intent intent = new Intent(this, AddPartyActivity.class);
+        startActivity(intent);
     }
 }
