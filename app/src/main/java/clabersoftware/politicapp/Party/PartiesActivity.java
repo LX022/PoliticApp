@@ -1,7 +1,9 @@
 package clabersoftware.politicapp.Party;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -48,7 +50,36 @@ public class PartiesActivity extends AppCompatActivity {
                 default:
                     return false;
         }
+
     }
+
+    public void editParty(View view) {
+        Intent intent = new Intent(this, AddPartyActivity.class);
+        startActivity(intent);
+    }
+
+    public void deleteParty(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Suppression du parti")
+                .setMessage("Êtes-vous sur de vouloir supprimer le parti ?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
+    }
+
+
+
 
     private List<Party> genererParties(){
         List<Party> parties = new ArrayList<Party>();
