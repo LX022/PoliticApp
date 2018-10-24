@@ -11,12 +11,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import clabersoftware.politicapp.ActionBar;
 import clabersoftware.politicapp.Party.PartiesActivity;
 import clabersoftware.politicapp.Party.Party;
 import clabersoftware.politicapp.Party.PartyAdapter;
 import clabersoftware.politicapp.R;
 
-public class VotingObjectActivity extends AppCompatActivity {
+public class VotingObjectActivity extends ActionBar {
 
     private ListView mListView;
 

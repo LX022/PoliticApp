@@ -5,9 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import clabersoftware.politicapp.ActionBar;
 import clabersoftware.politicapp.R;
 
-public class AddPartyActivity extends AppCompatActivity {
+public class AddPartyActivity extends ActionBar {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

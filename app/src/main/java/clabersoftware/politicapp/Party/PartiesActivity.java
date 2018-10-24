@@ -14,10 +14,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import clabersoftware.politicapp.ActionBar;
 import clabersoftware.politicapp.HomeActivity;
 import clabersoftware.politicapp.R;
 
-public class PartiesActivity extends AppCompatActivity {
+public class PartiesActivity extends ActionBar {
 
     private ListView mListView;
 
@@ -33,23 +34,6 @@ public class PartiesActivity extends AppCompatActivity {
         PartyAdapter adapter = new PartyAdapter(PartiesActivity.this, parties);
 
         mListView.setAdapter(adapter);
-
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main_activity_action, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId()){
-            case R.id.action_home:
-                Intent intent = new Intent(this, HomeActivity.class);
-                startActivity(intent);
-                return true;
-                default:
-                    return false;
-        }
 
     }
 

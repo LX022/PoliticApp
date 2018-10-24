@@ -10,17 +10,12 @@ import clabersoftware.politicapp.Party.PartiesActivity;
 import clabersoftware.politicapp.Politician.PoliticiansActivity;
 import clabersoftware.politicapp.VotingObject.VotingObjectActivity;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends ActionBar {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main_activity_action, menu);
-        return super.onCreateOptionsMenu(menu);
     }
 
     public void showPartiesList(View view) {

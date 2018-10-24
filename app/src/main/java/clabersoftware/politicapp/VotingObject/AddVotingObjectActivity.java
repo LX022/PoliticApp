@@ -3,9 +3,10 @@ package clabersoftware.politicapp.VotingObject;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import clabersoftware.politicapp.ActionBar;
 import clabersoftware.politicapp.R;
 
-public class AddVotingObjectActivity extends AppCompatActivity {
+public class AddVotingObjectActivity extends ActionBar {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
