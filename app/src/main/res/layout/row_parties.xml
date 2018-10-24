@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp" >
 
     <ImageView
         android:id="@+id/logo"
@@ -11,20 +13,43 @@
         android:id="@+id/shortName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
+        android:layout_alignTop="@+id/logo"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/logo"
-        android:layout_alignTop="@+id/logo"
-        android:textStyle="bold" tools:text="Pseudo" />
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:text="Abreviation" />
 
     <TextView
         android:id="@+id/longName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
         android:layout_alignLeft="@+id/shortName"
         android:layout_below="@+id/shortName"
-        tools:text="Texte de mon tweet" />
+        android:textColor="@android:color/black"
+        tools:text="Nom du parti" />
+
+    <ImageButton
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/longName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="23dp"
+        android:background="@android:color/transparent"
+        android:onClick="deleteParty"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <ImageButton
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/longName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="79dp"
+        android:background="@android:color/transparent"
+        android:onClick="editParty"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
 
 
 </RelativeLayout>

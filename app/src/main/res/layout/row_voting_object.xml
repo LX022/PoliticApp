@@ -5,11 +5,12 @@
         android:id="@+id/designation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
+        android:layout_alignTop="@+id/logo"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/logo"
-        android:layout_alignTop="@+id/logo"
-        android:textStyle="bold" tools:text="Pseudo" />
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:text="Designation" />
 
     <TextView
         android:id="@+id/description"
@@ -18,7 +19,7 @@
         android:layout_alignLeft="@+id/designation"
         android:layout_below="@+id/designation"
         android:textColor="@android:color/black"
-        tools:text="Texte de mon tweet" />
+        tools:text="Détails" />
 
 
     <TextView

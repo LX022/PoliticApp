@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PoliticiansActivity">
+    tools:context=".Politician.PoliticiansActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Politiciens"
+        android:text="@string/politicians"
         android:textColor="#4d4d4d"
         android:textSize="15pt"
         app:layout_constraintStart_toStartOf="parent"

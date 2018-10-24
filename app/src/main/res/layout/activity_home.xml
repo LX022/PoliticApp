@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Accueil"
+        android:text="@string/home"
         android:textColor="#4d4d4d"
         android:textSize="15pt"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
-        android:text="Consulter"
+        android:text="@string/consult"
         android:textSize="10pt"
         android:textColor="#4d4d4d"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:onClick="showPartiesList"
-        android:text="Liste des partis"
+        android:text="@string/partylist"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label1" />
 
@@ -52,7 +52,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:onClick="showPoliticiansList"
-        android:text="Liste des politiciens"
+        android:text="@string/politicianlist"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button1" />
 
@@ -62,11 +62,11 @@
         android:layout_width="100pt"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="212dp"
         android:onClick="showVotingObjectList"
-        android:text="Liste des votations"
+        android:text="@string/votinglist"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--Voter/label3-->
     <TextView
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
-        android:text="Voter"
+        android:text="@string/vote"
         android:textColor="#4d4d4d"
         android:textSize="10pt"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Liste des votations ouvertes"
+        android:onClick="showOpenVotingObjectList"
+        android:text="@string/votingopenlist"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label3" />
 
@@ -99,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
-        android:text="Rechercher"
+        android:text="@string/search"
         android:textColor="#4d4d4d"
         android:textSize="10pt"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,19 +128,19 @@
             android:id="@+id/radio_votation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Votation" />
+            android:text="@string/voting" />
 
         <RadioButton
             android:id="@+id/radio_politician"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Politicien" />
+            android:text="@string/politician" />
 
         <RadioButton
             android:id="@+id/radio_party"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Parti" />
+            android:text="@string/party" />
     </RadioGroup>
 
     <!--Boutton RECHERCHER-->
@@ -149,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="200dp"
         android:layout_marginTop="25dp"
-        android:text="Rechercher"
+        android:text="@string/search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_query1" />
 

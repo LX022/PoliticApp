@@ -1,16 +1,24 @@
 package clabersoftware.politicapp.Party;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import clabersoftware.politicapp.ActionBar;
+import clabersoftware.politicapp.HomeActivity;
 import clabersoftware.politicapp.R;
 
-public class PartiesActivity extends AppCompatActivity {
+public class PartiesActivity extends ActionBar {
 
     private ListView mListView;
 
@@ -28,6 +36,34 @@ public class PartiesActivity extends AppCompatActivity {
         mListView.setAdapter(adapter);
 
     }
+
+    public void editParty(View view) {
+        Intent intent = new Intent(this, AddPartyActivity.class);
+        startActivity(intent);
+    }
+
+    public void deleteParty(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Suppression du parti")
+                .setMessage("Êtes-vous sur de vouloir supprimer le parti ?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // méthode delete
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // on ne fait rien
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
+    }
+
+
+
 
     private List<Party> genererParties(){
         List<Party> parties = new ArrayList<Party>();
@@ -52,5 +88,10 @@ public class PartiesActivity extends AppCompatActivity {
         parties.add(new Party(Color.RED, "Mathieu", "Il est quelle heure ??"));
         parties.add(new Party(Color.GRAY, "Willy", "On y est presque"));
         return parties;
+    }
+
+    public void addParty(View view) {
+        Intent intent = new Intent(this, AddPartyActivity.class);
+        startActivity(intent);
     }
 }

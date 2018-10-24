@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PoliticApp</string>
+
+    <string name="addparty">Add a party</string>
+    <string name="name">Name</string>
+    <string name="abbreviation">Abbreviation</string>
+    <string name="add">Add</string>
+    <string name="details">Details</string>
+    <string name="date">Date</string>
+    <string name="addvotingobject">Add a voting object</string>
+    <string name="home">Home</string>
+    <string name="consult">Consult</string>
+    <string name="partylist">Party list</string>
+    <string name="politicianlist">Politicians list</string>
+    <string name="votinglist">Voting objects list</string>
+    <string name="vote">Vote</string>
+    <string name="votingopenlist">Open voting object list</string>
+    <string name="search">Search</string>
+    <string name="voting">Voting</string>
+    <string name="politician">Politician</string>
+    <string name="party">Party</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="connect">Connect</string>
+    <string name="noaccount">Do not have an account ?</string>
+    <string name="signup">Sign up</string>
+    <string name="parties">Parties</string>
+    <string name="politicians">Politicians</string>
+    <string name="fistname">Firstname</string>
+    <string name="poste">Position</string>
+    <string name="email">Email address</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="language">Change language</string>
+</resources>
