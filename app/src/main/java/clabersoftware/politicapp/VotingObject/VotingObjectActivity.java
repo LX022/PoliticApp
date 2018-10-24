@@ -44,9 +44,11 @@ public class VotingObjectActivity extends AppCompatActivity {
         votingObjectList.add(new VotingObject("Lex Weber", "Votation sur les résidences secondaire", "01.01.2018", false ));
         votingObjectList.add(new VotingObject("Lex Weber", "Votation sur les résidences secondaire", "01.01.2018", true ));
 
-
-
         return votingObjectList;
     }
 
+    public void addVotingObject(View view) {
+        Intent intent = new Intent(this, AddVotingObjectActivity.class);
+        startActivity(intent);
+    }
 }

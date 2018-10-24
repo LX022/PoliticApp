@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login.SignUpActivity" />
-        <activity android:name=".Party.AddPartyActivity"></activity>
+        <activity android:name=".Party.AddPartyActivity" />
+        <activity android:name=".VotingObject.AddVotingObjectActivity"></activity>
     </application>
 
 </manifest>
