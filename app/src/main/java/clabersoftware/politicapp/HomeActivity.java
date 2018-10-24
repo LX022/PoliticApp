@@ -37,4 +37,8 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void showOpenVotingObjectList(View view) {
+        Intent intent = new Intent(this, VotingObjectActivity.class);
+        startActivity(intent);
+    }
 }
