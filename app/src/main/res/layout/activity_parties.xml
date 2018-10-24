@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Parties"
+        android:text="@string/parties"
         android:textColor="#4d4d4d"
         android:textSize="15pt"
         app:layout_constraintStart_toStartOf="parent"

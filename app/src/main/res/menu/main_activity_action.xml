@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_home"
-        android:title="Acceuil"/>
+        android:title="@string/home"/>
 
     <item
-    android:id="@+id/action_return"
-    android:title="Retour"/>/>
+    android:id="@+id/action_language"
+    android:title="@string/language"/>/>
 
     <item
         android:id="@+id/action_search"
-        android:title="Rechercher"/>/>
+        android:title="@string/search"/>/>
 </menu>
