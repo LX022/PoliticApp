@@ -1,7 +1,9 @@
-package clabersoftware.politicapp;
+package clabersoftware.politicapp.Login;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import clabersoftware.politicapp.R;
 
 public class SignUpActivity extends AppCompatActivity {
 

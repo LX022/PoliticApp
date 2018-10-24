@@ -14,14 +14,14 @@
         <activity android:name=".Party.PartiesActivity" />
         <activity android:name=".PoliticiansActivity" />
         <activity android:name=".VotingObject.VotingObjectActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".Login.SignUpActivity"></activity>
     </application>
 
 </manifest>

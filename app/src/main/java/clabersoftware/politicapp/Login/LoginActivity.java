@@ -1,4 +1,4 @@
-package clabersoftware.politicapp;
+package clabersoftware.politicapp.Login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,12 +8,20 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import clabersoftware.politicapp.HomeActivity;
+import clabersoftware.politicapp.R;
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+    }
+
+    public void signUp(View view) {
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
     }
 
     public void login(View view) {
@@ -36,10 +44,6 @@ public class LoginActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
-
-        System.out.println("Nom :" + userName);
-        System.out.println("Pass :" + password);
-
-
     }
+
 }
