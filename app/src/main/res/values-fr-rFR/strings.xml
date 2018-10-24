@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PoliticApp</string>
+    <string name="app_name">Gouvernement Manager</string>
 
     <string name="addparty">Ajouter un parti</string>
     <string name="name">Nom</string>
