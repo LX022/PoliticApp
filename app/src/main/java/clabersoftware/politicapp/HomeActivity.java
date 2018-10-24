@@ -22,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_activity_action, menu);
         return super.onCreateOptionsMenu(menu);
     }
-    
+
     public void showPartiesList(View view) {
         Intent intent = new Intent(this, PartiesActivity.class);
         startActivity(intent);

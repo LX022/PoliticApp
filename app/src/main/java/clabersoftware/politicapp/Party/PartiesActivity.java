@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import clabersoftware.politicapp.HomeActivity;
 import clabersoftware.politicapp.R;
 
 public class PartiesActivity extends AppCompatActivity {
@@ -29,6 +32,22 @@ public class PartiesActivity extends AppCompatActivity {
 
         mListView.setAdapter(adapter);
 
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main_activity_action, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case R.id.action_home:
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                return true;
+                default:
+                    return false;
+        }
     }
 
     private List<Party> genererParties(){
