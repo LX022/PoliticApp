@@ -13,7 +13,7 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".Party.PartiesActivity" />
         <activity android:name=".PoliticiansActivity" />
-        <activity android:name=".VotingObjectActivity" />
+        <activity android:name=".VotingObject.VotingObjectActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
