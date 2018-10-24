@@ -65,12 +65,12 @@ public class PartiesActivity extends AppCompatActivity {
                 .setMessage("Êtes-vous sur de vouloir supprimer le parti ?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // continue with delete
+                        // méthode delete
                     }
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
+                        // on ne fait rien
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
