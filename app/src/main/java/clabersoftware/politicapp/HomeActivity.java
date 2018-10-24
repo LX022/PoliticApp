@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import clabersoftware.politicapp.Party.PartiesActivity;
+import clabersoftware.politicapp.Politician.PoliticiansActivity;
 import clabersoftware.politicapp.VotingObject.VotingObjectActivity;
 
 public class HomeActivity extends AppCompatActivity {
