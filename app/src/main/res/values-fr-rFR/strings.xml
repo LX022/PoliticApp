@@ -34,4 +34,8 @@
     <string name="language">Changer de langue</string>
     <string name="designation">Désignation</string>
     <string name="result">Résultat</string>
+    <string name="deleteVotingObjectTitle">Supression de la votation</string>
+    <string name="deletePartyTitle">Supression du parti</string>
+    <string name="deleteVotingObjectMessage">Êtes-vous sur de vouloir supprimer la votation ?</string>
+    <string name="deletePartyMessage">Êtes-vous sur de vouloir supprimer le parti ?</string>
 </resources>

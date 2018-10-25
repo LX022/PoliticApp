@@ -29,13 +29,13 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/description"
         android:layout_alignTop="@+id/designation" />
+
     <CheckBox
         android:id="@+id/checkboxState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/designation"
-        android:layout_marginEnd="21dp" />
+        android:layout_below="@+id/designation" />
 
     <ImageButton
         android:id="@+id/viewButton"
@@ -47,6 +47,28 @@
         android:background="@android:color/transparent"
         android:onClick="votingObjectDetails"
         app:srcCompat="@android:drawable/ic_menu_view" />
+
+    <ImageView
+        android:id="@+id/editButton"
+        android:onClick="editVotingObject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/designation"
+        android:layout_marginStart="-97dp"
+        android:layout_toEndOf="@+id/viewButton"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <ImageButton
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="31dp"
+        android:layout_marginTop="19dp"
+        android:background="@android:color/transparent"
+        android:onClick="deleteVotingObject"
+        app:srcCompat="@android:drawable/ic_delete" />
 
 
 </RelativeLayout>

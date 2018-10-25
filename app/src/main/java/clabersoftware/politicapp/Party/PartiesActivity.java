@@ -45,8 +45,8 @@ public class PartiesActivity extends ActionBar {
     public void deleteParty(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("Suppression du parti")
-                .setMessage("Êtes-vous sur de vouloir supprimer le parti ?")
+        builder.setTitle("@string/deletePartyTitle")
+                .setMessage("@string/deletePartyMessage")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // méthode delete
