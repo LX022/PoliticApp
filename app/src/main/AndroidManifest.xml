@@ -13,7 +13,7 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".Party.PartiesActivity" />
         <activity android:name=".Politician.PoliticiansActivity" />
-        <activity android:name=".VotingObject.VotingObjectActivity" />
+        <activity android:name=".VotingObject.VotingObjectsActivity" />
         <activity android:name=".Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,8 @@
         <activity android:name=".VotingObject.AddVotingObjectActivity" />
         <activity android:name=".Search.SearchActivity" />
         <activity android:name=".Search.SearchResultActivity" />
-        <activity android:name=".Party.PartyActivity"></activity>
+        <activity android:name=".Party.PartyActivity" />
+        <activity android:name=".VotingObject.VotingObjectDetailsActivity"></activity>
     </application>
 
 </manifest>
