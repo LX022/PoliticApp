@@ -32,4 +32,5 @@
     <string name="email">Adresse e-mail</string>
     <string name="confirmation">Confirmation</string>
     <string name="language">Changer de langue</string>
+    <string name="designation">Désignation</string>
 </resources>

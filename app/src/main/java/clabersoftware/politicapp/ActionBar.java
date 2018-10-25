@@ -7,10 +7,12 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.Locale;
 
 import clabersoftware.politicapp.Party.AddPartyActivity;
+import clabersoftware.politicapp.Party.PartiesActivity;
 
 public abstract class ActionBar extends AppCompatActivity {
 
@@ -28,6 +30,10 @@ public abstract class ActionBar extends AppCompatActivity {
             case R.id.action_language:
                 changeLanguage();
                     return true;
+            case R.id.action_search:
+                intent = new Intent(this, SearchActivity.class);
+                startActivity(intent);
+                return true;
             default:
                 return false;
         }
