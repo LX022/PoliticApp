@@ -7,12 +7,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import java.util.Locale;
 
-import clabersoftware.politicapp.Party.AddPartyActivity;
-import clabersoftware.politicapp.Party.PartiesActivity;
+import clabersoftware.politicapp.Search.SearchActivity;
 
 public abstract class ActionBar extends AppCompatActivity {
 

@@ -24,7 +24,8 @@
         <activity android:name=".Login.SignUpActivity" />
         <activity android:name=".Party.AddPartyActivity" />
         <activity android:name=".VotingObject.AddVotingObjectActivity" />
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".Search.SearchActivity" />
+        <activity android:name=".Search.SearchResultActivity"></activity>
     </application>
 
 </manifest>
