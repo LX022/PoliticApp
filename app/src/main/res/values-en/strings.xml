@@ -36,6 +36,6 @@
     <string name="result">Result</string>
     <string name="deleteVotingObjectTitle">Voting object removal</string>
     <string name="deletePartyTitle">Party removal</string>
-    <string name="deleteVotingObjectMessage">Delete de voting object ?</string>
-    <string name="deletePartyMessage">Delete de party ?</string>
+    <string name="deleteVotingObjectMessage">Delete voting object ?</string>
+    <string name="deletePartyMessage">Delete party ?</string>
 </resources>

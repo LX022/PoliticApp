@@ -62,8 +62,8 @@ public class VotingObjectsActivity extends ActionBar {
     public void deleteVotingObject(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("@string/deleteVotingObjectTitle")
-                .setMessage("@string/deleteVotingObjectMessage")
+        builder.setTitle(R.string.deleteVotingObjectTitle)
+                .setMessage(R.string.deleteVotingObjectMessage)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // méthode delete
