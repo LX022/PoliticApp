@@ -25,7 +25,8 @@
         <activity android:name=".Party.AddPartyActivity" />
         <activity android:name=".VotingObject.AddVotingObjectActivity" />
         <activity android:name=".Search.SearchActivity" />
-        <activity android:name=".Search.SearchResultActivity"></activity>
+        <activity android:name=".Search.SearchResultActivity" />
+        <activity android:name=".Party.PartyActivity"></activity>
     </application>
 
 </manifest>

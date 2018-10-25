@@ -94,4 +94,9 @@ public class PartiesActivity extends ActionBar {
         Intent intent = new Intent(this, AddPartyActivity.class);
         startActivity(intent);
     }
+
+    public void partyDetails(View view) {
+        Intent intent = new Intent(this, PartyActivity.class);
+        startActivity(intent);
+    }
 }
