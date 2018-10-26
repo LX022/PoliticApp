@@ -3,6 +3,8 @@
     <string name="app_name">Gouvernement Manager</string>
 
     <string name="addparty">Ajouter un parti</string>
+    <string name="editparty">Modifier un parti</string>
+    <string name="save">Enregistrer</string>
     <string name="name">Nom</string>
     <string name="abbreviation">Abréviation</string>
     <string name="add">Ajouter</string>

@@ -3,6 +3,8 @@
     <string name="app_name">Government Manager</string>
 
     <string name="addparty">Add a party</string>
+    <string name="editparty">Edit a party</string>
+    <string name="save">Save</string>
     <string name="name">Name</string>
     <string name="abbreviation">Abbreviation</string>
     <string name="add">Add</string>

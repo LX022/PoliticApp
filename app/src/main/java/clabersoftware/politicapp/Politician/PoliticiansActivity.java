@@ -45,4 +45,5 @@ public class PoliticiansActivity extends ActionBar {
 
         return list;
     }
+
 }

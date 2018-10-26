@@ -38,7 +38,7 @@ public class PartiesActivity extends ActionBar {
     }
 
     public void editParty(View view) {
-        Intent intent = new Intent(this, AddPartyActivity.class);
+        Intent intent = new Intent(this, EditPartyActivity.class);
         startActivity(intent);
     }
 
@@ -99,4 +99,6 @@ public class PartiesActivity extends ActionBar {
         Intent intent = new Intent(this, PartyActivity.class);
         startActivity(intent);
     }
+
+
 }
