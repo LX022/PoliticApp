@@ -36,6 +36,21 @@ public class PartyEntity implements ModelParty, Comparable {
         this.longName = longName;
     }
 
+    public void setIdParty(@NonNull Long idParty) {
+        this.idParty = idParty;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+    public void setLongName(String longName) {
+        this.longName = longName;
+    }
 
     @Override
     public Long getIdParty() {

@@ -15,7 +15,7 @@ import clabersoftware.politicapp.DataBase.PartyEntity;
 public interface PartyDao {
 
     @Query("SELECT * FROM parties WHERE idParty = :id")
-    LiveData<PartyEntity> getById(String id);
+    LiveData<PartyEntity> getById(Long id);
 
     @Query("SELECT * FROM parties")
     LiveData<List<PartyEntity>> getAll();
