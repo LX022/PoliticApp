@@ -1,7 +1,8 @@
 package clabersoftware.politicapp.DataBase;
 
 public interface ModelParty {
-    String getColor();
+    Long getIdParty();
+    int getColor();
     String getShortName();
     String getLongName();
 }
