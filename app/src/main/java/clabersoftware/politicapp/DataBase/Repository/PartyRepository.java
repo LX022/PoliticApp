@@ -27,11 +27,11 @@ public class PartyRepository {
         return sInstance;
     }
 
-    public LiveData<PartyEntity> getAccount(final Long partyId) {
+    public LiveData<PartyEntity> getParty(final Long partyId) {
         return mDatabase.partyDao().getById(partyId);
     }
 
-    public LiveData<List<PartyEntity>> getAccounts() {
+    public LiveData<List<PartyEntity>> getParties() {
         return mDatabase.partyDao().getAll();
     }
 
