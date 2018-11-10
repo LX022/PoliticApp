@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/partyNameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/logo"
@@ -21,8 +21,8 @@
         android:id="@+id/description"
         android:layout_width="223dp"
         android:layout_height="56dp"
-        android:layout_alignLeft="@+id/name"
-        android:layout_below="@+id/name"
+        android:layout_alignLeft="@+id/partyNameField"
+        android:layout_below="@+id/partyNameField"
         android:textColor="@android:color/black"
         tools:text="Détails" />
 
@@ -42,7 +42,7 @@
         android:layout_width="36dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/name"
+        android:layout_below="@+id/partyNameField"
         android:layout_marginEnd="97dp"
         android:background="@android:color/transparent"
         android:onClick="votingObjectDetails"
@@ -53,7 +53,7 @@
         android:onClick="editVotingObject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
+        android:layout_below="@+id/partyNameField"
         android:layout_marginStart="-97dp"
         android:layout_toEndOf="@+id/viewButton"
         app:srcCompat="@android:drawable/ic_menu_edit" />

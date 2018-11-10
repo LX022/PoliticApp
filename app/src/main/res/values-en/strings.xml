@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Government Manager</string>
-
+    <string name="color">Color</string>
     <string name="addparty">Add a party</string>
     <string name="editparty">Edit a party</string>
     <string name="save">Save</string>

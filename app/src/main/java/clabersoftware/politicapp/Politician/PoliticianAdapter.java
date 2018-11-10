@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.List;
@@ -28,7 +27,7 @@ public class PoliticianAdapter extends ArrayAdapter<Politician> {
         PoliticianAdapter.PoliticianHolder viewHolder = (PoliticianAdapter.PoliticianHolder) convertView.getTag();
         if(viewHolder == null){
             viewHolder = new PoliticianAdapter.PoliticianHolder();
-            viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+            viewHolder.name = (TextView) convertView.findViewById(R.id.partyNameField);
             viewHolder.description = (TextView) convertView.findViewById(R.id.description);
             viewHolder.partyName = (TextView) convertView.findViewById(R.id.partyShortName);
             convertView.setTag(viewHolder);

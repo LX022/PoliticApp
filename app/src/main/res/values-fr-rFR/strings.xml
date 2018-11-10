@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Gouvernement Manager</string>
-
+    <string name="color">Couleur</string>
     <string name="addparty">Ajouter un parti</string>
     <string name="editparty">Modifier un parti</string>
     <string name="save">Enregistrer</string>
