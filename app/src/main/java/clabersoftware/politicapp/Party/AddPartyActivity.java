@@ -32,6 +32,7 @@ public class AddPartyActivity extends ActionBar {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_party);
         mToast = Toast.makeText(this, getString(R.string.partyCreated), Toast.LENGTH_LONG);
+        initializeForm();
     }
 
 
@@ -40,7 +41,7 @@ public class AddPartyActivity extends ActionBar {
         mShortName = findViewById(R.id.partyAbbreviationField);
         mLongName = findViewById(R.id.partyNameField);
         Button saveBtn = findViewById(R.id.partyAddButton);
-        saveBtn.setOnClickListener(view -> saveChanges(
+        saveBtn.setOnClickListener(View -> saveChanges(
                 mColor.getText().toString(),
                 mShortName.getText().toString(),
                 mLongName.getText().toString()
@@ -48,7 +49,7 @@ public class AddPartyActivity extends ActionBar {
     }
 
     private void saveChanges(String color, String shortName, String longName){
-
+        System.out.println("cliqué");
         PartyEntity newParty = new PartyEntity(color, shortName, longName);
 
         new CreateParty(getApplication(), new OnAsyncEventListener() {

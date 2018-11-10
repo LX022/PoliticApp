@@ -9,7 +9,7 @@ import android.support.annotation.NonNull;
 @Entity(tableName = "parties", primaryKeys = {"idParty"})
 public class PartyEntity implements ModelParty, Comparable {
 
-    @NonNull
+
     //@PrimaryKey(autoGenerate = true)
     Long idParty;
     @ColumnInfo(name = "color")
