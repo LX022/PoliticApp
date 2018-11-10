@@ -2,7 +2,6 @@ package clabersoftware.politicapp.DataBase;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -11,9 +10,10 @@ import android.support.annotation.NonNull;
 public class PartyEntity implements ModelParty, Comparable {
 
     @NonNull
+    //@PrimaryKey(autoGenerate = true)
     Long idParty;
     @ColumnInfo(name = "color")
-    int color;
+    String color;
     @ColumnInfo(name = "shortName")
     String shortName;
     @ColumnInfo(name = "longName")
@@ -30,8 +30,7 @@ public class PartyEntity implements ModelParty, Comparable {
         longName = getLongName();
     }
 
-    public PartyEntity(@NonNull Long idParty, int color, String shortName, String longName){
-        this.idParty = idParty;
+    public PartyEntity(String color, String shortName, String longName){
         this.color = color;
         this.shortName = shortName;
         this.longName = longName;
@@ -41,7 +40,7 @@ public class PartyEntity implements ModelParty, Comparable {
         this.idParty = idParty;
     }
 
-    public void setColor(int color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -59,8 +58,8 @@ public class PartyEntity implements ModelParty, Comparable {
     }
 
     @Override
-    public int getColor() {
-        return 0;
+    public String getColor() {
+        return null;
     }
 
     @Override

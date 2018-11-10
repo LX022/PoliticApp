@@ -19,7 +19,7 @@ public class EditPartyActivity extends AppCompatActivity {
     private PartyEntity mParty;
     private String mLongname;
     private String mShortname;
-    private int mColor;
+    private String mColor;
     private boolean mEditMode;
     private Toast mToast;
     private EditText mEtAccountName;
