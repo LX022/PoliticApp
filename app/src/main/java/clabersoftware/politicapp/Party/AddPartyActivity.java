@@ -31,6 +31,7 @@ public class AddPartyActivity extends ActionBar {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_party);
+        mToast = Toast.makeText(this, getString(R.string.partyCreated), Toast.LENGTH_LONG);
     }
 
 
@@ -47,7 +48,7 @@ public class AddPartyActivity extends ActionBar {
     }
 
     private void saveChanges(String color, String shortName, String longName){
-        System.out.println("boutton");
+
         PartyEntity newParty = new PartyEntity(color, shortName, longName);
 
         new CreateParty(getApplication(), new OnAsyncEventListener() {
