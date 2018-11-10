@@ -1,5 +1,6 @@
 package clabersoftware.politicapp.Party;
 
+import android.arch.lifecycle.LiveData;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,7 @@ public class AddPartyActivity extends ActionBar {
 
     private void saveChanges(String color, String shortName, String longName){
         System.out.println("cliqué");
+        System.out.println(color + " " + shortName + " " + longName);
         PartyEntity newParty = new PartyEntity(color, shortName, longName);
 
         new CreateParty(getApplication(), new OnAsyncEventListener() {
@@ -67,6 +69,9 @@ public class AddPartyActivity extends ActionBar {
                 setResponse(false);
             }
         }).execute(newParty);
+
+
+
     }
 
     private void setResponse(Boolean response) {
