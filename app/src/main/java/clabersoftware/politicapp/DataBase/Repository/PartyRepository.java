@@ -36,16 +36,16 @@ public class PartyRepository {
     }
 
 
-    public void insert(final PartyEntity account) {
-        mDatabase.partyDao().insert(account);
+    public void insert(final PartyEntity party) {
+        mDatabase.partyDao().insert(party);
     }
 
-    public void update(final PartyEntity account) {
-        mDatabase.partyDao().update(account);
+    public void update(final PartyEntity party) {
+        mDatabase.partyDao().update(party);
     }
 
-    public void delete(final PartyEntity account) {
-        mDatabase.partyDao().delete(account);
+    public void delete(final PartyEntity party) {
+        mDatabase.partyDao().delete(party);
     }
 
 }
