@@ -1,6 +1,7 @@
 package clabersoftware.politicapp.DataBase.DAO;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
@@ -11,7 +12,7 @@ import android.database.sqlite.SQLiteConstraintException;
 import java.util.List;
 
 import clabersoftware.politicapp.DataBase.PartyEntity;
-
+@Dao
 public interface PartyDao {
 
     @Query("SELECT * FROM parties WHERE idParty = :id")
