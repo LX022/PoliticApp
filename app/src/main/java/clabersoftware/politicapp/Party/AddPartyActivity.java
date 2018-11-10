@@ -48,6 +48,8 @@ public class AddPartyActivity extends ActionBar {
         ));
     }
 
+
+
     private void saveChanges(String color, String shortName, String longName){
         System.out.println("cliqué");
         PartyEntity newParty = new PartyEntity(color, shortName, longName);
