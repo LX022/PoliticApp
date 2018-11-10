@@ -19,14 +19,18 @@ public class CreateParty extends AsyncTask<PartyEntity, Void, Void> {
     public CreateParty(Application application, OnAsyncEventListener callback) {
         mApplication = application;
         mCallBack = callback;
+
     }
 
     @Override
     protected Void doInBackground(PartyEntity... partyEntities) {
         try {
-            for (PartyEntity party : partyEntities)
+            for (PartyEntity party : partyEntities){
                 ((BaseApp) mApplication).getPartyRepository()
                         .insert(party);
+            }
+
+
         } catch (Exception e) {
             mException = e;
         }

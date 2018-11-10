@@ -6,11 +6,10 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 
-@Entity(tableName = "parties", primaryKeys = {"idParty"})
+@Entity(tableName = "parties")
 public class PartyEntity implements ModelParty, Comparable {
 
-
-    //@PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     Long idParty;
     @ColumnInfo(name = "color")
     String color;

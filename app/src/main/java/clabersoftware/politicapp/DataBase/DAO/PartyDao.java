@@ -36,7 +36,7 @@ public interface PartyDao {
     **/
 
     @Insert
-    long insert(PartyEntity party) throws SQLiteConstraintException;
+    Long insert(PartyEntity party) throws SQLiteConstraintException;
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<PartyEntity> parties);
