@@ -19,7 +19,7 @@ import clabersoftware.politicapp.Util.OnAsyncEventListener;
 
 public class AddPartyActivity extends ActionBar {
 
-    private static final String TAG = "RegisterActivity";
+    private static final String TAG = "AddPartyActivity";
 
     private Toast mToast;
 
