@@ -14,17 +14,20 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 import clabersoftware.politicapp.DataBase.DAO.PartyDao;
+import clabersoftware.politicapp.DataBase.DAO.PoliticianDao;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
+import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
 
-@Database(entities = {PartyEntity.class}, version = 1)
+@Database(entities = {PartyEntity.class, PoliticianEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String TAG = "AppDatabase";
 
     private static AppDatabase sInstance;
 
-    private static final String DATABASE_NAME = "bank-database";
+    private static final String DATABASE_NAME = "Government-DataBase";
 
     public abstract PartyDao partyDao();
+    public abstract PoliticianDao politicianDao();
 
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 

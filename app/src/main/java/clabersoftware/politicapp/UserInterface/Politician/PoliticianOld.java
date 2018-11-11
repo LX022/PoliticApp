@@ -2,12 +2,12 @@ package clabersoftware.politicapp.UserInterface.Politician;
 
 import clabersoftware.politicapp.UserInterface.Party.Party;
 
-public class Politician {
+public class PoliticianOld {
     private String name;
     private String description;
     private Party party;
 
-    public Politician(String name, String description, Party party){
+    public PoliticianOld(String name, String description, Party party){
         this.name = name;
         this.description = description;
         this.party = party;

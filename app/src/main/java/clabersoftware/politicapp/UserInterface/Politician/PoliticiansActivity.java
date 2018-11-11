@@ -22,21 +22,21 @@ public class PoliticiansActivity extends ActionBar {
 
         mListView = (ListView) findViewById(R.id.listView);
 
-        List<Politician> politicians = genererPolitician();
+        List<PoliticianOld> politicians = genererPolitician();
 
         PoliticianAdapter adapter = new PoliticianAdapter(PoliticiansActivity.this, politicians);
 
         mListView.setAdapter(adapter);
     }
 
-    private List<Politician> genererPolitician(){
-        List<Politician> list = new ArrayList<Politician>();
-        list.add(new Politician("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
-        list.add(new Politician("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
-        list.add(new Politician("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
-        list.add(new Politician("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
-        list.add(new Politician("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
-        list.add(new Politician("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
+    private List<PoliticianOld> genererPolitician(){
+        List<PoliticianOld> list = new ArrayList<PoliticianOld>();
+        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
+        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
+        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
+        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
+        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
+        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
 
 
         return list;

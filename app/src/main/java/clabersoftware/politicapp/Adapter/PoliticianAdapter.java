@@ -10,11 +10,11 @@ import android.widget.TextView;
 import java.util.List;
 
 import clabersoftware.politicapp.R;
-import clabersoftware.politicapp.UserInterface.Politician.Politician;
+import clabersoftware.politicapp.UserInterface.Politician.PoliticianOld;
 
-public class PoliticianAdapter extends ArrayAdapter<Politician> {
+public class PoliticianAdapter extends ArrayAdapter<PoliticianOld> {
 
-    public PoliticianAdapter(Context context, List<Politician> politicianList) {
+    public PoliticianAdapter(Context context, List<PoliticianOld> politicianList) {
         super(context, 0, politicianList);
     }
 
@@ -35,7 +35,7 @@ public class PoliticianAdapter extends ArrayAdapter<Politician> {
         }
 
         //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
-        Politician p = getItem(position);
+        PoliticianOld p = getItem(position);
 
         //il ne reste plus qu'à remplir notre vue
         viewHolder.name.setText(p.getName());
