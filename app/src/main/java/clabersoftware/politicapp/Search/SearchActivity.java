@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import clabersoftware.politicapp.ActionBar;
+import clabersoftware.politicapp.UserInterface.ActionBar;
 import clabersoftware.politicapp.R;
 
 public class SearchActivity extends ActionBar {

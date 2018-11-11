@@ -1,4 +1,4 @@
-package clabersoftware.politicapp.Politician;
+package clabersoftware.politicapp.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import clabersoftware.politicapp.R;
+import clabersoftware.politicapp.UserInterface.Politician.Politician;
 
 public class PoliticianAdapter extends ArrayAdapter<Politician> {
 

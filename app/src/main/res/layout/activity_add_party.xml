@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Party.AddPartyActivity">
+    tools:context=".UserInterface.Party.AddPartyActivity">
 
     <TextView
         android:id="@+id/LabelTitle"

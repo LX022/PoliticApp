@@ -9,7 +9,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import clabersoftware.politicapp.DataBase.PartyEntity;
+import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.DataBase.Repository.PartyRepository;
 import clabersoftware.politicapp.DataBase.async.Party.CreateParty;
 import clabersoftware.politicapp.DataBase.async.Party.DeleteParty;

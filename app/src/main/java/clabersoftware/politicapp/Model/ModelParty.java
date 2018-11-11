@@ -1,4 +1,4 @@
-package clabersoftware.politicapp.DataBase;
+package clabersoftware.politicapp.Model;
 
 public interface ModelParty {
     Long getIdParty();

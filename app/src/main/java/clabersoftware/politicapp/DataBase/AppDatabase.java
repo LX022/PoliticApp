@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 import clabersoftware.politicapp.DataBase.DAO.PartyDao;
+import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 
 @Database(entities = {PartyEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {

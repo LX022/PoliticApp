@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import java.util.List;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
-import clabersoftware.politicapp.DataBase.PartyEntity;
+import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 
 public class PartyRepository {
     private static PartyRepository sInstance;

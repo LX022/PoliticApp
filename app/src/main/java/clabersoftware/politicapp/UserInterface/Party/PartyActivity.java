@@ -1,16 +1,15 @@
-package clabersoftware.politicapp.VotingObject;
+package clabersoftware.politicapp.UserInterface.Party;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import clabersoftware.politicapp.ActionBar;
 import clabersoftware.politicapp.R;
 
-public class AddVotingObjectActivity extends ActionBar {
+public class PartyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_voting_object);
+        setContentView(R.layout.activity_party);
     }
 }

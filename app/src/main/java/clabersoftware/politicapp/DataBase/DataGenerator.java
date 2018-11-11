@@ -3,7 +3,7 @@ package clabersoftware.politicapp.DataBase;
 import java.util.ArrayList;
 import java.util.List;
 
-import clabersoftware.politicapp.DataBase.PartyEntity;
+import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 
 public class DataGenerator {
     public static List<PartyEntity> generateParties() {

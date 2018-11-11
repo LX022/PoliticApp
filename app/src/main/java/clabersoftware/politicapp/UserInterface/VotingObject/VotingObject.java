@@ -1,4 +1,4 @@
-package clabersoftware.politicapp.VotingObject;
+package clabersoftware.politicapp.UserInterface.VotingObject;
 
 import java.util.Date;
 

@@ -1,6 +1,6 @@
-package clabersoftware.politicapp.Politician;
+package clabersoftware.politicapp.UserInterface.Politician;
 
-import clabersoftware.politicapp.Party.Party;
+import clabersoftware.politicapp.UserInterface.Party.Party;
 
 public class Politician {
     private String name;

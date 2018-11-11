@@ -1,4 +1,4 @@
-package clabersoftware.politicapp.Login;
+package clabersoftware.politicapp.UserInterface.Login;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

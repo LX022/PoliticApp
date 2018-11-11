@@ -1,18 +1,14 @@
-package clabersoftware.politicapp.Politician;
+package clabersoftware.politicapp.UserInterface.Politician;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import clabersoftware.politicapp.ActionBar;
-import clabersoftware.politicapp.Party.PartiesActivity;
-import clabersoftware.politicapp.Party.Party;
-import clabersoftware.politicapp.Party.PartyAdapter;
+import clabersoftware.politicapp.UserInterface.ActionBar;
+import clabersoftware.politicapp.Adapter.PoliticianAdapter;
+import clabersoftware.politicapp.UserInterface.Party.Party;
 import clabersoftware.politicapp.R;
 
 public class PoliticiansActivity extends ActionBar {

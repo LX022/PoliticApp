@@ -1,4 +1,4 @@
-package clabersoftware.politicapp.Login;
+package clabersoftware.politicapp.UserInterface.Login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import clabersoftware.politicapp.HomeActivity;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 import clabersoftware.politicapp.R;
 
 public class LoginActivity extends AppCompatActivity {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VotingObject.VotingObjectsActivity">
+    tools:context=".UserInterface.VotingObject.VotingObjectsActivity">
 
     <TextView
         android:id="@+id/LabelTitle"

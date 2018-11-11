@@ -1,4 +1,4 @@
-package clabersoftware.politicapp.Party;
+package clabersoftware.politicapp.Adapter;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import clabersoftware.politicapp.UserInterface.Party.Party;
 import clabersoftware.politicapp.R;
 
 public class PartyAdapter extends ArrayAdapter<Party> {

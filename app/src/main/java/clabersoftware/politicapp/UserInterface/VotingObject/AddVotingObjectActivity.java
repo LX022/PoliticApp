@@ -1,15 +1,15 @@
-package clabersoftware.politicapp.Search;
+package clabersoftware.politicapp.UserInterface.VotingObject;
 
 import android.os.Bundle;
 
 import clabersoftware.politicapp.UserInterface.ActionBar;
 import clabersoftware.politicapp.R;
 
-public class SearchResultActivity extends ActionBar {
+public class AddVotingObjectActivity extends ActionBar {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_result);
+        setContentView(R.layout.activity_add_voting_object);
     }
 }

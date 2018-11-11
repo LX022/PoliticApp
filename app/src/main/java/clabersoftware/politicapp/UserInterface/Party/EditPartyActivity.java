@@ -1,4 +1,4 @@
-package clabersoftware.politicapp.Party;
+package clabersoftware.politicapp.UserInterface.Party;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import clabersoftware.politicapp.DataBase.PartyEntity;
+import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.ViewModel.Party.PartyViewModel;
 

@@ -9,26 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".Party.PartiesActivity" />
-        <activity android:name=".Politician.PoliticiansActivity" />
-        <activity android:name=".VotingObject.VotingObjectsActivity" />
-        <activity android:name=".Login.LoginActivity">
+        <activity android:name=".UserInterface.MainActivity" />
+        <activity android:name=".UserInterface.HomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login.SignUpActivity" />
-        <activity android:name=".Party.AddPartyActivity" />
-        <activity android:name=".VotingObject.AddVotingObjectActivity" />
+        <activity android:name=".UserInterface.Party.PartiesActivity" />
+        <activity android:name=".UserInterface.Politician.PoliticiansActivity" />
+        <activity android:name=".UserInterface.VotingObject.VotingObjectsActivity" />
+        <activity android:name=".UserInterface.Login.LoginActivity"/>
+        <activity android:name=".UserInterface.Login.SignUpActivity" />
+        <activity android:name=".UserInterface.Party.AddPartyActivity" />
+        <activity android:name=".UserInterface.VotingObject.AddVotingObjectActivity" />
         <activity android:name=".Search.SearchActivity" />
         <activity android:name=".Search.SearchResultActivity" />
-        <activity android:name=".Party.PartyActivity" />
-        <activity android:name=".VotingObject.VotingObjectDetailsActivity" />
-        <activity android:name=".Party.EditPartyActivity"></activity>
+        <activity android:name=".UserInterface.Party.PartyActivity" />
+        <activity android:name=".UserInterface.VotingObject.VotingObjectDetailsActivity" />
+        <activity android:name=".UserInterface.Party.EditPartyActivity"></activity>
     </application>
 
 </manifest>

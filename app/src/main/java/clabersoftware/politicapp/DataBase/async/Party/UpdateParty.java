@@ -3,7 +3,7 @@ package clabersoftware.politicapp.DataBase.async.Party;
 import android.app.Application;
 import android.os.AsyncTask;
 
-import clabersoftware.politicapp.DataBase.PartyEntity;
+import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.Util.OnAsyncEventListener;
 import clabersoftware.politicapp.ViewModel.BaseApp;
 

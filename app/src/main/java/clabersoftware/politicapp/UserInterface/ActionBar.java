@@ -1,4 +1,4 @@
-package clabersoftware.politicapp;
+package clabersoftware.politicapp.UserInterface;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import java.util.Locale;
 
+import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.Search.SearchActivity;
 
 public abstract class ActionBar extends AppCompatActivity {

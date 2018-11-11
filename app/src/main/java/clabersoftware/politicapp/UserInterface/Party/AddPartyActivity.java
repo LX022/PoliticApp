@@ -1,4 +1,4 @@
-package clabersoftware.politicapp.Party;
+package clabersoftware.politicapp.UserInterface.Party;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,10 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import clabersoftware.politicapp.ActionBar;
-import clabersoftware.politicapp.DataBase.PartyEntity;
+import clabersoftware.politicapp.UserInterface.ActionBar;
+import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.DataBase.async.Party.CreateParty;
-import clabersoftware.politicapp.MainActivity;
+import clabersoftware.politicapp.UserInterface.MainActivity;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.Util.OnAsyncEventListener;
 

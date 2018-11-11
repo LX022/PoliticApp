@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteConstraintException;
 
 import java.util.List;
 
-import clabersoftware.politicapp.DataBase.PartyEntity;
+import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 @Dao
 public interface PartyDao {
 

@@ -1,9 +1,8 @@
-package clabersoftware.politicapp.VotingObject;
+package clabersoftware.politicapp.UserInterface.VotingObject;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import clabersoftware.politicapp.ActionBar;
+import clabersoftware.politicapp.UserInterface.ActionBar;
 import clabersoftware.politicapp.R;
 
 public class VotingObjectDetailsActivity extends ActionBar {
