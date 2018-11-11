@@ -49,9 +49,9 @@ public class PoliticianViewModel extends AndroidViewModel {
 
         private final PoliticianRepository mRepository;
 
-        public Factory(@NonNull Application application, Long accountId) {
+        public Factory(@NonNull Application application, Long idPolitician) {
             mApplication = application;
-            mIdPolitician = accountId;
+            mIdPolitician = idPolitician;
             mRepository = ((BaseApp) application).getPoliticianRepository();
         }
 

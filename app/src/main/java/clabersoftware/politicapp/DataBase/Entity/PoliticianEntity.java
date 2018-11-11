@@ -94,6 +94,6 @@ public class PoliticianEntity implements ModelPolitician, Comparable {
 
     @Override
     public int compareTo(@NonNull Object o) {
-        return 0;
+        return toString().compareTo(o.toString());
     }
 }
