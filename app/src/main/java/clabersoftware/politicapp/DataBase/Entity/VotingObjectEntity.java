@@ -20,7 +20,7 @@ public class VotingObjectEntity implements ModelVotingObject, Comparable{
     @ColumnInfo(name = "details")
     String details;
     @ColumnInfo(name = "date")
-    Date date;
+    String date;
     @ColumnInfo(name = "state")
     Boolean state;
 
@@ -35,7 +35,7 @@ public class VotingObjectEntity implements ModelVotingObject, Comparable{
         state = getState();
     }
 
-    public VotingObjectEntity(String entitled, String details, Date date, Boolean state){
+    public VotingObjectEntity(String entitled, String details, String date, Boolean state){
         this.entitled = entitled;
         this.details = details;
         this.date = date;
@@ -74,11 +74,11 @@ public class VotingObjectEntity implements ModelVotingObject, Comparable{
     }
 
     @Override
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
