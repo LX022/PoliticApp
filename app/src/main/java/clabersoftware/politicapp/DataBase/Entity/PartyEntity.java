@@ -55,22 +55,22 @@ public class PartyEntity implements ModelParty, Comparable {
 
     @Override
     public Long getIdParty() {
-        return null;
+        return idParty;
     }
 
     @Override
     public String getColor() {
-        return null;
+        return color;
     }
 
     @Override
     public String getShortName() {
-        return null;
+        return shortName;
     }
 
     @Override
     public String getLongName() {
-        return null;
+        return longName;
     }
 
     public boolean equals(Object obj) {
