@@ -11,9 +11,9 @@ import android.util.Log;
 
 import clabersoftware.politicapp.DataBase.PartyEntity;
 import clabersoftware.politicapp.DataBase.Repository.PartyRepository;
-import clabersoftware.politicapp.DataBase.async.CreateParty;
-import clabersoftware.politicapp.DataBase.async.DeleteParty;
-import clabersoftware.politicapp.DataBase.async.UpdateParty;
+import clabersoftware.politicapp.DataBase.async.Party.CreateParty;
+import clabersoftware.politicapp.DataBase.async.Party.DeleteParty;
+import clabersoftware.politicapp.DataBase.async.Party.UpdateParty;
 import clabersoftware.politicapp.Util.OnAsyncEventListener;
 import clabersoftware.politicapp.ViewModel.BaseApp;
 

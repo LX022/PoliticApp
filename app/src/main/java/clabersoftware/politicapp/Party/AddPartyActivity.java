@@ -1,19 +1,15 @@
 package clabersoftware.politicapp.Party;
 
-import android.arch.lifecycle.LiveData;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import clabersoftware.politicapp.ActionBar;
 import clabersoftware.politicapp.DataBase.PartyEntity;
-import clabersoftware.politicapp.DataBase.async.CreateParty;
+import clabersoftware.politicapp.DataBase.async.Party.CreateParty;
 import clabersoftware.politicapp.MainActivity;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.Util.OnAsyncEventListener;

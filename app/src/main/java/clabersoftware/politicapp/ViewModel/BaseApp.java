@@ -15,6 +15,7 @@ public class BaseApp extends Application {
         return AppDatabase.getInstance(this);
     }
 
+
     public PartyRepository getPartyRepository() {
         return PartyRepository.getInstance(getDatabase());
     }

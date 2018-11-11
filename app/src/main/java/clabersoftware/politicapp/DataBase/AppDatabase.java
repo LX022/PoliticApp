@@ -45,6 +45,7 @@ public abstract class AppDatabase extends RoomDatabase {
      * The SQLite database is only created when it's accessed for the first time.
      */
     private static AppDatabase buildDatabase(final Context appContext) {
+        System.out.println("#############################################################################################################AppDatabase");
         Log.i(TAG, "Database will be initialized.");
         return Room.databaseBuilder(appContext, AppDatabase.class, DATABASE_NAME)
                 .addCallback(new Callback() {
@@ -65,6 +66,7 @@ public abstract class AppDatabase extends RoomDatabase {
      * Check whether the database already exists and expose it via {@link #getDatabaseCreated()}
      */
     private void updateDatabaseCreated(final Context context) {
+        System.out.println("#############################################################################################################updateDatabaseCreated");
         if (context.getDatabasePath(DATABASE_NAME).exists()) {
             Log.i(TAG, "Database initialized.");
             setDatabaseCreated();
@@ -76,6 +78,7 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     public static void initializeDemoData(final AppDatabase database) {
+        System.out.println("#############################################################################################################setDataBaseCreated");
         Executors.newSingleThreadExecutor().execute(() -> {
             database.runInTransaction(() -> {
                 Log.i(TAG, "Wipe database.");
