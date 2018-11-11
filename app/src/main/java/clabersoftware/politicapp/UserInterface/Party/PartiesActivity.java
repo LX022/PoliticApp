@@ -15,7 +15,7 @@ import clabersoftware.politicapp.UserInterface.ActionBar;
 import clabersoftware.politicapp.Adapter.PartyAdapter;
 import clabersoftware.politicapp.R;
 
-public class PartiesActivity extends ActionBar {
+public class    PartiesActivity extends ActionBar {
 
     private ListView mListView;
 
