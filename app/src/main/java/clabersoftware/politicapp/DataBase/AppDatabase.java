@@ -18,8 +18,10 @@ import clabersoftware.politicapp.DataBase.DAO.PoliticianDao;
 import clabersoftware.politicapp.DataBase.DAO.VotingObjectDao;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
+import clabersoftware.politicapp.DataBase.Entity.VotingLineEntity;
+import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
 
-@Database(entities = {PartyEntity.class, PoliticianEntity.class}, version = 1)
+@Database(entities = {PartyEntity.class, PoliticianEntity.class, VotingObjectEntity.class, VotingLineEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String TAG = "AppDatabase";
 

@@ -6,6 +6,6 @@ public interface ModelVotingObject {
     Long getIdVotingObject();
     String getEntitled();
     String GetDetails();
-    Date getDate();
+    String getDate();
     Boolean getState();
 }
