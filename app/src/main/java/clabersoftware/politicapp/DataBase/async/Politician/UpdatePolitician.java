@@ -7,7 +7,7 @@ import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
 import clabersoftware.politicapp.Util.OnAsyncEventListener;
 import clabersoftware.politicapp.ViewModel.BaseApp;
 
-public class UpdateParty extends AsyncTask<PoliticianEntity, Void, Void> {
+public class UpdatePolitician extends AsyncTask<PoliticianEntity, Void, Void> {
 
     private static final String TAG = "UpdatePolitician";
 
@@ -15,7 +15,7 @@ public class UpdateParty extends AsyncTask<PoliticianEntity, Void, Void> {
     private OnAsyncEventListener mCallBack;
     private Exception mException;
 
-    public UpdateParty(Application application, OnAsyncEventListener callback) {
+    public UpdatePolitician(Application application, OnAsyncEventListener callback) {
         mApplication = application;
         mCallBack = callback;
     }
