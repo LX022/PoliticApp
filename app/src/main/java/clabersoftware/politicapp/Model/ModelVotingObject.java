@@ -5,7 +5,7 @@ import java.util.Date;
 public interface ModelVotingObject {
     Long getIdVotingObject();
     String getEntitled();
-    String GetDetails();
+    String getDetails();
     String getDate();
     Boolean getState();
 }

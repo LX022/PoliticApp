@@ -20,15 +20,17 @@ import clabersoftware.politicapp.Model.ModelVotingLine;
         @ForeignKey(
                 entity = VotingObjectEntity.class,
                 parentColumns = "idVotingObject",
-                childColumns = "fkVotingObject"
-        )},
+               childColumns = "fkVotingObject"
+        )
+                },
         indices = {
                 @Index(
                         value = {"fkPolitician"}
                 ),
                 @Index(
-                        value = {"fkVotingObject"}
-                )}
+                     value = {"fkVotingObject"}
+                )
+        }
 )
 public class VotingLineEntity implements ModelVotingLine, Comparable {
 

@@ -30,7 +30,7 @@ public class VotingObjectEntity implements ModelVotingObject, Comparable{
     public VotingObjectEntity(ModelVotingObject votingObject){
         idVotingObject = getIdVotingObject();
         entitled = getEntitled();
-        details = GetDetails();
+        details = getDetails();
         date = getDate();
         state = getState();
     }
@@ -65,7 +65,7 @@ public class VotingObjectEntity implements ModelVotingObject, Comparable{
     }
 
     @Override
-    public String GetDetails() {
+    public String getDetails() {
         return details;
     }
 
