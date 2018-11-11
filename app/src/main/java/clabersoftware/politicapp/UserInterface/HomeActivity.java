@@ -5,12 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import clabersoftware.politicapp.R;
-import clabersoftware.politicapp.UserInterface.ActionBar;
 import clabersoftware.politicapp.UserInterface.Party.PartiesActivity;
 import clabersoftware.politicapp.UserInterface.Politician.PoliticiansActivity;
 import clabersoftware.politicapp.UserInterface.VotingObject.VotingObjectsActivity;
 
-public class HomeActivity extends ActionBar {
+public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,5 +1,6 @@
 package clabersoftware.politicapp.UserInterface.Party;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,11 +12,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import clabersoftware.politicapp.UserInterface.ActionBar;
+import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.Adapter.PartyAdapter;
 import clabersoftware.politicapp.R;
+import clabersoftware.politicapp.ViewModel.Party.PartyViewModel;
 
-public class    PartiesActivity extends ActionBar {
+public class    PartiesActivity extends BaseActivity {
 
     private ListView mListView;
 
@@ -25,6 +27,23 @@ public class    PartiesActivity extends ActionBar {
         setContentView(R.layout.activity_parties);
 
         mListView = (ListView) findViewById(R.id.listView);
+
+       // PartyViewModel.Factory factory = new PartyViewModel().Factory(
+        //        getApplication(), user);
+       // mViewModel = ViewModelProviders.of(this, factory).get(AccountListViewModel.class);
+       // mViewModel.getOwnAccounts().observe(this, accountEntities -> {
+       //     if (accountEntities != null) {
+       //         mAccounts = accountEntities;
+       //         mAdapter.setData(mAccounts);
+       //     }
+      //  });
+
+
+
+
+
+
+
 
         List<Party> parties = genererParties();
 
