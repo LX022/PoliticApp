@@ -7,6 +7,7 @@ import clabersoftware.politicapp.DataBase.Entity.VotingLineEntity;
 import clabersoftware.politicapp.Util.OnAsyncEventListener;
 import clabersoftware.politicapp.ViewModel.BaseApp;
 
+
 public class UpdateVotingLine extends AsyncTask<VotingLineEntity, Void, Void> {
 
     private static final String TAG = "UpdateVotingLine";
