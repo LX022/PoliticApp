@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import clabersoftware.politicapp.UserInterface.ActionBar;
+import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.R;
 
-public class SearchActivity extends ActionBar {
+public class SearchActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

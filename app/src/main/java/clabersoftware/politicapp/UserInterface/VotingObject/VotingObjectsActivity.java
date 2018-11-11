@@ -10,11 +10,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import clabersoftware.politicapp.UserInterface.ActionBar;
+import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.Adapter.VotingObjectAdapter;
 
-public class VotingObjectsActivity extends ActionBar {
+public class VotingObjectsActivity extends BaseActivity {
 
     private ListView mListView;
 

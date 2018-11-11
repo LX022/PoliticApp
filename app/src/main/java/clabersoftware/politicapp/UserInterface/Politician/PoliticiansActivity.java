@@ -6,12 +6,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import clabersoftware.politicapp.UserInterface.ActionBar;
+import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.Adapter.PoliticianAdapter;
 import clabersoftware.politicapp.UserInterface.Party.Party;
 import clabersoftware.politicapp.R;
 
-public class PoliticiansActivity extends ActionBar {
+public class PoliticiansActivity extends BaseActivity {
 
     private ListView mListView;
 

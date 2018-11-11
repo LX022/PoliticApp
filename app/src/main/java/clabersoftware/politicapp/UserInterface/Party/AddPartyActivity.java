@@ -7,14 +7,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import clabersoftware.politicapp.UserInterface.ActionBar;
+import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.DataBase.async.Party.CreateParty;
 import clabersoftware.politicapp.UserInterface.MainActivity;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.Util.OnAsyncEventListener;
 
-public class AddPartyActivity extends ActionBar {
+public class AddPartyActivity extends BaseActivity {
 
     private static final String TAG = "AddPartyActivity";
 

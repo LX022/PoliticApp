@@ -2,10 +2,10 @@ package clabersoftware.politicapp.Search;
 
 import android.os.Bundle;
 
-import clabersoftware.politicapp.UserInterface.ActionBar;
+import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.R;
 
-public class SearchResultActivity extends ActionBar {
+public class SearchResultActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
