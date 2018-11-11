@@ -61,7 +61,7 @@ public class PoliticianEntity implements ModelPolitician, Comparable {
 
     @Override
     public Long getIdPolitician() {
-        return null;
+        return idPolitician;
     }
     public void setIdPolitician(@NonNull Long idPolitician) {
         this.idPolitician = idPolitician;
@@ -69,7 +69,7 @@ public class PoliticianEntity implements ModelPolitician, Comparable {
 
     @Override
     public String getFirstName() {
-        return null;
+        return firstName;
     }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -77,7 +77,7 @@ public class PoliticianEntity implements ModelPolitician, Comparable {
 
     @Override
     public String getLastName() {
-        return null;
+        return lastName;
     }
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -85,7 +85,7 @@ public class PoliticianEntity implements ModelPolitician, Comparable {
 
     @Override
     public Long getFkParty() {
-        return null;
+        return fkParty;
     }
 
     public void setFkParty(Long fkParty) {

@@ -57,7 +57,7 @@ public class VotingObjectEntity implements ModelVotingObject, Comparable{
 
     @Override
     public String getEntitled() {
-        return null;
+        return entitled;
     }
 
     public void setEntitled(String entitled) {
@@ -66,7 +66,7 @@ public class VotingObjectEntity implements ModelVotingObject, Comparable{
 
     @Override
     public String GetDetails() {
-        return null;
+        return details;
     }
 
     public void setDetails(String details) {
@@ -75,7 +75,7 @@ public class VotingObjectEntity implements ModelVotingObject, Comparable{
 
     @Override
     public Date getDate() {
-        return null;
+        return date;
     }
 
     public void setDate(Date date) {
@@ -84,7 +84,7 @@ public class VotingObjectEntity implements ModelVotingObject, Comparable{
 
     @Override
     public Boolean getState() {
-        return null;
+        return state;
     }
 
     public void setState(Boolean state) {
