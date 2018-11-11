@@ -8,9 +8,8 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import clabersoftware.politicapp.Model.ModelVotingLine;
-import clabersoftware.politicapp.UserInterface.VotingObject.VotingObject;
 
-@Entity(tableName = "votingLine",
+@Entity(tableName = "votingLines",
         foreignKeys ={
         @ForeignKey(
                 entity = PoliticianEntity.class,
@@ -19,7 +18,7 @@ import clabersoftware.politicapp.UserInterface.VotingObject.VotingObject;
 
         ),
         @ForeignKey(
-                entity = VotingObject.class,
+                entity = VotingObjectEntity.class,
                 parentColumns = "idVotingObject",
                 childColumns = "fkVotingObject"
         )},
