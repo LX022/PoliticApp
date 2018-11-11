@@ -33,10 +33,10 @@ public class VotingObjectViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         mObservableVotingObject.setValue(null);
 
-        LiveData<VotingObjectEntity> account = mRepository.getVotingObject(idVotingObject);
+        LiveData<VotingObjectEntity> votingObject = mRepository.getVotingObject(idVotingObject);
 
         // observe the changes of the account entity from the database and forward them
-        mObservableVotingObject.addSource(account, mObservableVotingObject::setValue);
+        mObservableVotingObject.addSource(votingObject, mObservableVotingObject::setValue);
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {

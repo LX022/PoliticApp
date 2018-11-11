@@ -34,10 +34,10 @@ public class PoliticianViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         mObservablePolitician.setValue(null);
 
-        LiveData<PoliticianEntity> account = mRepository.getPolitician(idPolitician);
+        LiveData<PoliticianEntity> politician = mRepository.getPolitician(idPolitician);
 
         // observe the changes of the account entity from the database and forward them
-        mObservablePolitician.addSource(account, mObservablePolitician::setValue);
+        mObservablePolitician.addSource(politician, mObservablePolitician::setValue);
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {

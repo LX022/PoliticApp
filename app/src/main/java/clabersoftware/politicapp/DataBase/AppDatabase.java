@@ -15,6 +15,7 @@ import java.util.concurrent.Executors;
 
 import clabersoftware.politicapp.DataBase.DAO.PartyDao;
 import clabersoftware.politicapp.DataBase.DAO.PoliticianDao;
+import clabersoftware.politicapp.DataBase.DAO.VotingLineDao;
 import clabersoftware.politicapp.DataBase.DAO.VotingObjectDao;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
@@ -32,6 +33,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PartyDao partyDao();
     public abstract PoliticianDao politicianDao();
     public abstract VotingObjectDao votingObjectDao();
+    public abstract VotingLineDao votingLineDao();
 
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 

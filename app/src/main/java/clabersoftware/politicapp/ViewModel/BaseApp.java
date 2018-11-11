@@ -5,6 +5,7 @@ import android.app.Application;
 import clabersoftware.politicapp.DataBase.AppDatabase;
 import clabersoftware.politicapp.DataBase.Repository.PartyRepository;
 import clabersoftware.politicapp.DataBase.Repository.PoliticianRepository;
+import clabersoftware.politicapp.DataBase.Repository.VotingLineRepository;
 import clabersoftware.politicapp.DataBase.Repository.VotingObjectRepository;
 
 public class BaseApp extends Application {
@@ -28,6 +29,10 @@ public class BaseApp extends Application {
     }
     public VotingObjectRepository getVotingObjectRepository(){
         return VotingObjectRepository.getInstance(getDatabase());
+    }
+
+    public VotingLineRepository getVotingLineRepository(){
+        return VotingLineRepository.getInstance(getDatabase());
     }
 
 }

@@ -62,7 +62,6 @@ public class VotingLineEntity implements ModelVotingLine, Comparable {
         return o.getIdVotingLine().equals(this.getIdVotingLine());
     }
 
-
     @Override
     public Long getIdVotingLine() {
         return idVotingLine;
@@ -93,6 +92,8 @@ public class VotingLineEntity implements ModelVotingLine, Comparable {
 
     @Override
     public int compareTo(@NonNull Object o) {
-        return 0;
+        return toString().compareTo(o.toString());
     }
+
+
 }
