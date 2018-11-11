@@ -8,19 +8,27 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import clabersoftware.politicapp.Model.ModelVotingLine;
+import clabersoftware.politicapp.UserInterface.VotingObject.VotingObject;
 
 @Entity(tableName = "votingLine",
-        foreignKeys =
+        foreignKeys ={
         @ForeignKey(
                 entity = PoliticianEntity.class,
-                parentColumns = "idParty",
-                childColumns = "fkParty",
-                //Nous avons mis no_action voir à le supprimer si ça bug
-                onDelete = ForeignKey.NO_ACTION
+                parentColumns = "idPolitician",
+                childColumns = "fkPolitician"
+
         ),
+        @ForeignKey(
+                entity = VotingObject.class,
+                parentColumns = "idVotingObject",
+                childColumns = "fkVotingObject"
+        )},
         indices = {
                 @Index(
-                        value = {"fkParty"}
+                        value = {"fkPolitician"}
+                ),
+                @Index(
+                        value = {"fkVotingObject"}
                 )}
 )
 public class VotingLineEntity implements ModelVotingLine, Comparable {
