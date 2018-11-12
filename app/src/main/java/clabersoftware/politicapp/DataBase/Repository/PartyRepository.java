@@ -37,7 +37,7 @@ public class PartyRepository {
 
 
     public void insert(final PartyEntity party) {
-        mDatabase.partyDao().insert(party);
+        mDatabase.partyDao().add(party);
     }
 
     public void update(final PartyEntity party) {

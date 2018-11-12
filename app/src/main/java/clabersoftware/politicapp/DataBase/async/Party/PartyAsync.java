@@ -22,10 +22,8 @@ public class PartyAsync extends AsyncTask<Void, Void, Object> {
     protected Object doInBackground(Void... params) {
         switch (task) {
             case "add":
-                System.out.println("je suis dans le insert");
-                return db.partyDao().insert((PartyEntity) o);
+                return db.partyDao().add((PartyEntity) o);
             case "getAll":
-                System.out.println("je suis dans le getAll");
                 return db.partyDao().getAll();
             case "getById":
                 return db.partyDao().getById(Long.parseLong((String.valueOf(o))));

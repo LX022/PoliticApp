@@ -22,7 +22,7 @@ public interface PartyDao {
     List<PartyEntity> getAll();
 
     @Insert
-    Long insert(PartyEntity party);
+    Long add(PartyEntity party);
 
     @Update
     void update(PartyEntity party);

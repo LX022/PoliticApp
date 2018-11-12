@@ -24,7 +24,6 @@ import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
 
 @Database(entities = {PartyEntity.class, PoliticianEntity.class, VotingObjectEntity.class, VotingLineEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
-    private static final String TAG = "AppDatabase";
 
     public static final String DATABASE_NAME = "GovernmentDataBase";
     private static AppDatabase INSTANCE;
@@ -32,8 +31,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PoliticianDao politicianDao();
     public abstract VotingObjectDao votingObjectDao();
     public abstract VotingLineDao votingLineDao();
-
-    private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 
     public static AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {
@@ -44,6 +41,4 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
-
-
 }
