@@ -35,10 +35,10 @@ public class PartyViewModel extends AndroidViewModel{
         // set by default null, until we get data from the database.
         mObservableParty.setValue(null);
 
-        LiveData<PartyEntity> party = mRepository.getParty(partyId);
+       // LiveData<PartyEntity> party = mRepository.getParty(partyId);
 
         // observe the changes of the client entity from the database and forward them
-        mObservableParty.addSource(party, mObservableParty::setValue);
+       // mObservableParty.addSource(party, mObservableParty::setValue);
     }
 
 

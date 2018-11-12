@@ -9,7 +9,7 @@ import clabersoftware.politicapp.Model.ModelParty;
 
 
 @Entity(tableName = "parties")
-public class PartyEntity implements ModelParty, Comparable {
+public class PartyEntity {
 
     @PrimaryKey(autoGenerate = true)
     Long idParty;
@@ -20,16 +20,6 @@ public class PartyEntity implements ModelParty, Comparable {
     @ColumnInfo(name = "longName")
     String longName;
 
-
-    public PartyEntity(){
-    }
-
-    public PartyEntity(ModelParty party){
-        idParty = getIdParty();
-        color = getColor();
-        shortName = getShortName();
-        longName = getLongName();
-    }
 
     public PartyEntity(String color, String shortName, String longName){
         this.color = color;
@@ -53,41 +43,23 @@ public class PartyEntity implements ModelParty, Comparable {
         this.longName = longName;
     }
 
-    @Override
     public Long getIdParty() {
         return idParty;
     }
 
-    @Override
     public String getColor() {
         return color;
     }
 
-    @Override
     public String getShortName() {
         return shortName;
     }
 
-    @Override
     public String getLongName() {
         return longName;
     }
 
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
-        if (obj == this) return true;
-        if (!(obj instanceof PartyEntity)) return false;
-        PartyEntity o = (PartyEntity) obj;
-        return o.getIdParty().equals(this.getIdParty());
-    }
-
-    @Override
     public String toString() {
         return longName;
-    }
-
-    @Override
-    public int compareTo(@NonNull Object o) {
-        return toString().compareTo(o.toString());
     }
 }

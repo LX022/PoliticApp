@@ -46,11 +46,11 @@ public class EditPartyActivity extends AppCompatActivity {
               //  mViewModel.updateAccount(mAccount);
             //}
         //} else {
-            PartyEntity newParty = new PartyEntity();
-            newParty.setShortName(mLongname);
-            newParty.setShortName(mShortname);
-            newParty.setColor(mColor);
-            mViewModel.createParty(newParty);
+          //  PartyEntity newParty = new PartyEntity();
+           // newParty.setShortName(mLongname);
+           // newParty.setShortName(mShortname);
+           // newParty.setColor(mColor);
+           // mViewModel.createParty(newParty);
         //}
     }
 }

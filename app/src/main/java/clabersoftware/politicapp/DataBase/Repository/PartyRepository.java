@@ -27,13 +27,13 @@ public class PartyRepository {
         return sInstance;
     }
 
-    public LiveData<PartyEntity> getParty(final Long partyId) {
-        return mDatabase.partyDao().getById(partyId);
-    }
+   // public LiveData<PartyEntity> getParty(final Long partyId) {
+        //return mDatabase.partyDao().getById(partyId);
+    //}
 
-    public LiveData<List<PartyEntity>> getParties() {
-        return mDatabase.partyDao().getAll();
-    }
+   // public LiveData<List<PartyEntity>> getParties() {
+     //   return mDatabase.partyDao().getAll();
+    //}
 
 
     public void insert(final PartyEntity party) {
