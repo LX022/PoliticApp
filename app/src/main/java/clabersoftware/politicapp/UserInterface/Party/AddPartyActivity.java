@@ -57,6 +57,8 @@ public class AddPartyActivity extends BaseActivity {
         PartyEntity newParty = new PartyEntity(color, shortName, longName);
         new PartyAsync(db,"add",newParty).execute();
         System.out.println("olééééé");
+        PartiesActivity pa = new PartiesActivity();
+
         setContentView(R.layout.activity_parties);
         mToast.show();
     }

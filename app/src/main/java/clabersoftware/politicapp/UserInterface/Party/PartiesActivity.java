@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -33,16 +34,6 @@ public class    PartiesActivity extends BaseActivity {
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         mListView = (ListView) findViewById(R.id.listView);
 
-       // PartyViewModel.Factory factory = new PartyViewModel().Factory(
-        //        getApplication(), user);
-       // mViewModel = ViewModelProviders.of(this, factory).get(AccountListViewModel.class);
-       // mViewModel.getOwnAccounts().observe(this, accountEntities -> {
-       //     if (accountEntities != null) {
-       //         mAccounts = accountEntities;
-       //         mAdapter.setData(mAccounts);
-       //     }
-      //  });
-
         List<PartyEntity> parties = genererParties();
 
         PartyAdapter adapter = new PartyAdapter(PartiesActivity.this, parties);
@@ -58,12 +49,11 @@ public class    PartiesActivity extends BaseActivity {
 
     public void deleteParty(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         builder.setTitle(R.string.deletePartyTitle)
                 .setMessage(R.string.deletePartyMessage)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // méthode delete
+                        //new PartyAsync(db,"delete",selectedParty).execute();
                     }
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
