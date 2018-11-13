@@ -1,6 +1,7 @@
 package clabersoftware.politicapp.UserInterface.Party;
 
-import android.arch.lifecycle.ViewModelProviders;
+
+import android.arch.persistence.room.Room;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,21 +12,25 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
+import clabersoftware.politicapp.DataBase.AppDatabase;
+import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
+import clabersoftware.politicapp.DataBase.async.Party.PartyAsync;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.Adapter.PartyAdapter;
 import clabersoftware.politicapp.R;
-import clabersoftware.politicapp.ViewModel.Party.PartyViewModel;
+
 
 public class    PartiesActivity extends BaseActivity {
 
     private ListView mListView;
-
+    private AppDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parties);
-
+        db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         mListView = (ListView) findViewById(R.id.listView);
 
        // PartyViewModel.Factory factory = new PartyViewModel().Factory(
@@ -38,14 +43,7 @@ public class    PartiesActivity extends BaseActivity {
        //     }
       //  });
 
-
-
-
-
-
-
-
-        List<Party> parties = genererParties();
+        List<PartyEntity> parties = genererParties();
 
         PartyAdapter adapter = new PartyAdapter(PartiesActivity.this, parties);
 
@@ -75,34 +73,18 @@ public class    PartiesActivity extends BaseActivity {
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
-
     }
 
+    private List<PartyEntity> genererParties(){
+        List<PartyEntity> parties = new ArrayList<>();
+        try {
+            parties = (ArrayList) new PartyAsync(db, "getAll", 0).execute().get();
 
-
-
-    private List<Party> genererParties(){
-        List<Party> parties = new ArrayList<Party>();
-        parties.add(new Party(Color.BLACK, "PDC", "Parti Démocrate Chrétien"));
-        parties.add(new Party(Color.BLUE, "PLR", "C'est ici que ça se passe !"));
-        parties.add(new Party(Color.GREEN, "PS", "Que c'est beau..."));
-        parties.add(new Party(Color.RED, "VERT", "Il est quelle heure ??"));
-        parties.add(new Party(Color.GRAY, "UDC", "On y est presque"));
-        parties.add(new Party(Color.BLACK, "PDCvr", "Parti Démocrate Chrétien"));
-        parties.add(new Party(Color.BLUE, "PLRvr", "Parti Libéral Radical"));
-        parties.add(new Party(Color.GREEN, "Logan", "Que c'est beau..."));
-        parties.add(new Party(Color.RED, "Mathieu", "Il est quelle heure ??"));
-        parties.add(new Party(Color.GRAY, "Willy", "On y est presque"));
-        parties.add(new Party(Color.BLACK, "PDC", "Parti Démocrate Chrétien"));
-        parties.add(new Party(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
-        parties.add(new Party(Color.GREEN, "Logan", "Que c'est beau..."));
-        parties.add(new Party(Color.RED, "Mathieu", "Il est quelle heure ??"));
-        parties.add(new Party(Color.GRAY, "Willy", "On y est presque"));
-        parties.add(new Party(Color.BLACK, "PDC", "Parti Démocrate Chrétien"));
-        parties.add(new Party(Color.BLUE, "Kevin", "C'est ici que ça se passe !"));
-        parties.add(new Party(Color.GREEN, "Logan", "Que c'est beau..."));
-        parties.add(new Party(Color.RED, "Mathieu", "Il est quelle heure ??"));
-        parties.add(new Party(Color.GRAY, "Willy", "On y est presque"));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         return parties;
     }
 

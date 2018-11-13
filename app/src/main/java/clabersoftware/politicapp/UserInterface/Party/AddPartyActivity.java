@@ -40,7 +40,6 @@ public class AddPartyActivity extends BaseActivity {
         initializeForm();
     }
 
-
     private void initializeForm() {
         mColor = findViewById(R.id.partyColorField);
         mShortName = findViewById(R.id.partyAbbreviationField);
@@ -54,27 +53,12 @@ public class AddPartyActivity extends BaseActivity {
     }
 
 
-
     private void saveChanges(String color, String shortName, String longName){
         PartyEntity newParty = new PartyEntity(color, shortName, longName);
         new PartyAsync(db,"add",newParty).execute();
         System.out.println("olééééé");
-
-        ArrayList<PartyEntity> data = null;
-
-        try {
-            data = (ArrayList) new PartyAsync(db, "getAll", 0).execute().get();
-
-            for(PartyEntity p:data){
-                System.out.println(p.getShortName());
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-
-
+        setContentView(R.layout.activity_parties);
+        mToast.show();
     }
 
 }

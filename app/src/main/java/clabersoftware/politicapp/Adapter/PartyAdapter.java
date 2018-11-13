@@ -11,13 +11,14 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.UserInterface.Party.Party;
 import clabersoftware.politicapp.R;
 
-public class PartyAdapter extends ArrayAdapter<Party> {
+public class PartyAdapter extends ArrayAdapter<PartyEntity> {
 
     //parties est la liste des models à afficher
-    public PartyAdapter(Context context, List<Party> parties) {
+    public PartyAdapter(Context context, List<PartyEntity> parties) {
         super(context, 0, parties);
     }
 
@@ -33,24 +34,21 @@ public class PartyAdapter extends ArrayAdapter<Party> {
             viewHolder = new PartieViewHolder();
             viewHolder.shortName = (TextView) convertView.findViewById(R.id.shortName);
             viewHolder.longName = (TextView) convertView.findViewById(R.id.longName);
-            viewHolder.logo = (ImageView) convertView.findViewById(R.id.logo);
             convertView.setTag(viewHolder);
         }
 
         //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
-        Party party = getItem(position);
+        PartyEntity party = getItem(position);
 
         //il ne reste plus qu'à remplir notre vue
         viewHolder.shortName.setText(party.getShortName());
         viewHolder.longName.setText(party.getLongName());
-        viewHolder.logo.setImageDrawable(new ColorDrawable(party.getColor()));
-
         return convertView;
     }
 
     private class PartieViewHolder{
         public TextView shortName;
         public TextView longName;
-        public ImageView logo;
+        public TextView color;
     }
 }
