@@ -48,11 +48,13 @@ public class    PartiesActivity extends BaseActivity {
     }
 
     public void deleteParty(View view) {
+        System.out.println( System.out.println();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.deletePartyTitle)
                 .setMessage(R.string.deletePartyMessage)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+
                         //new PartyAsync(db,"delete",selectedParty).execute();
                     }
                 })
