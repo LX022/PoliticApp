@@ -35,17 +35,7 @@ public class PartiesListActivity extends BaseActivity {
 
         theListView = (ListView) findViewById(R.id.PartiesListView);
 
-        //List<PartyEntity> datas = genererParties();
-        List<PartyEntity> datas = new ArrayList<PartyEntity>();
-
-        PartyEntity p1 = new PartyEntity("blue", "PlR", "parti libéral");
-        p1.setIdParty((long) 1);
-
-        PartyEntity p2 = new PartyEntity("Rouge", "PS", "parti socialiste");
-        p2.setIdParty((long) 2);
-
-        datas.add(p1);
-        datas.add(p2);
+        List<PartyEntity> datas = genererParties();
 
         ArrayAdapter<PartyEntity> PartiesAdapter = new ArrayAdapter<PartyEntity>(this, android.R.layout.simple_list_item_1, datas);
 
@@ -75,6 +65,11 @@ public class PartiesListActivity extends BaseActivity {
             e.printStackTrace();
         }
         return parties;
+    }
+
+    public void addParty(View view) {
+        Intent intent = new Intent(this, AddPartyActivity.class);
+        startActivity(intent);
     }
 
 
