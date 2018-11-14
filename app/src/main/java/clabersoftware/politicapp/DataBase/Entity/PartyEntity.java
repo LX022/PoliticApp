@@ -20,6 +20,9 @@ public class PartyEntity {
     @ColumnInfo(name = "longName")
     String longName;
 
+    public PartyEntity(){
+
+    }
 
     public PartyEntity(String color, String shortName, String longName){
         this.color = color;
