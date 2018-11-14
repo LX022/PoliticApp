@@ -1,6 +1,7 @@
 package clabersoftware.politicapp.UserInterface.Party;
 
 import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,8 +48,9 @@ public class AddPartyActivity extends BaseActivity {
         PartyEntity newParty = new PartyEntity(color, shortName, longName);
         new PartyAsync(db,"add",newParty).execute();
         System.out.println("olééééé");
-        setContentView(R.layout.activity_home);
         mToast.show();
+        Intent intent = new Intent(this, PartiesListActivity.class);
+        startActivity(intent);
     }
 
 }
