@@ -1,4 +1,4 @@
-package clabersoftware.politicapp.DataBase.async.Party;
+package clabersoftware.politicapp.DataBase.async;
 
 import android.os.AsyncTask;
 

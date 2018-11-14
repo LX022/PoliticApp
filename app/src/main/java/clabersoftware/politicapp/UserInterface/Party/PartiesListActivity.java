@@ -2,8 +2,6 @@ package clabersoftware.politicapp.UserInterface.Party;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
-import android.icu.text.MessagePattern;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,7 +14,7 @@ import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
-import clabersoftware.politicapp.DataBase.async.Party.PartyAsync;
+import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 

@@ -8,7 +8,6 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import clabersoftware.politicapp.Model.ModelPolitician;
-import clabersoftware.politicapp.UserInterface.Politician.PoliticianOld;
 
 @Entity(tableName = "politicians",
         foreignKeys =

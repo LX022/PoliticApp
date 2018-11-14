@@ -1,29 +1,19 @@
 package clabersoftware.politicapp.UserInterface.Party;
 
 import android.arch.persistence.room.Room;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
 import clabersoftware.politicapp.DataBase.AppDatabase;
-import clabersoftware.politicapp.DataBase.async.Party.PartyAsync;
+import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
-import clabersoftware.politicapp.DataBase.async.Party.CreateParty;
-import clabersoftware.politicapp.UserInterface.MainActivity;
 import clabersoftware.politicapp.R;
-import clabersoftware.politicapp.Util.OnAsyncEventListener;
 
 public class AddPartyActivity extends BaseActivity {
 
-    private static final String TAG = "AddPartyActivity";
     private AppDatabase db;
     private Toast mToast;
 
@@ -57,9 +47,7 @@ public class AddPartyActivity extends BaseActivity {
         PartyEntity newParty = new PartyEntity(color, shortName, longName);
         new PartyAsync(db,"add",newParty).execute();
         System.out.println("olééééé");
-        PartiesActivity pa = new PartiesActivity();
-
-        setContentView(R.layout.activity_parties);
+        setContentView(R.layout.activity_home);
         mToast.show();
     }
 

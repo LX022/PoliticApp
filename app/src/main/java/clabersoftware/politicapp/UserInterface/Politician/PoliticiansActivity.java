@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import clabersoftware.politicapp.UserInterface.BaseActivity;
-import clabersoftware.politicapp.Adapter.PoliticianAdapter;
 import clabersoftware.politicapp.UserInterface.Party.Party;
 import clabersoftware.politicapp.R;
 
@@ -22,24 +21,6 @@ public class PoliticiansActivity extends BaseActivity {
 
         mListView = (ListView) findViewById(R.id.listView);
 
-        List<PoliticianOld> politicians = genererPolitician();
 
-        PoliticianAdapter adapter = new PoliticianAdapter(PoliticiansActivity.this, politicians);
-
-        mListView.setAdapter(adapter);
     }
-
-    private List<PoliticianOld> genererPolitician(){
-        List<PoliticianOld> list = new ArrayList<PoliticianOld>();
-        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
-        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
-        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
-        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
-        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
-        list.add(new PoliticianOld("Mathias Reynard", "Je viens du parti socialiste et j'ai été candidat à la ISS", new Party(1, "PS", "Parti Socialiste")));
-
-
-        return list;
-    }
-
 }

@@ -12,7 +12,7 @@ import java.util.List;
 
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.R;
-import clabersoftware.politicapp.Adapter.VotingObjectAdapter;
+
 
 public class VotingObjectsActivity extends BaseActivity {
 
@@ -25,24 +25,6 @@ public class VotingObjectsActivity extends BaseActivity {
 
         mListView = (ListView) findViewById(R.id.listView);
 
-        List<VotingObject> votingObjectList = genererVotingObject();
-
-        VotingObjectAdapter adapter = new VotingObjectAdapter(VotingObjectsActivity.this, votingObjectList);
-
-        mListView.setAdapter(adapter);
-
-    }
-
-    private List<VotingObject> genererVotingObject(){
-        List<VotingObject> votingObjectList = new ArrayList<VotingObject>();
-        votingObjectList.add(new VotingObject("Lex Weber", "Votation sur les résidences secondaire", "01.01.2018",true ));
-        votingObjectList.add(new VotingObject("Lex Weber", "Votation sur les résidences secondaire", "01.01.2018", true ));
-        votingObjectList.add(new VotingObject("Lex Weber", "Votation sur les résidences secondaire", "01.01.2018", false ));
-        votingObjectList.add(new VotingObject("Lex Weber", "Votation sur les résidences secondaire", "01.01.2018", false ));
-        votingObjectList.add(new VotingObject("Lex Weber", "Votation sur les résidences secondaire", "01.01.2018", false ));
-        votingObjectList.add(new VotingObject("Lex Weber", "Votation sur les résidences secondaire", "01.01.2018", true ));
-
-        return votingObjectList;
     }
 
     public void addVotingObject(View view) {
