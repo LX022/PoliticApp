@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UserInterface.MainActivity" />
-        <activity android:name=".UserInterface.HomeActivity" >
+        <activity android:name=".UserInterface.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,7 @@
         <activity android:name=".UserInterface.Party.PartiesActivity" />
         <activity android:name=".UserInterface.Politician.PoliticiansActivity" />
         <activity android:name=".UserInterface.VotingObject.VotingObjectsActivity" />
-        <activity android:name=".UserInterface.Login.LoginActivity"/>
+        <activity android:name=".UserInterface.Login.LoginActivity" />
         <activity android:name=".UserInterface.Login.SignUpActivity" />
         <activity android:name=".UserInterface.Party.AddPartyActivity" />
         <activity android:name=".UserInterface.VotingObject.AddVotingObjectActivity" />
@@ -28,7 +28,8 @@
         <activity android:name=".Search.SearchResultActivity" />
         <activity android:name=".UserInterface.Party.PartyActivity" />
         <activity android:name=".UserInterface.VotingObject.VotingObjectDetailsActivity" />
-        <activity android:name=".UserInterface.Party.EditPartyActivity"></activity>
+        <activity android:name=".UserInterface.Party.EditPartyActivity" />
+        <activity android:name=".UserInterface.Party.PartiesListActivity"></activity>
     </application>
 
 </manifest>
