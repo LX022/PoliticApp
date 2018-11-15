@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
@@ -53,11 +51,6 @@ public class EditPartyActivity extends AppCompatActivity {
         System.out.println(partyUpdated.getShortName() + "    "+partyUpdated.getLongName());
         new PartyAsync(db,"update",partyUpdated).execute().get();
 
-
-
-
-
-
         Intent intent = new Intent(this, PartiesListActivity.class);
         startActivity(intent);
     }
@@ -76,7 +69,26 @@ public class EditPartyActivity extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
         return PartyToEdit;
+    }
+
+    public void delete(View view) throws ExecutionException, InterruptedException{
+        PartyEntity partyUpdated = new PartyEntity();
+
+        TextView partyNameField = (TextView) findViewById(R.id.partyNameField);
+        partyUpdated.setLongName(partyNameField.getText().toString());
+
+        TextView partyAbbreviationField = (TextView) findViewById(R.id.partyAbbreviationField);
+        partyUpdated.setShortName(partyAbbreviationField.getText().toString());
+
+        Intent Intent = getIntent();
+        Long idPartyToEdit = Intent.getLongExtra("PARTY_SELECTED",1);
+        partyUpdated.setIdParty(idPartyToEdit);
+
+        System.out.println(partyUpdated.getShortName() + "    "+partyUpdated.getLongName());
+        new PartyAsync(db,"delete",partyUpdated).execute().get();
+
+        Intent intent = new Intent(this, PartiesListActivity.class);
+        startActivity(intent);
     }
 }

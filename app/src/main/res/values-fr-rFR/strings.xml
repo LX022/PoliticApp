@@ -44,4 +44,5 @@
     <string name="partyVotingObjectCreated">Object de vote créé</string>
     <string name="statut">Statut</string>
     <string name="votingObjectState">Actif</string>
+    <string name="delete">Supprimer</string>
 </resources>
