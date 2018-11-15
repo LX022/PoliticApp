@@ -19,7 +19,7 @@ public class VotingObjectAsync extends AsyncTask<Void, Void, Object> {
     }
 
     @Override
-    protected Object doInBackground(Void... voids) {
+    protected Object doInBackground(Void... params) {
         switch (task) {
             case "add":
                 return db.votingObjectDao().add((VotingObjectEntity) o);

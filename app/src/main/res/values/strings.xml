@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Government Manager</string>
+    <string name="votingObjectState">Ative</string>
     <string name="color">Color</string>
     <string name="partyCreated">Party créé</string>
     <string name="addparty">Add a party</string>
@@ -40,4 +41,8 @@
     <string name="deletePartyTitle">Party removal</string>
     <string name="deleteVotingObjectMessage">Delete voting object ?</string>
     <string name="deletePartyMessage">Delete party ?</string>
+    <string name="partyVotingObjectCreated">Voting object created</string>
+    <string name="statut">State</string>
+
+
 </resources>

@@ -41,4 +41,7 @@
     <string name="deletePartyTitle">Supression du parti</string>
     <string name="deleteVotingObjectMessage">Êtes-vous sur de vouloir supprimer la votation ?</string>
     <string name="deletePartyMessage">Êtes-vous sur de vouloir supprimer le parti ?</string>
+    <string name="partyVotingObjectCreated">Object de vote créé</string>
+    <string name="statut">Statut</string>
+    <string name="votingObjectState">Actif</string>
 </resources>

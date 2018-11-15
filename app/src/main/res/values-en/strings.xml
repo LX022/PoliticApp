@@ -41,4 +41,7 @@
     <string name="deletePartyTitle">Party removal</string>
     <string name="deleteVotingObjectMessage">Delete voting object ?</string>
     <string name="deletePartyMessage">Delete party ?</string>
+    <string name="statut">State</string>
+    <string name="partyVotingObjectCreated">Voting object created</string>
+    <string name="votingObjectState">Ative</string>
 </resources>
