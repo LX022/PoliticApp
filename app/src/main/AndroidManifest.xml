@@ -28,7 +28,9 @@
         <activity android:name=".UserInterface.Party.PartyActivity" />
         <activity android:name=".UserInterface.VotingObject.VotingObjectDetailsActivity" />
         <activity android:name=".UserInterface.Party.EditPartyActivity" />
-        <activity android:name=".UserInterface.Party.PartiesListActivity"></activity>
+        <activity android:name=".UserInterface.Party.PartiesListActivity" />
+        <activity android:name=".UserInterface.VotingObject.VotingObjectsListActivity" />
+        <activity android:name=".UserInterface.VotingObject.EditVotingObjectActivity"></activity>
     </application>
 
 </manifest>

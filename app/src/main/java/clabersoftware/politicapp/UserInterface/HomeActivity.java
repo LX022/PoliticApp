@@ -8,6 +8,7 @@ import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.Party.PartiesListActivity;
 import clabersoftware.politicapp.UserInterface.Politician.PoliticiansActivity;
 import clabersoftware.politicapp.UserInterface.VotingObject.VotingObjectsActivity;
+import clabersoftware.politicapp.UserInterface.VotingObject.VotingObjectsListActivity;
 
 public class HomeActivity extends BaseActivity {
 
@@ -27,7 +28,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void showVotingObjectList(View view) {
-        Intent intent = new Intent(this, VotingObjectsActivity.class);
+        Intent intent = new Intent(this, VotingObjectsListActivity.class);
         startActivity(intent);
     }
 

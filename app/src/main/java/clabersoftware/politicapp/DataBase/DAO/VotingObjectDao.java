@@ -15,24 +15,21 @@ import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
 @Dao
 public interface VotingObjectDao {
 
-    @Query("SELECT * FROM votingObjects WHERE idVotingObject = :idVotingObject")
-    public abstract LiveData<VotingObjectEntity> getVotingObjectById(Long idVotingObject);
+    @Query("SELECT * FROM votingObjects WHERE idVotingObject = :id")
+    VotingObjectEntity getById(Long id);
 
     @Query("SELECT * FROM votingObjects")
-    public abstract LiveData<List<VotingObjectEntity>> getAllVotingObjects();
+    List<VotingObjectEntity> getAll();
 
     @Insert
-    public abstract long insert(VotingObjectEntity votingObject);
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    public abstract void insertAll(List<VotingObjectEntity> votingObjects);
+    Long add(VotingObjectEntity votingObject);
 
     @Update
-    public abstract void update(VotingObjectEntity votingObject);
+    void update(VotingObjectEntity votingObject);
 
     @Delete
-    public abstract void delete(VotingObjectEntity votingObject);
+    void delete(VotingObjectEntity votingObject);
 
     @Query("DELETE FROM votingObjects")
-    public abstract void deleteAllVotingObject();
+    void deleteAll();
 }

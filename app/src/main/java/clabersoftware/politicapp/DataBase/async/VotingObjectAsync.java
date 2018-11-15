@@ -22,11 +22,11 @@ public class VotingObjectAsync extends AsyncTask<Void, Void, Object> {
     protected Object doInBackground(Void... voids) {
         switch (task) {
             case "add":
-                return db.votingObjectDao().insert((VotingObjectEntity) o);
+                return db.votingObjectDao().add((VotingObjectEntity) o);
             case "getAll":
-                return db.votingObjectDao().getAllVotingObjects();
+                return db.votingObjectDao().getAll();
             case "getById":
-                return db.votingObjectDao().getVotingObjectById(Long.parseLong((String.valueOf(o))));
+                return db.votingObjectDao().getById(Long.parseLong((String.valueOf(o))));
             case "delete":
                 db.votingObjectDao().delete((VotingObjectEntity) o);
                 break;
