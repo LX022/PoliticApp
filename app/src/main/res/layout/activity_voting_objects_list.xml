@@ -42,7 +42,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/addvotingobject"
         android:onClick="addVotingObject"
-        app:layout_constraintBottom_toTopOf="@+id/PartiesListView"
+        app:layout_constraintBottom_toTopOf="@+id/PoliticianListView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />

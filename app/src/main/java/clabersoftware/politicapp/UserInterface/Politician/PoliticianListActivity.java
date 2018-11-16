@@ -1,4 +1,4 @@
-package clabersoftware.politicapp.UserInterface.Party;
+package clabersoftware.politicapp.UserInterface.Politician;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
-import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
-import clabersoftware.politicapp.DataBase.async.PartyAsync;
+import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
+import clabersoftware.politicapp.DataBase.async.PoliticianAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 
-public class PartiesListActivity extends BaseActivity {
+public class PoliticianListActivity extends BaseActivity {
 
     ListView theListView;
     Intent myIntent;
@@ -28,14 +28,14 @@ public class PartiesListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parties_list);
-        myIntent = new Intent(this, EditPartyActivity.class);
+        setContentView(R.layout.activity_politician_list);
+        myIntent = new Intent(this, EditPoliticianActivity.class);
 
         theListView = (ListView) findViewById(R.id.PoliticianListView);
 
-        List<PartyEntity> datas = genererParties();
+        List<PoliticianEntity> datas = genererParties();
 
-        ArrayAdapter<PartyEntity> PartiesAdapter = new ArrayAdapter<PartyEntity>(this, android.R.layout.simple_list_item_1, datas);
+        ArrayAdapter<PoliticianEntity> PartiesAdapter = new ArrayAdapter<PoliticianEntity>(this, android.R.layout.simple_list_item_1, datas);
 
         theListView.setAdapter(PartiesAdapter);
 
@@ -44,33 +44,24 @@ public class PartiesListActivity extends BaseActivity {
 
     private AdapterView.OnItemClickListener listClick = new AdapterView.OnItemClickListener () {
         public void onItemClick(AdapterView parent, View v, int position, long id) {
-            PartyEntity itemValue = (PartyEntity) theListView.getItemAtPosition( position );
-            itemValue.getIdParty();
-            myIntent.putExtra("PARTY_SELECTED", itemValue.getIdParty());
-            System.out.println(itemValue.getIdParty());
+            PoliticianEntity itemValue = (PoliticianEntity) theListView.getItemAtPosition( position );
+            itemValue.getIdPolitician();
+            myIntent.putExtra("POLITICIAN_SELECTED", itemValue.getIdPolitician());
+            System.out.println(itemValue.getIdPolitician());
             startActivity(myIntent);
         }
     };
 
-    private List<PartyEntity> genererParties(){
-        List<PartyEntity> parties = new ArrayList<>();
+    private List<PoliticianEntity> genererParties(){
+        List<PoliticianEntity> politicians = new ArrayList<>();
         try {
-            parties = (ArrayList) new PartyAsync(db, "getAll", 0).execute().get();
+            politicians = (ArrayList) new PoliticianAsync(db, "getAll", 0).execute().get();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        return parties;
+        return politicians;
     }
-
-    public void addParty(View view) {
-        Intent intent = new Intent(this, AddPartyActivity.class);
-        startActivity(intent);
-    }
-
-
 }
-
-
