@@ -26,8 +26,6 @@ import clabersoftware.politicapp.R;
 
 public class SignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    ListView theListView;
-    Intent myIntent;
     private AppDatabase db;
 
     private Toast mToastok;
@@ -35,6 +33,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
     private EditText mFistName;
     private EditText mLastName;
+    private EditText mlogin;
     private Spinner mParty;
     private EditText mPassword;
     private EditText mConfirmPassword;
@@ -67,6 +66,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     private void initializeForm() {
         mFistName = findViewById(R.id.firstNameField);
         mLastName = findViewById(R.id.lastNameField);
+        mlogin = findViewById(R.id.loginField);
         mParty = findViewById(R.id.partySpinner);
         mPassword = findViewById(R.id.passField);
         mConfirmPassword = findViewById(R.id.passConfirmationField);
@@ -75,18 +75,19 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         saveBtn.setOnClickListener(View -> saveChanges(
                 mFistName.getText().toString(),
                 mLastName.getText().toString(),
+                mlogin.getText().toString(),
                 mParty.getSelectedItem().toString(),
                 mPassword.getText().toString(),
                 mConfirmPassword.getText().toString()
         ));
     }
 
-    private void saveChanges(String firstName, String lastName, String partyName, String pass, String confirmPass){
+    private void saveChanges(String firstName, String lastName, String login, String partyName, String pass, String confirmPass){
 
         if(pass.equals(confirmPass)){
             long idParty = getIdByName(partyName);
             System.out.println(idParty);
-            PoliticianEntity newPolitician = new PoliticianEntity(firstName, lastName, pass, idParty);
+            PoliticianEntity newPolitician = new PoliticianEntity(firstName, lastName, pass, idParty, login);
             new PoliticianAsync(db,"add",newPolitician).execute();
             mToastok.show();
             Intent intent = new Intent(this, LoginActivity.class);

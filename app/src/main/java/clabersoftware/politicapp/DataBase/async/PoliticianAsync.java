@@ -27,6 +27,8 @@ public class PoliticianAsync extends AsyncTask<Void, Void, Object> {
                 return db.politicianDao().getAllPoliticians();
             case "getById":
                 return db.politicianDao().getPoliticianById(Long.parseLong((String.valueOf(o))));
+            case "getPassByLogin":
+                return db.politicianDao().getPassByLogin((String.valueOf(o)));
             case "delete":
                 db.politicianDao().delete((PoliticianEntity) o);
                 break;
