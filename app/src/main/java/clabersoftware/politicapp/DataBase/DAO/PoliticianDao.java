@@ -16,16 +16,16 @@ import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
 public interface PoliticianDao {
 
     @Query("SELECT * FROM politicians WHERE idPolitician = :idPolitician")
-    public abstract LiveData<PoliticianEntity> getPoliticianById(Long idPolitician);
+    public abstract PoliticianEntity getPoliticianById(Long idPolitician);
 
     @Query("SELECT * FROM politicians")
-    public abstract LiveData<List<PoliticianEntity>> getAllPoliticians();
+    public abstract List<PoliticianEntity> getAllPoliticians();
 
     @Query("SELECT * FROM politicians WHERE fkParty=:idParty")
-    public abstract LiveData<List<PoliticianEntity>> getPoliticianByIdParty(Long idParty);
+    public abstract List<PoliticianEntity> getPoliticianByIdParty(Long idParty);
 
     @Insert
-    public abstract long insert(PoliticianEntity politician);
+    public abstract long add(PoliticianEntity politician);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract void insertAll(List<PoliticianEntity> politicians);

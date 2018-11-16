@@ -23,7 +23,7 @@ import clabersoftware.politicapp.Model.ModelPolitician;
                         value = {"fkParty"}
                 )}
 )
-public class PoliticianEntity implements ModelPolitician, Comparable {
+public class PoliticianEntity {
 
     @PrimaryKey(autoGenerate = true)
     long idPolitician;
@@ -37,52 +37,46 @@ public class PoliticianEntity implements ModelPolitician, Comparable {
     public PoliticianEntity() {
     }
 
-    public PoliticianEntity(ModelPolitician politician) {
-        idPolitician = politician.getIdPolitician();
-        firstName = politician.getFirstName();
-        lastName = politician.getLastName();
-        fkParty = politician.getFkParty();
+    public PoliticianEntity(String firstName, String lastName, long fkParty) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fkParty = fkParty;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
-        if (obj == this) return true;
-        if (!(obj instanceof PoliticianEntity)) return false;
-        PoliticianEntity o = (PoliticianEntity) obj;
-        return o.getIdPolitician().equals(this.getIdPolitician());
-    }
 
     @Override
     public String toString() {
         return (firstName + " " + lastName);
     }
 
-    @Override
+
     public Long getIdPolitician() {
         return idPolitician;
     }
+
     public void setIdPolitician(@NonNull Long idPolitician) {
         this.idPolitician = idPolitician;
     }
 
-    @Override
+
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    @Override
+
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    @Override
+
     public Long getFkParty() {
         return fkParty;
     }
@@ -91,8 +85,6 @@ public class PoliticianEntity implements ModelPolitician, Comparable {
         this.fkParty = fkParty;
     }
 
-    @Override
-    public int compareTo(@NonNull Object o) {
-        return toString().compareTo(o.toString());
-    }
+
 }
+
