@@ -10,16 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UserInterface.MainActivity" />
-        <activity android:name=".UserInterface.HomeActivity">
-
-        </activity>
+        <activity android:name=".UserInterface.HomeActivity"></activity>
         <activity android:name=".UserInterface.Politician.PoliticiansActivity" />
-        <activity android:name=".UserInterface.Login.LoginActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".UserInterface.Login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".UserInterface.Login.SignUpActivity" />
         <activity android:name=".UserInterface.Party.AddPartyActivity" />
@@ -33,7 +31,8 @@
         <activity android:name=".UserInterface.VotingObject.VotingObjectsListActivity" />
         <activity android:name=".UserInterface.VotingObject.EditVotingObjectActivity" />
         <activity android:name=".UserInterface.Politician.PoliticianListActivity" />
-        <activity android:name=".UserInterface.Politician.EditPoliticianActivity"></activity>
+        <activity android:name=".UserInterface.Politician.EditPoliticianActivity" />
+        <activity android:name=".UserInterface.VotingObject.VoteListActivity"></activity>
     </application>
 
 </manifest>
