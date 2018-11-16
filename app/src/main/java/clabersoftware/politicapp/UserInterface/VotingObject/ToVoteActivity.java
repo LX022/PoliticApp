@@ -4,12 +4,16 @@ import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
+import clabersoftware.politicapp.DataBase.Entity.VotingLineEntity;
 import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
+import clabersoftware.politicapp.DataBase.GlobalData;
+import clabersoftware.politicapp.DataBase.async.VotingLineAsync;
 import clabersoftware.politicapp.DataBase.async.VotingObjectAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
@@ -17,6 +21,8 @@ import clabersoftware.politicapp.UserInterface.BaseActivity;
 public class ToVoteActivity extends BaseActivity {
 
     private AppDatabase db;
+    Long idVotingObject;
+    Long connected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +31,7 @@ public class ToVoteActivity extends BaseActivity {
         setContentView(R.layout.activity_to_vote);
 
         Intent Intent = getIntent();
-        Long idVotingObject = Intent.getLongExtra("VOTINGOBJECT_SELECTED",1);
+        idVotingObject = Intent.getLongExtra("VOTINGOBJECT_SELECTED",1);
 
         VotingObjectEntity toVote = getById(idVotingObject);
 
@@ -53,5 +59,25 @@ public class ToVoteActivity extends BaseActivity {
             e.printStackTrace();
         }
         return PartyToEdit;
+    }
+
+    public void voteYes(View view){
+        vote("Yes");
+    }
+
+    public void voteNo(View view){
+        vote("No");
+    }
+
+    public void voteBlank(View view){
+        vote("Blank");
+    }
+
+    private void vote(String vote){
+        connected =  ((GlobalData) this.getApplication()).getIdConnected();
+        VotingLineEntity newParty = new VotingLineEntity(vote,connected , idVotingObject);
+        new VotingLineAsync(db,"add",newParty).execute();
+        Intent intent = new Intent(this, VoteListActivity.class);
+        startActivity(intent);
     }
 }
