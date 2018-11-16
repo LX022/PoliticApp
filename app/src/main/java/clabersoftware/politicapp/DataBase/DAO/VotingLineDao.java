@@ -37,4 +37,7 @@ public interface VotingLineDao {
 
     @Query("DELETE FROM votingLines")
     public abstract void deleteAllVotingLines();
+
+    @Query("SELECT * FROM votingLines WHERE fkPolitician = :idPolitician")
+    public abstract List<VotingLineEntity> getVotingLineByPolitician(Long idPolitician);
 }

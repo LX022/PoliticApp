@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
@@ -79,5 +80,24 @@ public class ToVoteActivity extends BaseActivity {
         new VotingLineAsync(db,"add",newParty).execute();
         Intent intent = new Intent(this, VoteListActivity.class);
         startActivity(intent);
+    }
+
+    private boolean authorization(){
+        ArrayList<VotingLineEntity> toControl = new ArrayList<>();
+        try {
+            toControl = (ArrayList) new VotingLineAsync(db, "getAll", 0).execute().get();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        for(VotingLineEntity vle :toControl){
+            if(vle.getFkPolitician().equals(connected)){
+                return false;
+            }
+        }
+        return true;
     }
 }

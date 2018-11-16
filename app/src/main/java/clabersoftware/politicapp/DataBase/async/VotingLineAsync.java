@@ -33,6 +33,8 @@ public class VotingLineAsync extends AsyncTask<Void, Void, Object> {
             case "update":
                 db.votingLineDao().update((VotingLineEntity) o);
                 break;
+            case "getVotingLineByPolitician":
+                return db.votingLineDao().getVotingLineByPolitician(Long.parseLong((String.valueOf(o))));
         }
         return null;
     }
