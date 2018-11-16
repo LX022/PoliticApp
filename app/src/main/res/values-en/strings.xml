@@ -50,4 +50,5 @@
     <string name="tovote">To vote</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="blank">Blank</string>
 </resources>
