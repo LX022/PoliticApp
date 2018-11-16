@@ -44,6 +44,8 @@
     <string name="partyVotingObjectCreated">Voting object created</string>
     <string name="statut">State</string>
     <string name="delete">Delete</string>
+    <string name="politicianCreated">Politician created</string>
+    <string name="mdp">The confirmation does not match the password</string>
 
 
 </resources>

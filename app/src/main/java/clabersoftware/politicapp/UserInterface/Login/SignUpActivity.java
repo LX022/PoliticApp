@@ -30,7 +30,8 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     Intent myIntent;
     private AppDatabase db;
 
-    private Toast mToast;
+    private Toast mToastok;
+    private Toast passNotOk;
 
     private EditText mFistName;
     private EditText mLastName;
@@ -57,8 +58,9 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, allPartyName);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerParty.setAdapter(dataAdapter);
-
-        mToast = Toast.makeText(this, getString(R.string.partyCreated), Toast.LENGTH_LONG);
+        initializeForm();
+        mToastok = Toast.makeText(this, getString(R.string.politicianCreated), Toast.LENGTH_LONG);
+        passNotOk = Toast.makeText(this, getString(R.string.mdp), Toast.LENGTH_LONG);
 
     }
 
@@ -80,17 +82,20 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     private void saveChanges(String firstName, String lastName, String partyName, String pass, String confirmPass){
-        System.out.println("@@@@@@@@@@@@@" + firstName);
-        System.out.println("@@@@@@@@@@@@@" + lastName);
-        System.out.println("@@@@@@@@@@@@@" + partyName);
-        System.out.println("@@@@@@@@@@@@@" + pass);
-        System.out.println("@@@@@@@@@@@@@" + confirmPass);
-        long idParty = new Long(1);
-        PoliticianEntity newPolitician = new PoliticianEntity(firstName, lastName, pass, idParty);
-        new PoliticianAsync(db,"add",newPolitician).execute();
-        mToast.show();
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+
+        if(pass.equals(confirmPass)){
+            long idParty = new Long(1);
+            PoliticianEntity newPolitician = new PoliticianEntity(firstName, lastName, pass, idParty);
+            new PoliticianAsync(db,"add",newPolitician).execute();
+            mToastok.show();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+        else{
+            passNotOk.show();
+            Intent intent = new Intent(this, SignUpActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
