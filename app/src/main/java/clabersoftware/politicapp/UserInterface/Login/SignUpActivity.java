@@ -69,7 +69,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         mPassword = findViewById(R.id.passField);
         mConfirmPassword = findViewById(R.id.passConfirmationField);
 
-        Button saveBtn = findViewById(R.id.signUpButton);
+        Button saveBtn = findViewById(R.id.signUpButtonSave);
         saveBtn.setOnClickListener(View -> saveChanges(
                 mFistName.getText().toString(),
                 mLastName.getText().toString(),
