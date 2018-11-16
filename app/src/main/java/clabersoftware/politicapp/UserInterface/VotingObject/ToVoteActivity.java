@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,11 +20,19 @@ import clabersoftware.politicapp.DataBase.async.VotingObjectAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 
+import static android.view.View.INVISIBLE;
+
 public class ToVoteActivity extends BaseActivity {
 
     private AppDatabase db;
     Long idVotingObject;
     Long connected;
+
+    Button yes;
+    Button no;
+    Button blank;
+    TextView voted;
+    boolean test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +56,27 @@ public class ToVoteActivity extends BaseActivity {
         TextView votingObjectDateField = (TextView) findViewById(R.id.votingObjectDateField);
         votingObjectDateField.setText(toVote.getDate());
         votingObjectDateField.setEnabled(false);
+
+        authorization();
+
+        voted =findViewById(R.id.alreadyVoted);
+        voted.setEnabled(false);
+
+        yes = findViewById(R.id.voteYesButton);
+        no = findViewById(R.id.voteNoButton);
+        blank = findViewById(R.id.voteBlankButton);
+
+        System.out.println(test);
+
+        if(test==false){
+            yes.setVisibility(View.INVISIBLE);
+            no.setVisibility(View.INVISIBLE);
+            blank.setVisibility(View.INVISIBLE);
+        }
+        else{
+            voted.setVisibility(INVISIBLE);
+        }
+
     }
 
     private VotingObjectEntity getById(Long id){
@@ -76,13 +106,13 @@ public class ToVoteActivity extends BaseActivity {
 
     private void vote(String vote){
         connected =  ((GlobalData) this.getApplication()).getIdConnected();
-        VotingLineEntity newParty = new VotingLineEntity(vote,connected , idVotingObject);
-        new VotingLineAsync(db,"add",newParty).execute();
+        VotingLineEntity newVotingLine = new VotingLineEntity(vote,connected , idVotingObject);
+        new VotingLineAsync(db,"add",newVotingLine).execute();
         Intent intent = new Intent(this, VoteListActivity.class);
         startActivity(intent);
     }
 
-    private boolean authorization(){
+    private void authorization(){
         ArrayList<VotingLineEntity> toControl = new ArrayList<>();
         try {
             toControl = (ArrayList) new VotingLineAsync(db, "getAll", 0).execute().get();
@@ -95,9 +125,9 @@ public class ToVoteActivity extends BaseActivity {
 
         for(VotingLineEntity vle :toControl){
             if(vle.getFkPolitician().equals(connected)){
-                return false;
+                test = false;
             }
+            test = true;
         }
-        return true;
     }
 }
