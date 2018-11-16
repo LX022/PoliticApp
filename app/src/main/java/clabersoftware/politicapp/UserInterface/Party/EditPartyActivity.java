@@ -13,9 +13,10 @@ import clabersoftware.politicapp.DataBase.AppDatabase;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.R;
+import clabersoftware.politicapp.UserInterface.BaseActivity;
 
 
-public class EditPartyActivity extends AppCompatActivity {
+public class EditPartyActivity extends BaseActivity {
 
     private AppDatabase db;
 
@@ -30,7 +31,10 @@ public class EditPartyActivity extends AppCompatActivity {
         PartyEntity PartyToEdit = getById(idPartyToEdit);
 
         TextView partyNameField = (TextView) findViewById(R.id.partyNameField);
-        partyNameField.setText(PartyToEdit.getShortName());
+        partyNameField.setText(PartyToEdit.getLongName());
+
+        TextView partyAbbreviationField = (TextView) findViewById(R.id.partyAbbreviationField);
+        partyAbbreviationField.setText(PartyToEdit.getShortName());
 
 
     }
