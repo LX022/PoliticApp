@@ -46,10 +46,9 @@ public class AddVotingObjectActivity extends BaseActivity {
 
     private void saveChanges(String entitled, String details, String date){
         VotingObjectEntity newVotingObject = new VotingObjectEntity(entitled, details, date);
-        newVotingObject.setIdVotingObject(new Long(1));
         new VotingObjectAsync(db,"add", newVotingObject).execute();
         mToast.show();
-       // Intent intent = new Intent(this, VotingObjectsListActivity.class);
-       // startActivity(intent);
+        Intent intent = new Intent(this, VotingObjectsListActivity.class);
+        startActivity(intent);
     }
 }

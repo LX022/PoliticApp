@@ -17,8 +17,9 @@ import clabersoftware.politicapp.DataBase.AppDatabase;
 import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
 import clabersoftware.politicapp.DataBase.async.VotingObjectAsync;
 import clabersoftware.politicapp.R;
+import clabersoftware.politicapp.UserInterface.BaseActivity;
 
-public class VotingObjectsListActivity extends AppCompatActivity {
+public class VotingObjectsListActivity extends BaseActivity {
 
     ListView theListView;
     Intent myIntent;
