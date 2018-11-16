@@ -48,7 +48,6 @@ public class VotingObjectsListActivity extends BaseActivity {
             VotingObjectEntity itemValue = (VotingObjectEntity) theListView.getItemAtPosition( position );
             itemValue.getIdVotingObject();
             myIntent.putExtra("VOTINGOBJECT_SELECTED", itemValue.getIdVotingObject());
-            System.out.println(itemValue.getIdVotingObject());
             startActivity(myIntent);
         }
     };

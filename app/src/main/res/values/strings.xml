@@ -47,6 +47,8 @@
     <string name="politicianCreated">Politician created</string>
     <string name="mdp">The confirmation does not match the password</string>
     <string name="tovote">To vote</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 
 </resources>

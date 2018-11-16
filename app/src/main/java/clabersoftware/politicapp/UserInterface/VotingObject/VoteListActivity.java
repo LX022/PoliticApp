@@ -31,7 +31,7 @@ public class VoteListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote_list);
 
-        myIntent = new Intent(this, EditVotingObjectActivity.class);
+        myIntent = new Intent(this, ToVoteActivity.class);
 
         theListView = (ListView) findViewById(R.id.VotingObjectsListView);
 
@@ -49,7 +49,6 @@ public class VoteListActivity extends BaseActivity {
             VotingObjectEntity itemValue = (VotingObjectEntity) theListView.getItemAtPosition( position );
             itemValue.getIdVotingObject();
             myIntent.putExtra("VOTINGOBJECT_SELECTED", itemValue.getIdVotingObject());
-            System.out.println(itemValue.getIdVotingObject());
             startActivity(myIntent);
         }
     };

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UserInterface.MainActivity" />
-        <activity android:name=".UserInterface.HomeActivity"></activity>
+        <activity android:name=".UserInterface.HomeActivity" />
         <activity android:name=".UserInterface.Politician.PoliticiansActivity" />
         <activity android:name=".UserInterface.Login.LoginActivity">
             <intent-filter>
@@ -32,7 +32,8 @@
         <activity android:name=".UserInterface.VotingObject.EditVotingObjectActivity" />
         <activity android:name=".UserInterface.Politician.PoliticianListActivity" />
         <activity android:name=".UserInterface.Politician.EditPoliticianActivity" />
-        <activity android:name=".UserInterface.VotingObject.VoteListActivity"></activity>
+        <activity android:name=".UserInterface.VotingObject.VoteListActivity" />
+        <activity android:name=".UserInterface.VotingObject.ToVoteActivity"></activity>
     </application>
 
 </manifest>
