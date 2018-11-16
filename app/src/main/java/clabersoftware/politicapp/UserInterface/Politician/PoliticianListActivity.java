@@ -14,6 +14,7 @@ import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
 import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
+import clabersoftware.politicapp.DataBase.GlobalData;
 import clabersoftware.politicapp.DataBase.async.PoliticianAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
@@ -49,6 +50,7 @@ public class PoliticianListActivity extends BaseActivity {
             myIntent.putExtra("POLITICIAN_SELECTED", itemValue.getIdPolitician());
             System.out.println(itemValue.getIdPolitician());
             startActivity(myIntent);
+
         }
     };
 

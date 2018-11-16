@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import clabersoftware.politicapp.DataBase.GlobalData;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.Party.PartiesListActivity;
 import clabersoftware.politicapp.UserInterface.Politician.PoliticianListActivity;
@@ -15,6 +16,7 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("Id Connecté : "+((GlobalData) this.getApplication()).getIdConnected());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
     }

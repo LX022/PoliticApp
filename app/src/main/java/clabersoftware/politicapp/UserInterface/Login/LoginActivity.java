@@ -1,5 +1,6 @@
 package clabersoftware.politicapp.UserInterface.Login;
 
+import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
+import clabersoftware.politicapp.DataBase.GlobalData;
 import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.DataBase.async.PoliticianAsync;
 import clabersoftware.politicapp.UserInterface.HomeActivity;
@@ -43,6 +45,9 @@ public class LoginActivity extends AppCompatActivity {
 
         String realPassword = "Admin0123456789";
 
+        Long idPoliticianConnected = new Long(0);
+        idPoliticianConnected = getIdByLogin(login);
+
         if(login.equals("Admin")){
             //nothing
         }else{
@@ -51,8 +56,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if(realPassword.equals(password) || login.equals("Admin")){
+            ((GlobalData) this.getApplication()).setIdConnected(idPoliticianConnected);
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
+
         }else{
             Context context = getApplicationContext();
             CharSequence text = "Erreur d'identifiant ou de mot de passe";
@@ -74,6 +81,19 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return pass;
+    }
+
+    private Long getIdByLogin(String login){
+        Long id = new Long(0);
+        try {
+            id = (Long) new PoliticianAsync(db, "getIdByLogin", login).execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return id;
     }
 
 }

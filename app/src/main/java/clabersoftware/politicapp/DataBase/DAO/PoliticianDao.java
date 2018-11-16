@@ -27,6 +27,9 @@ public interface PoliticianDao {
     @Query("SELECT password FROM politicians WHERE login = :login")
     public String getPassByLogin(String login);
 
+    @Query("SELECT idPolitician FROM politicians WHERE login = :login")
+    public Long getIdByLogin(String login);
+
     @Insert
     public abstract long add(PoliticianEntity politician);
 
