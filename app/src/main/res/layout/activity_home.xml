@@ -82,44 +82,6 @@
         app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/politicianListButton" />
-
-    <!--Voter/label3-->
-    <TextView
-        android:id="@+id/label3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/vote"
-        android:textColor="#4d4d4d"
-        android:textSize="10pt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VotingObjectListButton" />
-
-    <!--Liste des votations/button4-->
-    <Button
-        android:id="@+id/openVotingObjectListButton"
-        android:layout_width="100pt"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="showOpenVotingObjectList"
-        android:text="@string/votingopenlist"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.013"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label3" />
-
-    <!--Rechercher/label4-->
-
-    <!--Zone de recherche/edit_query1-->
-
-    <!--Radio_Button-->
-
-    <!--Boutton RECHERCHER-->
+    
 
 </android.support.constraint.ConstraintLayout>

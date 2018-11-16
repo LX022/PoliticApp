@@ -18,7 +18,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserInterface.Politician.PoliticiansActivity" />
-        <activity android:name=".UserInterface.VotingObject.VotingObjectsActivity" />
         <activity android:name=".UserInterface.Login.LoginActivity" />
         <activity android:name=".UserInterface.Login.SignUpActivity" />
         <activity android:name=".UserInterface.Party.AddPartyActivity" />
