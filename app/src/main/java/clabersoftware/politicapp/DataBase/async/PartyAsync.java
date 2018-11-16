@@ -27,6 +27,8 @@ public class PartyAsync extends AsyncTask<Void, Void, Object> {
                 return db.partyDao().getAll();
             case "getById":
                 return db.partyDao().getById(Long.parseLong((String.valueOf(o))));
+            case "getIdByName":
+                return db.partyDao().getIdByName(o.toString());
             case "delete":
                 db.partyDao().delete((PartyEntity) o);
                 break;

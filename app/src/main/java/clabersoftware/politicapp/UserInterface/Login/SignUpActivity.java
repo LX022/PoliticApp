@@ -84,7 +84,8 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     private void saveChanges(String firstName, String lastName, String partyName, String pass, String confirmPass){
 
         if(pass.equals(confirmPass)){
-            long idParty = new Long(1);
+            long idParty = getIdByName(partyName);
+            System.out.println(idParty);
             PoliticianEntity newPolitician = new PoliticianEntity(firstName, lastName, pass, idParty);
             new PoliticianAsync(db,"add",newPolitician).execute();
             mToastok.show();
@@ -128,5 +129,21 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
 
         return partiesToSend;
+    }
+
+    private Long getIdByName(String name){
+        Long id = new Long(0);
+
+        try {
+            id = (Long) new PartyAsync(db, "getIdByName", name).execute().get();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
+        return id;
     }
 }

@@ -17,6 +17,9 @@ public interface PartyDao {
     @Query("SELECT * FROM parties WHERE idParty = :id")
     PartyEntity getById(Long id);
 
+    @Query("SELECT idParty FROM parties WHERE shortName = :shortName")
+    Long getIdByName(String shortName);
+
     @Query("SELECT * FROM parties")
     List<PartyEntity> getAll();
 
