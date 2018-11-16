@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +19,9 @@ import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
+import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
 import clabersoftware.politicapp.DataBase.async.PartyAsync;
+import clabersoftware.politicapp.DataBase.async.PoliticianAsync;
 import clabersoftware.politicapp.R;
 
 public class SignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
@@ -24,6 +29,14 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     ListView theListView;
     Intent myIntent;
     private AppDatabase db;
+
+    private Toast mToast;
+
+    private EditText mFistName;
+    private EditText mLastName;
+    private Spinner mParty;
+    private EditText mPassword;
+    private EditText mConfirmPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +58,37 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerParty.setAdapter(dataAdapter);
 
+        mToast = Toast.makeText(this, getString(R.string.partyCreated), Toast.LENGTH_LONG);
+
     }
 
-    public void confirmSignUp(View view) {
+    private void initializeForm() {
+        mFistName = findViewById(R.id.firstNameField);
+        mLastName = findViewById(R.id.lastNameField);
+        mParty = findViewById(R.id.partySpinner);
+        mPassword = findViewById(R.id.passField);
+        mConfirmPassword = findViewById(R.id.passConfirmationField);
+
+        Button saveBtn = findViewById(R.id.signUpButton);
+        saveBtn.setOnClickListener(View -> saveChanges(
+                mFistName.getText().toString(),
+                mLastName.getText().toString(),
+                mParty.getSelectedItem().toString(),
+                mPassword.getText().toString(),
+                mConfirmPassword.getText().toString()
+        ));
+    }
+
+    private void saveChanges(String firstName, String lastName, String partyName, String pass, String confirmPass){
+        System.out.println("@@@@@@@@@@@@@" + firstName);
+        System.out.println("@@@@@@@@@@@@@" + lastName);
+        System.out.println("@@@@@@@@@@@@@" + partyName);
+        System.out.println("@@@@@@@@@@@@@" + pass);
+        System.out.println("@@@@@@@@@@@@@" + confirmPass);
+        long idParty = new Long(1);
+        PoliticianEntity newPolitician = new PoliticianEntity(firstName, lastName, pass, idParty);
+        new PoliticianAsync(db,"add",newPolitician).execute();
+        mToast.show();
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }

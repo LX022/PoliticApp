@@ -29,6 +29,8 @@ public class PoliticianEntity {
     long idPolitician;
     @ColumnInfo(name = "firstName")
     String firstName;
+    @ColumnInfo(name = "password")
+    String password;
     @ColumnInfo(name = "lastName")
     String lastName;
     @ColumnInfo(name = "fkParty")
@@ -37,8 +39,9 @@ public class PoliticianEntity {
     public PoliticianEntity() {
     }
 
-    public PoliticianEntity(String firstName, String lastName, long fkParty) {
+    public PoliticianEntity(String firstName, String lastName,String password, long fkParty) {
         this.firstName = firstName;
+        this.password = password;
         this.lastName = lastName;
         this.fkParty = fkParty;
     }
@@ -74,6 +77,14 @@ public class PoliticianEntity {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 
