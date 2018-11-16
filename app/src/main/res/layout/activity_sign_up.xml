@@ -39,51 +39,31 @@
         app:layout_constraintTop_toBottomOf="@+id/firstNameLabel" />
 
     <TextView
-        android:id="@+id/typeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/poste"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/partyLabel" />
-
-    <TextView
         android:id="@+id/partyLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="60dp"
         android:text="@string/party"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastNameLabel" />
-
-    <TextView
-        android:id="@+id/emailLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typeLabel" />
 
     <TextView
         android:id="@+id/passLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="56dp"
         android:text="@string/password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/partyLabel" />
 
     <TextView
         android:id="@+id/confirmationLabel"
         android:layout_width="99dp"
         android:layout_height="23dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="60dp"
         android:text="@string/confirmation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passLabel" />
@@ -101,10 +81,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passConfirmation" />
+        app:layout_constraintTop_toBottomOf="@+id/passConfirmationField" />
 
     <EditText
-        android:id="@+id/lastName"
+        android:id="@+id/lastNameField"
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginEnd="8dp"
@@ -115,80 +95,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.917"
         app:layout_constraintStart_toEndOf="@+id/lastNameLabel"
-        app:layout_constraintTop_toBottomOf="@+id/firstName" />
+        app:layout_constraintTop_toBottomOf="@+id/firstNameField" />
 
     <EditText
-        android:id="@+id/party"
+        android:id="@+id/passField"
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.912"
-        app:layout_constraintStart_toEndOf="@+id/partyLabel"
-        app:layout_constraintTop_toBottomOf="@+id/lastName" />
-
-    <EditText
-        android:id="@+id/type"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
-        app:layout_constraintStart_toEndOf="@+id/typeLabel"
-        app:layout_constraintTop_toBottomOf="@+id/party" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
-        app:layout_constraintStart_toEndOf="@+id/emailLabel"
-        app:layout_constraintTop_toBottomOf="@+id/type" />
-
-    <EditText
-        android:id="@+id/pass"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintHorizontal_bias="0.911"
         app:layout_constraintStart_toEndOf="@+id/passLabel"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/partySpinner" />
 
     <EditText
-        android:id="@+id/passConfirmation"
+        android:id="@+id/passConfirmationField"
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintHorizontal_bias="0.849"
         app:layout_constraintStart_toEndOf="@+id/confirmationLabel"
-        app:layout_constraintTop_toBottomOf="@+id/pass" />
+        app:layout_constraintTop_toBottomOf="@+id/passField" />
 
     <EditText
-        android:id="@+id/firstName"
+        android:id="@+id/firstNameField"
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginEnd="8dp"
@@ -200,5 +138,17 @@
         app:layout_constraintHorizontal_bias="0.885"
         app:layout_constraintStart_toEndOf="@+id/firstNameLabel"
         app:layout_constraintTop_toBottomOf="@+id/LabelTitle" />
+
+    <Spinner
+        android:id="@+id/partySpinner"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.932"
+        app:layout_constraintStart_toEndOf="@+id/partyLabel"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameField" />
 
 </android.support.constraint.ConstraintLayout>
