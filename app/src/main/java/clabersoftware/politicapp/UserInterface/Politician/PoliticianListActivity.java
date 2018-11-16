@@ -33,7 +33,7 @@ public class PoliticianListActivity extends BaseActivity {
 
         theListView = (ListView) findViewById(R.id.PoliticianListView);
 
-        List<PoliticianEntity> datas = genererParties();
+        List<PoliticianEntity> datas = generatePolitician();
 
         ArrayAdapter<PoliticianEntity> PartiesAdapter = new ArrayAdapter<PoliticianEntity>(this, android.R.layout.simple_list_item_1, datas);
 
@@ -52,7 +52,7 @@ public class PoliticianListActivity extends BaseActivity {
         }
     };
 
-    private List<PoliticianEntity> genererParties(){
+    private List<PoliticianEntity> generatePolitician(){
         List<PoliticianEntity> politicians = new ArrayList<>();
         try {
             politicians = (ArrayList) new PoliticianAsync(db, "getAll", 0).execute().get();
