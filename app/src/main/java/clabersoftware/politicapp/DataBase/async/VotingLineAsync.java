@@ -1,0 +1,39 @@
+package clabersoftware.politicapp.DataBase.async;
+
+import android.os.AsyncTask;
+
+import clabersoftware.politicapp.DataBase.AppDatabase;
+import clabersoftware.politicapp.DataBase.Entity.VotingLineEntity;
+
+public class VotingLineAsync extends AsyncTask<Void, Void, Object> {
+
+    AppDatabase db;
+    String task;
+    Object o;
+
+    public VotingLineAsync(AppDatabase db, String task, Object o) {
+        super();
+        this.db = db;
+        this.task = task;
+        this.o = o;
+    }
+
+    @Override
+    protected Object doInBackground(Void... params) {
+        switch (task) {
+            case "add":
+                return db.votingLineDao().insert((VotingLineEntity) o);
+            case "getAll":
+                return db.votingLineDao().getAllVotingLines();
+            case "getById":
+                return db.votingLineDao().getVotingLineById(Long.parseLong((String.valueOf(o))));
+            case "delete":
+                db.votingLineDao().delete((VotingLineEntity) o);
+                break;
+            case "update":
+                db.votingLineDao().update((VotingLineEntity) o);
+                break;
+        }
+        return null;
+    }
+}

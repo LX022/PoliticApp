@@ -32,68 +32,51 @@ import clabersoftware.politicapp.Model.ModelVotingLine;
                 )
         }
 )
-public class VotingLineEntity implements ModelVotingLine, Comparable {
+public class VotingLineEntity {
 
     @PrimaryKey(autoGenerate = true)
     long idVotingLine;
     @ColumnInfo(name = "vote")
-    boolean vote;
+    String vote;
     @ColumnInfo(name = "fkPolitician")
-    Long fkPolitician;
+    long fkPolitician;
     @ColumnInfo(name = "fkVotingObject")
     long fkVotingObject;
 
     public VotingLineEntity() {
     }
 
-    public VotingLineEntity(ModelVotingLine votingLine) {
-        idVotingLine = votingLine.getIdVotingLine();
-        vote = votingLine.getVote();
-        fkPolitician = votingLine.getFkPolitician();
-        fkVotingObject = votingLine.getFkVotingObject();
+    public VotingLineEntity(String vote, long fkPolitician, long fkVotingObject) {
+        this.vote=vote;
+        this.fkPolitician=fkPolitician;
+        this.fkVotingObject=fkVotingObject;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
-        if (obj == this) return true;
-        if (!(obj instanceof VotingLineEntity)) return false;
-        VotingLineEntity o = (VotingLineEntity) obj;
-        return o.getIdVotingLine().equals(this.getIdVotingLine());
-    }
-
-    @Override
     public Long getIdVotingLine() {
         return idVotingLine;
     }
 
     public void setIdVotingLine(long idVotingLine){this.idVotingLine = idVotingLine;}
 
-    @Override
+
     public Long getFkVotingObject() {
         return fkVotingObject;
     }
 
     public void setFkVotingObject(long fkVotingObject){this.fkVotingObject = fkVotingObject;}
 
-    @Override
+
     public Long getFkPolitician() {
         return fkPolitician;
     }
 
     public void setFkPolitician(long fkPolitician){this.fkPolitician = fkPolitician;}
 
-    @Override
-    public boolean getVote() {
+
+    public String getVote() {
         return vote;
     }
 
-    public void setVote(boolean vote){this.vote = vote;}
-
-    @Override
-    public int compareTo(@NonNull Object o) {
-        return toString().compareTo(o.toString());
-    }
-
+    public void setVote(String vote){this.vote = vote;}
 
 }

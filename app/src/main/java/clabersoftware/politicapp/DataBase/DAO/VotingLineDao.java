@@ -15,13 +15,13 @@ import clabersoftware.politicapp.DataBase.Entity.VotingLineEntity;
 @Dao
 public interface VotingLineDao {
     @Query("SELECT * FROM votingLines WHERE idVotingLine = :idVotingLine")
-    public abstract LiveData<VotingLineEntity> getVotingLineById(Long idVotingLine);
+    public abstract VotingLineEntity getVotingLineById(Long idVotingLine);
 
     @Query("SELECT * FROM votingLines WHERE fkVotingObject = :idVotingObject")
-    public abstract LiveData<List<VotingLineEntity>> getVotingLineByIdVotingObject(Long idVotingObject);
+    public abstract List<VotingLineEntity> getVotingLineByIdVotingObject(Long idVotingObject);
 
     @Query("SELECT * FROM votingLines")
-    public abstract LiveData<List<VotingLineEntity>> getAllVotingLines();
+    public abstract List<VotingLineEntity> getAllVotingLines();
 
     @Insert
     public abstract long insert(VotingLineEntity votingLine);
