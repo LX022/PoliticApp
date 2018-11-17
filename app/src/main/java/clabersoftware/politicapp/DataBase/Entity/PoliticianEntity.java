@@ -73,7 +73,6 @@ public class PoliticianEntity {
         this.firstName = firstName;
     }
 
-
     public String getLastName() {
         return lastName;
     }
@@ -97,7 +96,6 @@ public class PoliticianEntity {
     public void setLogin(String login) {
         this.login = login;
     }
-
 
     public Long getFkParty() {
         return fkParty;

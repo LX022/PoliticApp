@@ -27,6 +27,7 @@ public class EditPoliticianActivity extends BaseActivity {
 
         Intent Intent = getIntent();
         Long idPoliticianToEdit = Intent.getLongExtra("POLITICIAN_SELECTED", 1);
+        System.out.println("On create :  " + idPoliticianToEdit);
 
         PoliticianEntity politicianToEdit = getById(idPoliticianToEdit);
 
@@ -54,21 +55,19 @@ public class EditPoliticianActivity extends BaseActivity {
         politicianUpdated.setFirstName(firstName.getText().toString());
 
         TextView name = (TextView) findViewById(R.id.lastNameField);
-        politicianUpdated.setFirstName(name.getText().toString());
+        politicianUpdated.setLastName(name.getText().toString());
 
         TextView login = (TextView) findViewById(R.id.loginField);
-        politicianUpdated.setFirstName(login.getText().toString());
+        politicianUpdated.setLogin(login.getText().toString());
 
         TextView password = (TextView) findViewById(R.id.passField);
-        politicianUpdated.setFirstName(password.getText().toString());
-
-        TextView confirmation = (TextView) findViewById(R.id.passConfirmationField);
-        politicianUpdated.setFirstName(confirmation.getText().toString());
+        politicianUpdated.setPassword(password.getText().toString());
 
         politicianUpdated.setFkParty(new Long(1));
 
         Intent Intent = getIntent();
         Long idPoliticianToEdit = Intent.getLongExtra("POLITICIAN_SELECTED",1);
+        System.out.println("On save :  " + idPoliticianToEdit);
         politicianUpdated.setIdPolitician(idPoliticianToEdit);
 
         new PoliticianAsync(db,"update",politicianUpdated).execute().get();
