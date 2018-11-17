@@ -42,5 +42,5 @@ public interface PoliticianDao {
     public void delete(PoliticianEntity politician);
 
     @Query("DELETE FROM politicians")
-    public void deleteAllPoliticians();
+    public void deleteAll();
 }

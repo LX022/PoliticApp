@@ -27,11 +27,16 @@ public class VotingLineAsync extends AsyncTask<Void, Void, Object> {
                 return db.votingLineDao().getAllVotingLines();
             case "getById":
                 return db.votingLineDao().getVotingLineById(Long.parseLong((String.valueOf(o))));
+            case "getVotingLineByIdVotingObject":
+                return db.votingLineDao().getVotingLineByIdVotingObject(Long.parseLong((String.valueOf(o))));
             case "delete":
                 db.votingLineDao().delete((VotingLineEntity) o);
                 break;
             case "update":
                 db.votingLineDao().update((VotingLineEntity) o);
+                break;
+            case "deleteAll":
+                db.votingLineDao().deleteAll();
                 break;
             case "getVotingLineByPolitician":
                 return db.votingLineDao().getVotingLineByPolitician(Long.parseLong((String.valueOf(o))));

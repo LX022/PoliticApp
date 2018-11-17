@@ -34,6 +34,9 @@ public class PoliticianAsync extends AsyncTask<Void, Void, Object> {
             case "delete":
                 db.politicianDao().delete((PoliticianEntity) o);
                 break;
+            case "deleteAll":
+                db.politicianDao().deleteAll();
+                break;
             case "update":
                 db.politicianDao().update((PoliticianEntity) o);
                 break;

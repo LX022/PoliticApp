@@ -30,6 +30,9 @@ public class VotingObjectAsync extends AsyncTask<Void, Void, Object> {
             case "delete":
                 db.votingObjectDao().delete((VotingObjectEntity) o);
                 break;
+            case "deleteAll":
+                db.votingObjectDao().deleteAll();
+                break;
             case "update":
                 db.votingObjectDao().update((VotingObjectEntity) o);
                 break;

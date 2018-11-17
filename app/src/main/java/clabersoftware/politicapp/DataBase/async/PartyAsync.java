@@ -32,6 +32,9 @@ public class PartyAsync extends AsyncTask<Void, Void, Object> {
             case "delete":
                 db.partyDao().delete((PartyEntity) o);
                 break;
+            case "deleteAll":
+                db.partyDao().deleteAll();
+                break;
             case "update":
                 db.partyDao().update((PartyEntity) o);
                 break;
