@@ -17,6 +17,9 @@ public interface PartyDao {
     @Query("SELECT * FROM parties WHERE idParty = :id")
     PartyEntity getById(Long id);
 
+    /*
+    * Permet d'obtenir l'id d'un party en fonction de son nom. utilisé entre autre pour le Spinner
+    */
     @Query("SELECT idParty FROM parties WHERE shortName = :shortName")
     Long getIdByName(String shortName);
 

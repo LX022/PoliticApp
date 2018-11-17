@@ -1,6 +1,5 @@
 package clabersoftware.politicapp.DataBase.DAO;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -17,6 +16,9 @@ public interface VotingLineDao {
     @Query("SELECT * FROM votingLines WHERE idVotingLine = :idVotingLine")
     public abstract VotingLineEntity getVotingLineById(Long idVotingLine);
 
+    /*
+    * Permet de récupérer une liste de votation line en fonction d'une id d'object de votation
+    * */
     @Query("SELECT * FROM votingLines WHERE fkVotingObject = :idVotingObject")
     public abstract List<VotingLineEntity> getVotingLineByIdVotingObject(Long idVotingObject);
 
@@ -38,6 +40,8 @@ public interface VotingLineDao {
     @Query("DELETE FROM votingLines")
     public abstract void deleteAll();
 
+    /*
+    * Permet d'obtenir une liste de voting line en fonction de l'id politicien fournit */
     @Query("SELECT * FROM votingLines WHERE fkPolitician = :idPolitician")
     public abstract List<VotingLineEntity> getVotingLineByPolitician(Long idPolitician);
 }
