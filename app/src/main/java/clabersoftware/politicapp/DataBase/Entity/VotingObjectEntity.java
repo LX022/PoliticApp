@@ -9,6 +9,14 @@ import java.util.Date;
 
 import clabersoftware.politicapp.Model.ModelVotingObject;
 
+/*
+ * Objet VotingObject
+ * table votingObjects
+ * Primary key autogénérée
+ * Constructeur sans id
+ * Constructeur vide
+ * Geter
+ * Seter*/
 
 @Entity(tableName = "votingObjects")
 public class VotingObjectEntity {

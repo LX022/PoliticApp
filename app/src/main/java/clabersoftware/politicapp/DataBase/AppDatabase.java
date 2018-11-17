@@ -22,6 +22,9 @@ import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
 import clabersoftware.politicapp.DataBase.Entity.VotingLineEntity;
 import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
 
+/*
+Générateur de base de donnée contenant les Dao*/
+
 @Database(entities = {PartyEntity.class, PoliticianEntity.class, VotingObjectEntity.class, VotingLineEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 

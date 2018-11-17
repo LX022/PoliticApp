@@ -7,6 +7,14 @@ import android.support.annotation.NonNull;
 
 import clabersoftware.politicapp.Model.ModelParty;
 
+/*
+* Objet Party
+* table parties
+* Primary key autogénérée
+* Constructeur sans id
+* Constructeur vide
+* Geter
+* Seter*/
 
 @Entity(tableName = "parties")
 public class PartyEntity {
