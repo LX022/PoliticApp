@@ -26,7 +26,6 @@
         <activity android:name=".Search.SearchActivity" />
         <activity android:name=".Search.SearchResultActivity" />
         <activity android:name=".UserInterface.Party.PartyActivity" />
-        <activity android:name=".UserInterface.VotingObject.VotingObjectDetailsActivity" />
         <activity android:name=".UserInterface.Party.EditPartyActivity" />
         <activity android:name=".UserInterface.Party.PartiesListActivity" />
         <activity android:name=".UserInterface.VotingObject.VotingObjectsListActivity" />
