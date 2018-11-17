@@ -37,8 +37,8 @@ public class EditPartyActivity extends BaseActivity {
         /*
         * To Delete when string changes is done
         * */
-        mToastPartyDelete  = Toast.makeText(this, getString(R.string.partyCreated), Toast.LENGTH_LONG);
-        mToastPartyNotDeletable = Toast.makeText(this, getString(R.string.partyCreated), Toast.LENGTH_LONG);
+        mToastPartyDelete  = Toast.makeText(this, getString(R.string.partyDeleted), Toast.LENGTH_LONG);
+        mToastPartyNotDeletable = Toast.makeText(this, getString(R.string.partyNoDelete), Toast.LENGTH_LONG);
 
         PartyEntity PartyToEdit = getById(idPartyToEdit);
 
