@@ -14,6 +14,9 @@ import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
 @Dao
 public interface VotingObjectDao {
 
+    /*
+    * Cet DAO contient uniquement les query standard
+    * */
     @Query("SELECT * FROM votingObjects WHERE idVotingObject = :id")
     VotingObjectEntity getById(Long id);
 

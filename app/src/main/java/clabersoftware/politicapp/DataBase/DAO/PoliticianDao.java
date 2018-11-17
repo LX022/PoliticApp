@@ -20,9 +20,16 @@ public interface PoliticianDao {
     @Query("SELECT * FROM politicians")
     public abstract List<PoliticianEntity> getAllPoliticians();
 
+    /*
+     * Permet de récupérer un liste de politicien d'un même parti.
+     */
     @Query("SELECT * FROM politicians WHERE fkParty=:idParty")
     public abstract List<PoliticianEntity> getPoliticianByIdParty(Long idParty);
 
+    /*
+     * Les deux Query ci-dessous permette de gérer la connexion d'un politicien.
+     * A savoir qu'un politicien fait office de User pour notre application.
+     */
     @Query("SELECT password FROM politicians WHERE login = :login")
     public String getPassByLogin(String login);
 

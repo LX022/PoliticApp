@@ -18,6 +18,10 @@ public class VotingLineAsync extends AsyncTask<Void, Void, Object> {
         this.o = o;
     }
 
+    /*
+     * La partie ci-après gère toute les actions que nous appelons dans les diverses activités.
+     * Ces tâches sont appelé directement dans la DAO
+     */
     @Override
     protected Object doInBackground(Void... params) {
         switch (task) {
