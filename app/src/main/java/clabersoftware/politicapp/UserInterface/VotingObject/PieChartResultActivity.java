@@ -51,6 +51,7 @@ public class PieChartResultActivity extends BaseActivity {
 
         Intent Intent = getIntent();
         Long idVotingObject = Intent.getLongExtra("VOTING_OBJECT_SELECTED", 1);
+        System.out.println("IdVotingObject : " + idVotingObject);
         List<VotingLineEntity> votingLines = getVotingLineById(idVotingObject);
 
         for (VotingLineEntity vle : votingLines) {

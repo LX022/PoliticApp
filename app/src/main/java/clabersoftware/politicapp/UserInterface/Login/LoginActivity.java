@@ -10,9 +10,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.BreakIterator;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
+import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
 import clabersoftware.politicapp.DataBase.GlobalData;
 import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.DataBase.async.PoliticianAsync;
@@ -48,22 +52,42 @@ public class LoginActivity extends AppCompatActivity {
         Long idPoliticianConnected = new Long(0);
         idPoliticianConnected = getIdByLogin(login);
 
+        if (loginExist(login)){
+            //noting to do
+        }else{
+            Context context = getApplicationContext();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            CharSequence text = "Erreur d'identifiant ou de mot de passe";
+            int duration = Toast.LENGTH_SHORT;
+
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
+
         if(login.equals("Admin")){
             //nothing
         }else{
+            System.out.println("avant request mot de passe");
             realPassword  = getPassByLogin(login);
+            System.out.println("Vrai PassWord" + realPassword);
         }
 
 
         if(realPassword.equals(password) || login.equals("Admin")){
-            ((GlobalData) this.getApplication()).setIdConnected(idPoliticianConnected);
+            ((GlobalData) this.getApplication()).setIdConnected(idPoliticianConnected           );
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
 
         }else{
             Context context = getApplicationContext();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
             CharSequence text = "Erreur d'identifiant ou de mot de passe";
             int duration = Toast.LENGTH_SHORT;
+
 
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
@@ -81,6 +105,22 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return pass;
+    }
+
+    private boolean loginExist(String login){
+       Long Id = null;
+        try {
+            Id = (Long) new PoliticianAsync(db, "getIdByLogin", login).execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        if (Id == null)
+            return false;
+        else
+            return true;
     }
 
     private Long getIdByLogin(String login){

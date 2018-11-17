@@ -48,7 +48,7 @@ public class ResultsListActivity extends BaseActivity {
         public void onItemClick(AdapterView parent, View v, int position, long id) {
             VotingObjectEntity itemValue = (VotingObjectEntity) theListView.getItemAtPosition( position );
             itemValue.getIdVotingObject();
-            myIntent.putExtra("VOTINGOBJECT_SELECTED", itemValue.getIdVotingObject());
+            myIntent.putExtra("VOTING_OBJECT_SELECTED", itemValue.getIdVotingObject());
             startActivity(myIntent);
         }
     };
