@@ -4,7 +4,6 @@ import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,9 +32,9 @@ public class AddVotingObjectActivity extends BaseActivity {
     }
 
     private void initializeForm() {
-        entitled = findViewById(R.id.votingObjectNameField);
-        details = findViewById(R.id.votingObjectdetailsField);
-        date = findViewById(R.id.votingObjectDateField);
+        entitled = findViewById(R.id.votingObjectNameFieldEdit);
+        details = findViewById(R.id.votingObjectdetailsFieldEdit);
+        date = findViewById(R.id.votingObjectDateFieldEdit);
         Button saveBtn = findViewById(R.id.votingObjectAddButton);
         saveBtn.setOnClickListener(View -> saveChanges(
                 entitled.getText().toString(),

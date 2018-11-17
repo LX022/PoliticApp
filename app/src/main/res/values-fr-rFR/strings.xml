@@ -52,4 +52,5 @@
     <string name="no">Non</string>
     <string name="blank">Blanc</string>
     <string name="voted">Vous avez déjà voté</string>
+    <string name="votingobjectedit">Object de vote à modifier</string>
 </resources>

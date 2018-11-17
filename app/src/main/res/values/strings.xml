@@ -51,6 +51,8 @@
     <string name="no">No</string>
     <string name="blank">Blank</string>
     <string name="voted">You have already voted</string>
+    <string name="votingobjectedit">Voting object to edit</string>
+
 
 
 </resources>

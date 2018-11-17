@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/detailsLabel" />
 
     <TextView
-        android:id="@+id/votingObjectNameField"
+        android:id="@+id/votingObjectNameFieldEdit"
         android:layout_width="wrap_content"
         android:layout_height="37dp"
         android:layout_marginStart="8dp"
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/LabelTitle" />
 
     <TextView
-        android:id="@+id/votingObjectdetailsField"
+        android:id="@+id/votingObjectdetailsFieldEdit"
         android:layout_width="wrap_content"
         android:layout_height="152dp"
         android:layout_marginStart="8dp"
@@ -75,10 +75,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/detailsLabel"
-        app:layout_constraintTop_toBottomOf="@+id/votingObjectNameField" />
+        app:layout_constraintTop_toBottomOf="@+id/votingObjectNameFieldEdit" />
 
     <TextView
-        android:id="@+id/votingObjectDateField"
+        android:id="@+id/votingObjectDateFieldEdit"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
@@ -90,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toEndOf="@+id/dateLabel"
-        app:layout_constraintTop_toBottomOf="@+id/votingObjectdetailsField" />
+        app:layout_constraintTop_toBottomOf="@+id/votingObjectdetailsFieldEdit" />
 
     <Button
         android:id="@+id/voteYesButton"
@@ -105,7 +105,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/voteNoButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateField"
+        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateFieldEdit"
         app:layout_constraintVertical_bias="0.522" />
 
     <Button
@@ -119,7 +119,7 @@
         android:onClick="voteNo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/voteBlankButton"
-        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateField"
+        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateFieldEdit"
         app:layout_constraintVertical_bias="0.492" />
 
     <Button
@@ -133,7 +133,7 @@
         android:onClick="voteBlank"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateField"
+        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateFieldEdit"
         app:layout_constraintVertical_bias="0.676" />
 
     <TextView
@@ -151,6 +151,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateField" />
+        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateFieldEdit" />
 
 </android.support.constraint.ConstraintLayout>
