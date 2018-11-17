@@ -31,7 +31,7 @@ public class ResultsListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_list);
 
-        myIntent = new Intent(this, EditVotingObjectActivity.class);
+        myIntent = new Intent(this, PieChartResultActivity.class);
 
         theListView = (ListView) findViewById(R.id.VotingObjectsListView);
 

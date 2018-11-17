@@ -35,7 +35,8 @@
         <activity android:name=".UserInterface.Politician.EditPoliticianActivity" />
         <activity android:name=".UserInterface.VotingObject.VoteListActivity" />
         <activity android:name=".UserInterface.VotingObject.ToVoteActivity" />
-        <activity android:name=".UserInterface.VotingObject.ResultsListActivity"></activity>
+        <activity android:name=".UserInterface.VotingObject.ResultsListActivity" />
+        <activity android:name=".UserInterface.VotingObject.PieChartResultActivity"></activity>
     </application>
 
 </manifest>
