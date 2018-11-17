@@ -14,13 +14,15 @@ import clabersoftware.politicapp.Model.ModelVotingLine;
         @ForeignKey(
                 entity = PoliticianEntity.class,
                 parentColumns = "idPolitician",
-                childColumns = "fkPolitician"
+                childColumns = "fkPolitician",
+                onDelete = ForeignKey.NO_ACTION
 
         ),
         @ForeignKey(
                 entity = VotingObjectEntity.class,
                 parentColumns = "idVotingObject",
-               childColumns = "fkVotingObject"
+               childColumns = "fkVotingObject",
+                onDelete = ForeignKey.NO_ACTION
         )
                 },
         indices = {

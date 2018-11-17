@@ -66,6 +66,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         new PartyAsync(db, "deleteAll", 1).execute();
         new VotingObjectAsync(db, "deleteAll", 1).execute();
 
+        System.out.println("Delete ALL Ok");
+
         PartyEntity p1 = new PartyEntity("Red", "PS", "Parti Socialiste");
         PartyEntity p2 = new PartyEntity("Blue", "PLR", "Parti Libéral Radical");
         PartyEntity p3 = new PartyEntity("White", "sans parti", "Sans Parti");
