@@ -1,9 +1,13 @@
 package clabersoftware.politicapp.UserInterface.VotingObject;
 
+import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
@@ -13,29 +17,67 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
+import clabersoftware.politicapp.DataBase.AppDatabase;
+import clabersoftware.politicapp.DataBase.Entity.VotingLineEntity;
+import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
+import clabersoftware.politicapp.DataBase.async.VotingLineAsync;
+import clabersoftware.politicapp.DataBase.async.VotingObjectAsync;
 import clabersoftware.politicapp.R;
+import clabersoftware.politicapp.UserInterface.BaseActivity;
 
-public class PieChartResultActivity extends AppCompatActivity {
+public class PieChartResultActivity extends BaseActivity {
 
     private static String TAG="PieChartActivity";
 
-    private float[]yData = {2f,3f,5f};
+    private float[]yData = new float[3];
     private String[]xData = {"Oui", "Non", "Blanc"};
     PieChart pieChart;
+    private AppDatabase db;
+
+    int QtyYes = 0;
+    int QtyNo = 0;
+    int QtyBlank = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_chart_result);
+        db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         Log.d(TAG, "onCreate: starting to create chart");
+
+        Intent Intent = getIntent();
+        Long idVotingObject = Intent.getLongExtra("VOTING_OBJECT_SELECTED", 1);
+        List<VotingLineEntity> votingLines = getVotingLineById(idVotingObject);
+
+        for (VotingLineEntity vle : votingLines) {
+            switch (vle.getVote()) {
+                case "Yes":
+                    QtyYes++;
+                    break;
+                case "No":
+                    QtyNo++;
+                    break;
+                case "Blank":
+                    QtyBlank++;
+                    break;
+            }
+        }
+
+        yData[0] = (float) QtyYes;
+        yData[1] = (float) QtyNo;
+        yData[2] = (float) QtyBlank;
+
 
         pieChart = (PieChart) findViewById(R.id.resultPieChart);
         pieChart.setRotationEnabled(true);
         pieChart.setHoleRadius(25f);
         pieChart.setTransparentCircleAlpha(0);
         pieChart.setCenterText("Résultat");
-        pieChart.setCenterTextSize(10);
+        pieChart.setCenterTextSize(15);
 
         addDataSet(pieChart);
     }
@@ -56,7 +98,7 @@ public class PieChartResultActivity extends AppCompatActivity {
         //create the data set
         PieDataSet pieDataSet = new PieDataSet(yEntrys, "Result Votation");
         pieDataSet.setSliceSpace(2);
-        pieDataSet.setValueTextSize(12);
+        pieDataSet.setValueTextSize(17);
 
         //Result color
         ArrayList<Integer> colors = new ArrayList<>();
@@ -75,6 +117,21 @@ public class PieChartResultActivity extends AppCompatActivity {
         pieChart.setData(pieData);
         pieChart.invalidate();
 
+
+    }
+
+    private List<VotingLineEntity> getVotingLineById(Long id) {
+        List<VotingLineEntity> votingLines = new ArrayList<>();
+
+        try {
+            votingLines = (ArrayList) new VotingLineAsync(db, "getVotingLineByIdVotingObject", id).execute().get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return votingLines;
 
     }
 }

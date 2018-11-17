@@ -28,6 +28,8 @@ import clabersoftware.politicapp.DataBase.async.VotingLineAsync;
 import clabersoftware.politicapp.DataBase.async.VotingObjectAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.Search.SearchActivity;
+import clabersoftware.politicapp.UserInterface.Login.LoginActivity;
+import clabersoftware.politicapp.UserInterface.Login.SignUpActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -51,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     return true;
             case R.id.action_search:
                 initializeDatabase();
-                intent = new Intent(this, HomeActivity.class);
+                intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 return true;
             default:
