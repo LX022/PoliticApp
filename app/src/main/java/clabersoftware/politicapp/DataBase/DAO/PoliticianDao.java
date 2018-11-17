@@ -1,6 +1,5 @@
 package clabersoftware.politicapp.DataBase.DAO;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -31,17 +30,17 @@ public interface PoliticianDao {
     public Long getIdByLogin(String login);
 
     @Insert
-    public abstract long add(PoliticianEntity politician);
+    public long add(PoliticianEntity politician);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    public abstract void insertAll(List<PoliticianEntity> politicians);
+    public void insertAll(List<PoliticianEntity> politicians);
 
     @Update
-    public abstract void update(PoliticianEntity politician);
+    public void update(PoliticianEntity politician);
 
     @Delete
-    public abstract void delete(PoliticianEntity politician);
+    public void delete(PoliticianEntity politician);
 
     @Query("DELETE FROM politicians")
-    public abstract void deleteAllPoliticians();
+    public void deleteAllPoliticians();
 }
