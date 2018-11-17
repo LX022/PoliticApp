@@ -32,6 +32,7 @@ public class EditPartyActivity extends BaseActivity {
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_party);
+        //Réception de l'id de l'élément cliqué
         Intent Intent = getIntent();
         Long idPartyToEdit = Intent.getLongExtra("PARTY_SELECTED",1);
         /*
@@ -50,7 +51,7 @@ public class EditPartyActivity extends BaseActivity {
 
 
     }
-
+    //Enregistrement des modifications
     public void save(View view) throws ExecutionException, InterruptedException{
         PartyEntity partyUpdated = new PartyEntity();
 
@@ -74,7 +75,7 @@ public class EditPartyActivity extends BaseActivity {
     private void saveChanges(Long PartyId) {
 
     }
-
+    //Récupération du party
     private PartyEntity getById(Long id){
         PartyEntity PartyToEdit = new PartyEntity();
         try {
@@ -87,10 +88,11 @@ public class EditPartyActivity extends BaseActivity {
         }
         return PartyToEdit;
     }
-
+    //supression du party
     public void delete(View view) throws ExecutionException, InterruptedException{
         Intent Intent = getIntent();
         Long idPartyToEdit = Intent.getLongExtra("PARTY_SELECTED",1);
+        //contrôle de l'affectation du parti
         if (DeleteAuthorization(idPartyToEdit)) {
             PartyEntity partyUpdated = new PartyEntity();
 
@@ -111,7 +113,7 @@ public class EditPartyActivity extends BaseActivity {
             mToastPartyNotDeletable.show();
         }
     }
-
+    //si le parti est affecté à un politicien nous ne pouvons pas le supprimer
     private boolean DeleteAuthorization(Long idParty){
         ArrayList<PoliticianEntity> toControl = new ArrayList<>();
         try {

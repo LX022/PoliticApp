@@ -41,7 +41,7 @@ public class PartiesListActivity extends BaseActivity {
 
         theListView.setOnItemClickListener( listClick );
     }
-
+    //Envoi de l'id du parti cliqué
     private AdapterView.OnItemClickListener listClick = new AdapterView.OnItemClickListener () {
         public void onItemClick(AdapterView parent, View v, int position, long id) {
             PartyEntity itemValue = (PartyEntity) theListView.getItemAtPosition( position );
@@ -51,7 +51,7 @@ public class PartiesListActivity extends BaseActivity {
             startActivity(myIntent);
         }
     };
-
+    //génération de la liste des partis
     private List<PartyEntity> genererParties(){
         List<PartyEntity> parties = new ArrayList<>();
         try {
@@ -64,7 +64,7 @@ public class PartiesListActivity extends BaseActivity {
         }
         return parties;
     }
-
+    //envoie de la vue de l'ajout de party
     public void addParty(View view) {
         Intent intent = new Intent(this, AddPartyActivity.class);
         startActivity(intent);

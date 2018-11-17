@@ -21,26 +21,27 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
     }
-
+    //liste des partis
     public void showPartiesList(View view) {
         Intent intent = new Intent(this, PartiesListActivity.class);
         startActivity(intent);
     }
+    //liste des politiciens
     public void showPoliticiansList(View view) {
         Intent intent = new Intent(this, PoliticianListActivity.class);
         startActivity(intent);
     }
-
+    //liste des object de vote
     public void showVotingObjectList(View view) {
         Intent intent = new Intent(this, VotingObjectsListActivity.class);
         startActivity(intent);
     }
-
+    //possibilité de voter
     public void vote(View view) {
         Intent intent = new Intent(this, VoteListActivity.class);
         startActivity(intent);
     }
-
+    //aller aux résultats
     public void results(View view) {
         Intent intent = new Intent(this, ResultsListActivity.class);
         startActivity(intent);

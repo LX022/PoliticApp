@@ -1,6 +1,7 @@
 package clabersoftware.politicapp.Model;
 
 /*
+Modélisation de Party
  */
 
 public interface ModelParty {

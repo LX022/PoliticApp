@@ -34,11 +34,11 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_politician);
-
+        //récupération du politicien cliqué
         Intent Intent = getIntent();
         Long idPoliticianToEdit = Intent.getLongExtra("POLITICIAN_SELECTED", 1);
-        System.out.println("On create :  " + idPoliticianToEdit);
 
+        //initialisation du formulaire
         politicianToEdit = getById(idPoliticianToEdit);
 
         TextView firstName = (TextView) findViewById(R.id.firstNameField);
@@ -65,7 +65,7 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
         spinnerParty.setAdapter(dataAdapter);
         spinnerParty.setSelection(position);
     }
-
+    //enregistrement du politicien
     public void savePolitician(View view) throws ExecutionException, InterruptedException{
         PoliticianEntity politicianUpdated = new PoliticianEntity();
 
@@ -97,7 +97,7 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
         Intent intent = new Intent(this, PoliticianListActivity.class);
         startActivity(intent);
     }
-
+    //initialisation de la liste des politiciens
     private PoliticianEntity getById(Long id){
         PoliticianEntity politicianToEdit = new PoliticianEntity();
         try {
@@ -110,7 +110,7 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
         }
         return politicianToEdit;
     }
-
+    //supression du politicien
     public void deletePolitician(View view) throws ExecutionException, InterruptedException{
         PoliticianEntity politicianToDelete = new PoliticianEntity();
 
@@ -142,7 +142,7 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
         Intent intent = new Intent(this, PoliticianListActivity.class);
         startActivity(intent);
     }
-
+    //récupération des partis pour les affectés aux politiciens
     private List<String> getAllPartiesName(){
         int i=-1;
         List<PartyEntity> parties = new ArrayList<>();
@@ -168,7 +168,7 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
 
         return partiesToSend;
     }
-
+    //récupération de la selection du spinner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = parent.getItemAtPosition(position).toString();
@@ -178,7 +178,7 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
     public void onNothingSelected(AdapterView<?> parent) {
      //On fait rien
     }
-
+    //récupération de l'id du parti pour initialiser l'édition du politicien
     private Long getIdByName(String name){
         Long id = new Long(0);
 
