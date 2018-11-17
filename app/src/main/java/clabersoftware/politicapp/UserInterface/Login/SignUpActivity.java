@@ -143,8 +143,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
-
         return id;
     }
 }
