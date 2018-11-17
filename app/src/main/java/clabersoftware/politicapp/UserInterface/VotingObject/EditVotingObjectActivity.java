@@ -32,20 +32,20 @@ public class EditVotingObjectActivity extends BaseActivity {
     private Toast mToastVotingObjectNotDeletable;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)  {
+    protected void onCreate(Bundle savedInstanceState) {
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_voting_object);
 
         Intent Intent = getIntent();
-        Long idVotingObject = Intent.getLongExtra("VOTING_OBJECT_SELECTED",1);
+        Long idVotingObject = Intent.getLongExtra("VOTING_OBJECT_SELECTED", 1);
         List<VotingLineEntity> votingLines = getVotingLineById(idVotingObject);
-        int QtyYes=0;
-        int QtyNo=0;
-        int QtyBlank=0;
+        int QtyYes = 0;
+        int QtyNo = 0;
+        int QtyBlank = 0;
 
-        for (VotingLineEntity vle: votingLines){
-            switch (vle.getVote()){
+        for (VotingLineEntity vle : votingLines) {
+            switch (vle.getVote()) {
                 case "Yes":
                     QtyYes++;
                     break;
@@ -61,19 +61,22 @@ public class EditVotingObjectActivity extends BaseActivity {
         System.out.println("nombre de Yes" + QtyYes);
         System.out.println("nombre de No" + QtyNo);
         System.out.println("nombre de Blank" + QtyBlank);
-
-
-
     }
 
-    private List<VotingLineEntity> getVotingLineById(Long id){
+    private List<VotingLineEntity> getVotingLineById(Long id) {
         List<VotingLineEntity> votingLines = new ArrayList<>();
+
         try {
-            votingLines = (ArrayList)  new VotingLineAsync(db, "getVotingLineByIdVotingObject", id).execute().get();
+            votingLines = (ArrayList) new VotingLineAsync(db, "getVotingLineByIdVotingObject", id).execute().get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
         Intent Intent = getIntent();
-        Long idVotingObjectToEdit = Intent.getLongExtra("VOTINGOBJECT_SELECTED",1);
+        Long idVotingObjectToEdit = Intent.getLongExtra("VOTINGOBJECT_SELECTED", 1);
 
         VotingObjectEntity votingObjectToEdit = getById(idVotingObjectToEdit);
 
@@ -87,50 +90,34 @@ public class EditVotingObjectActivity extends BaseActivity {
         date.setText(votingObjectToEdit.getDate());
 
         mToastVotingObjectNotDeletable = Toast.makeText(this, getString(R.string.votingObjectNoDelete), Toast.LENGTH_LONG);
+
+        return votingLines;
+
     }
 
-    public void saveVotingObject(View view) throws ExecutionException, InterruptedException{
-        VotingObjectEntity votingObjectUpdated = new VotingObjectEntity();
-
-        TextView name = (TextView) findViewById(R.id.votingObjectNameFieldEdit);
-        votingObjectUpdated.setEntitled(name.getText().toString());
-
-        TextView details = (TextView) findViewById(R.id.votingObjectdetailsFieldEdit);
-        votingObjectUpdated.setDetails(details.getText().toString());
-
-        TextView date = (TextView) findViewById(R.id.votingObjectDateFieldEdit);
-        votingObjectUpdated.setDate(date.getText().toString());
-
-        Intent Intent = getIntent();
-        Long idVotingObject = Intent.getLongExtra("VOTINGOBJECT_SELECTED",1);
-        votingObjectUpdated.setIdVotingObject(idVotingObject);
-
-        new VotingObjectAsync(db,"update",votingObjectUpdated).execute().get();
-
-        System.out.println(votingObjectUpdated.getEntitled());
-        System.out.println(votingObjectUpdated.getDetails());
-        System.out.println(votingObjectUpdated.getDate());
-
-        Intent intent = new Intent(this, VotingObjectsListActivity.class);
-        startActivity(intent);
-    }
-
-    private VotingObjectEntity getById(Long id){
-        VotingObjectEntity votingObjectToEdit = new VotingObjectEntity();
+    private boolean DeleteAuthorization (Long idVotingObject){
+        ArrayList<VotingLineEntity> toControl = new ArrayList<>();
         try {
-            votingObjectToEdit = (VotingObjectEntity) new VotingObjectAsync(db, "getById", id).execute().get();
+            toControl = (ArrayList) new VotingLineAsync(db, "getAll", 0).execute().get();
+
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        return votingObjectToEdit;
+
+        for (VotingLineEntity vl : toControl) {
+            if (vl.getFkVotingObject() == idVotingObject)
+                return false;
+        }
+        return true;
+
     }
 
-    public void deleteVotingObject(View view) throws ExecutionException, InterruptedException{
+    public void deleteVotingObject (View view) throws ExecutionException, InterruptedException {
         Intent Intent = getIntent();
-        Long idVotingObjectToDelete = Intent.getLongExtra("VOTINGOBJECT_SELECTED",1);
+        Long idVotingObjectToDelete = Intent.getLongExtra("VOTINGOBJECT_SELECTED", 1);
 
         if (DeleteAuthorization(idVotingObjectToDelete)) {
             VotingObjectEntity votingObjectToDelete = new VotingObjectEntity();
@@ -151,32 +138,48 @@ public class EditVotingObjectActivity extends BaseActivity {
 
             Intent intent = new Intent(this, VotingObjectsListActivity.class);
             startActivity(intent);
-        }
-        else{
+        } else {
             mToastVotingObjectNotDeletable.show();
         }
     }
 
-    private boolean DeleteAuthorization(Long idVotingObject){
-        ArrayList<VotingLineEntity> toControl = new ArrayList<>();
+    private VotingObjectEntity getById (Long id){
+        VotingObjectEntity votingObjectToEdit = new VotingObjectEntity();
         try {
-            toControl = (ArrayList) new VotingLineAsync(db, "getAll", 0).execute().get();
-
+            votingObjectToEdit = (VotingObjectEntity) new VotingObjectAsync(db, "getById", id).execute().get();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+        return votingObjectToEdit;
+    }
 
-        return votingLines;
+    public void saveVotingObject (View view) throws ExecutionException, InterruptedException {
+        VotingObjectEntity votingObjectUpdated = new VotingObjectEntity();
 
+        TextView name = (TextView) findViewById(R.id.votingObjectNameFieldEdit);
+        votingObjectUpdated.setEntitled(name.getText().toString());
 
-        for (VotingLineEntity vl :toControl){
-            if(vl.getFkVotingObject()==idVotingObject)
-                return false;
-        }
-        return true;
+        TextView details = (TextView) findViewById(R.id.votingObjectdetailsFieldEdit);
+        votingObjectUpdated.setDetails(details.getText().toString());
 
+        TextView date = (TextView) findViewById(R.id.votingObjectDateFieldEdit);
+        votingObjectUpdated.setDate(date.getText().toString());
+
+        Intent Intent = getIntent();
+        Long idVotingObject = Intent.getLongExtra("VOTINGOBJECT_SELECTED", 1);
+        votingObjectUpdated.setIdVotingObject(idVotingObject);
+
+        new VotingObjectAsync(db, "update", votingObjectUpdated).execute().get();
+
+        System.out.println(votingObjectUpdated.getEntitled());
+        System.out.println(votingObjectUpdated.getDetails());
+        System.out.println(votingObjectUpdated.getDate());
+
+        Intent intent = new Intent(this, VotingObjectsListActivity.class);
+        startActivity(intent);
     }
 }
+
