@@ -126,7 +126,12 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
         TextView password = (TextView) findViewById(R.id.passField);
         politicianToDelete.setPassword(password.getText().toString());
 
-        politicianToDelete.setFkParty(new Long(1));
+        Spinner party = (Spinner) findViewById(R.id.partySpinner);
+        String partyName = party.getSelectedItem().toString();
+        long idParty = getIdByName(partyName);
+
+        politicianToDelete.setFkParty(idParty);
+
 
         Intent Intent = getIntent();
         Long idPoliticianToDelete = Intent.getLongExtra("POLITICIAN_SELECTED",1);
