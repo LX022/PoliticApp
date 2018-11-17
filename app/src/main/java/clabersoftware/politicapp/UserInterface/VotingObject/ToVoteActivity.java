@@ -111,11 +111,6 @@ public class ToVoteActivity extends BaseActivity {
         Intent intent = new Intent(this, VoteListActivity.class);
         startActivity(intent);
 
-
-
-
-
-
     }
 
     private boolean authorization(){

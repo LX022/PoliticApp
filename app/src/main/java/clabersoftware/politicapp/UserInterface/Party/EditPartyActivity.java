@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -22,6 +23,9 @@ import clabersoftware.politicapp.UserInterface.BaseActivity;
 public class EditPartyActivity extends BaseActivity {
 
     private AppDatabase db;
+    private Toast mToastPartyDelete;
+    private Toast mToastPartyNotDeletable;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,11 @@ public class EditPartyActivity extends BaseActivity {
         setContentView(R.layout.activity_edit_party);
         Intent Intent = getIntent();
         Long idPartyToEdit = Intent.getLongExtra("PARTY_SELECTED",1);
+        /*
+        * To Delete when string changes is done
+        * */
+        mToastPartyDelete  = Toast.makeText(this, getString(R.string.partyCreated), Toast.LENGTH_LONG);
+        mToastPartyNotDeletable = Toast.makeText(this, getString(R.string.partyCreated), Toast.LENGTH_LONG);
 
         PartyEntity PartyToEdit = getById(idPartyToEdit);
 
@@ -82,7 +91,7 @@ public class EditPartyActivity extends BaseActivity {
     public void delete(View view) throws ExecutionException, InterruptedException{
         Intent Intent = getIntent();
         Long idPartyToEdit = Intent.getLongExtra("PARTY_SELECTED",1);
-
+        System.out.println("#######################################################"+DeleteAuthorization(idPartyToEdit));
         if (DeleteAuthorization(idPartyToEdit)) {
             PartyEntity partyUpdated = new PartyEntity();
 
@@ -98,6 +107,9 @@ public class EditPartyActivity extends BaseActivity {
 
             Intent intent = new Intent(this, PartiesListActivity.class);
             startActivity(intent);
+            mToastPartyDelete.show();
+        }else{
+            mToastPartyNotDeletable.show();
         }
     }
 
