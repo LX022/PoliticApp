@@ -42,7 +42,7 @@ public class PoliticianListActivity extends BaseActivity {
 
         theListView.setOnItemClickListener( listClick );
     }
-
+    //envoi du politicien cliqué
     private AdapterView.OnItemClickListener listClick = new AdapterView.OnItemClickListener () {
         public void onItemClick(AdapterView parent, View v, int position, long id) {
             PoliticianEntity itemValue = (PoliticianEntity) theListView.getItemAtPosition( position );
@@ -53,7 +53,7 @@ public class PoliticianListActivity extends BaseActivity {
 
         }
     };
-
+    //liste des politiciens
     private List<PoliticianEntity> generatePolitician(){
         List<PoliticianEntity> politicians = new ArrayList<>();
         try {

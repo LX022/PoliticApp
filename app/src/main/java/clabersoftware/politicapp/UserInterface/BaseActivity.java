@@ -41,7 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_activity_action, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    //navigation bar
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
             case R.id.action_home:
@@ -61,7 +61,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
 
     }
-
+    //possibilité d'effacer la DB et de mettre de nouvelles données
     protected void initializeDatabase(){
         new PoliticianAsync(db, "deleteAll", 1).execute();
         new VotingLineAsync(db, "deleteAll", 1).execute();
@@ -120,7 +120,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         new VotingLineAsync(db,"add",vl7).execute();
 
     };
-
+    //Changement de langue
     private void changeLanguage() {
         String [] languages  = {"Francais", "English"};
 
@@ -144,12 +144,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         AlertDialog mDialog = mBuilder.create();
         mDialog.show();
     }
-
+    //rechargement pour le changement de langue
     private void reaload() {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
-
+    //Choix du language
     private void setLanguage(String language) {
         Locale myLocale = new Locale(language);//Set Selected Locale
         Locale.setDefault(myLocale);//set new locale as default

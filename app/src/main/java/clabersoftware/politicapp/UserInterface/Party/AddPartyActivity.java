@@ -30,7 +30,7 @@ public class AddPartyActivity extends BaseActivity {
         mToast = Toast.makeText(this, getString(R.string.partyCreated), Toast.LENGTH_LONG);
         initializeForm();
     }
-
+    // initialisation du formulaire
     private void initializeForm() {
         mColor = findViewById(R.id.partyColorField);
         mShortName = findViewById(R.id.partyAbbreviationField);
@@ -43,7 +43,7 @@ public class AddPartyActivity extends BaseActivity {
         ));
     }
 
-
+    //ajout d'un parti d'après les informations reçues dans le formulaire
     private void saveChanges(String color, String shortName, String longName){
         PartyEntity newParty = new PartyEntity(color, shortName, longName);
         new PartyAsync(db,"add",newParty).execute();
