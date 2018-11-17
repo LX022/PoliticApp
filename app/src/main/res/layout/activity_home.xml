@@ -30,12 +30,12 @@
         android:layout_width="100pt"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:onClick="showPartiesList"
         android:text="@string/partylist"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home" />
 
@@ -76,14 +76,28 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:onClick="vote"
         android:text="@string/vote"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VotingObjectListButton"
+        app:layout_constraintTop_toBottomOf="@+id/VotingObjectListButton" />
+
+    <Button
+        android:id="@+id/resultsButton"
+        android:layout_width="219dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/result"
+        android:onClick="results"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
         app:layout_constraintVertical_bias="0.0" />
 
 
