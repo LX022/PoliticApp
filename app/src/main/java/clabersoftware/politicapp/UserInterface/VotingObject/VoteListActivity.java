@@ -25,6 +25,7 @@ public class VoteListActivity extends BaseActivity {
     Intent myIntent;
     private AppDatabase db;
 
+    //Idem que les autre liste mais pour voter cette fois
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();

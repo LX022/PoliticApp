@@ -63,6 +63,8 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
     }
 
+    /*
+    * Récupération des données du formulaire en vue d'un update*/
     private void initializeForm() {
         mFistName = findViewById(R.id.firstNameField);
         mLastName = findViewById(R.id.lastNameField);
@@ -82,6 +84,8 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         ));
     }
 
+    /*
+    * Envoi l'update à la db et fait apparaître un toaste pour indiquer à l'utilisateur que tout fonctionne*/
     private void saveChanges(String firstName, String lastName, String login, String partyName, String pass, String confirmPass){
 
         if(pass.equals(confirmPass)){

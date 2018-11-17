@@ -49,6 +49,7 @@ public class PieChartResultActivity extends BaseActivity {
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         Log.d(TAG, "onCreate: starting to create chart");
 
+        /*Décompte du nombre de vote oui, non et blanc*/
         Intent Intent = getIntent();
         Long idVotingObject = Intent.getLongExtra("VOTING_OBJECT_SELECTED", 1);
         System.out.println("IdVotingObject : " + idVotingObject);
@@ -73,6 +74,7 @@ public class PieChartResultActivity extends BaseActivity {
         yData[2] = (float) QtyBlank;
 
 
+        /*Création du PieChart*/
         pieChart = (PieChart) findViewById(R.id.resultPieChart);
         pieChart.setRotationEnabled(true);
         pieChart.setHoleRadius(25f);
@@ -83,6 +85,7 @@ public class PieChartResultActivity extends BaseActivity {
         addDataSet(pieChart);
     }
 
+    /*Ajout des data et des paramètre de visualisation du pie chart*/
     private void addDataSet(PieChart chart) {
         Log.d(TAG, "addDataSet started");
         ArrayList<PieEntry> yEntrys = new ArrayList<>();

@@ -65,6 +65,8 @@ public class ToVoteActivity extends BaseActivity {
         no = findViewById(R.id.voteNoButton);
         blank = findViewById(R.id.voteBlankButton);
 
+        /*Control qu'un utilisateur n'a pas déjà voté pour l'objet en question si oui on lui
+        * masque les bouttons et on lui affiche un message*/
         System.out.println("auto : " + authorization());
         if(authorization()){
             voted.setVisibility(INVISIBLE);
@@ -91,18 +93,22 @@ public class ToVoteActivity extends BaseActivity {
         return PartyToEdit;
     }
 
+    //Boutton oui
     public void voteYes(View view){
         vote("Yes");
     }
 
+    //Boutton non
     public void voteNo(View view){
         vote("No");
     }
 
+    //Boutton blanc
     public void voteBlank(View view){
         vote("Blank");
     }
 
+    //Fonction de vote
     private void vote(String vote){
         VotingLineEntity newVotingLine = new VotingLineEntity(vote,connected , idVotingObject);
         new VotingLineAsync(db,"add",newVotingLine).execute();
@@ -111,6 +117,7 @@ public class ToVoteActivity extends BaseActivity {
 
     }
 
+    //Control qu'un user n'a pas déjà voté
     private boolean authorization(){
         ArrayList<VotingLineEntity> toControl = new ArrayList<>();
         try {

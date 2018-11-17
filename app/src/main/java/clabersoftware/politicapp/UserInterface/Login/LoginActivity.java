@@ -34,13 +34,16 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
+    //Boutton Sign up
     public void signUp(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 
+    //Boutton Login
     public void login(View view) {
 
+        //Récupération des données du formulaire
         EditText loginField = (EditText) findViewById(R.id.login);
         String login = loginField.getText().toString();
 
@@ -52,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         Long idPoliticianConnected = new Long(0);
         idPoliticianConnected = getIdByLogin(login);
 
+        /*Control si le login existe si oui continue si non s'arrête et demande à l'utilisateur de se reconnecter */
         if (loginExist(login)){
             //noting to do
         }else{
@@ -67,15 +71,16 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        /*
+        * On permet à un utilisateur de se connecter avec un Login "Admin" plus facile pour débuger*/
         if(login.equals("Admin")){
             //nothing
         }else{
-            System.out.println("avant request mot de passe");
             realPassword  = getPassByLogin(login);
-            System.out.println("Vrai PassWord" + realPassword);
         }
 
-
+        /*
+        * Contrôl que le pass et le login correspondent aux vrais valeurs*/
         if(realPassword.equals(password) || login.equals("Admin")){
             ((GlobalData) this.getApplication()).setIdConnected(idPoliticianConnected           );
             Intent intent = new Intent(this, HomeActivity.class);
@@ -94,6 +99,8 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /*
+    * Obtient le pass en fonction du login*/
     private String getPassByLogin(String login){
         String pass = "null";
         try {
@@ -107,6 +114,8 @@ public class LoginActivity extends AppCompatActivity {
         return pass;
     }
 
+    /*
+    * Control si le login existe*/
     private boolean loginExist(String login){
        Long Id = null;
         try {
@@ -123,6 +132,9 @@ public class LoginActivity extends AppCompatActivity {
             return true;
     }
 
+
+    /*
+    * Permet d'obtenir l'id d'un politicien existe en fonction du login*/
     private Long getIdByLogin(String login){
         Long id = new Long(0);
         try {

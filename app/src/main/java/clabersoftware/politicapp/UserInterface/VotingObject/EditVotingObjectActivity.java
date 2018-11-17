@@ -39,28 +39,7 @@ public class EditVotingObjectActivity extends BaseActivity {
 
         Intent Intent = getIntent();
         Long idVotingObject = Intent.getLongExtra("VOTING_OBJECT_SELECTED", 1);
-        List<VotingLineEntity> votingLines = getVotingLineById(idVotingObject);
-        int QtyYes = 0;
-        int QtyNo = 0;
-        int QtyBlank = 0;
 
-        for (VotingLineEntity vle : votingLines) {
-            switch (vle.getVote()) {
-                case "Yes":
-                    QtyYes++;
-                    break;
-                case "No":
-                    QtyNo++;
-                    break;
-                case "Blank":
-                    QtyBlank++;
-                    break;
-            }
-        }
-
-        System.out.println("nombre de Yes" + QtyYes);
-        System.out.println("nombre de No" + QtyNo);
-        System.out.println("nombre de Blank" + QtyBlank);
     }
 
     private List<VotingLineEntity> getVotingLineById(Long id) {
@@ -95,6 +74,9 @@ public class EditVotingObjectActivity extends BaseActivity {
 
     }
 
+    /*
+    * Control si on peut deleter un voting object.
+    * */
     private boolean DeleteAuthorization (Long idVotingObject){
         ArrayList<VotingLineEntity> toControl = new ArrayList<>();
         try {
@@ -115,6 +97,7 @@ public class EditVotingObjectActivity extends BaseActivity {
 
     }
 
+    /*méthode de suppression d'un voting object*/
     public void deleteVotingObject (View view) throws ExecutionException, InterruptedException {
         Intent Intent = getIntent();
         Long idVotingObjectToDelete = Intent.getLongExtra("VOTINGOBJECT_SELECTED", 1);
@@ -143,6 +126,9 @@ public class EditVotingObjectActivity extends BaseActivity {
         }
     }
 
+    /*
+    * Obtient une voting object en fonction d'un id
+    * */
     private VotingObjectEntity getById (Long id){
         VotingObjectEntity votingObjectToEdit = new VotingObjectEntity();
         try {

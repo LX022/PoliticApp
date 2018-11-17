@@ -25,6 +25,9 @@ public class ResultsListActivity extends BaseActivity {
     Intent myIntent;
     private AppDatabase db;
 
+
+    /*
+    * Liste des votations afin de consulter les résultats*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
@@ -44,6 +47,7 @@ public class ResultsListActivity extends BaseActivity {
         theListView.setOnItemClickListener( listClick );
     }
 
+    /*Définition du OnItemClickListener*/
     private AdapterView.OnItemClickListener listClick = new AdapterView.OnItemClickListener () {
         public void onItemClick(AdapterView parent, View v, int position, long id) {
             VotingObjectEntity itemValue = (VotingObjectEntity) theListView.getItemAtPosition( position );
@@ -53,6 +57,7 @@ public class ResultsListActivity extends BaseActivity {
         }
     };
 
+    /*Peermet d'obtenir tous les voting objects pour générer la liste*/
     private List<VotingObjectEntity> genererVotingObjects(){
         List<VotingObjectEntity> votingObjects = new ArrayList<>();
         try {

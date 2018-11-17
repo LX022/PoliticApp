@@ -31,6 +31,7 @@ public class AddVotingObjectActivity extends BaseActivity {
         initializeForm();
     }
 
+    /*Récupération des données du formulaire en vu d'un update*/
     private void initializeForm() {
         entitled = findViewById(R.id.votingObjectNameFieldEdit);
         details = findViewById(R.id.votingObjectdetailsFieldEdit);
@@ -42,7 +43,7 @@ public class AddVotingObjectActivity extends BaseActivity {
                 date.getText().toString()
         ));
     }
-
+    //Update du voting object
     private void saveChanges(String entitled, String details, String date){
         VotingObjectEntity newVotingObject = new VotingObjectEntity(entitled, details, date);
         new VotingObjectAsync(db,"add", newVotingObject).execute();

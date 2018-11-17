@@ -25,6 +25,7 @@ public class VotingObjectsListActivity extends BaseActivity {
     Intent myIntent;
     private AppDatabase db;
 
+    //idem que les toVoteList mais pour Editer les objects de vote
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
