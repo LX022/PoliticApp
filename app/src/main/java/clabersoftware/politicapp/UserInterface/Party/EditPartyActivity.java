@@ -91,7 +91,6 @@ public class EditPartyActivity extends BaseActivity {
     public void delete(View view) throws ExecutionException, InterruptedException{
         Intent Intent = getIntent();
         Long idPartyToEdit = Intent.getLongExtra("PARTY_SELECTED",1);
-        System.out.println("#######################################################"+DeleteAuthorization(idPartyToEdit));
         if (DeleteAuthorization(idPartyToEdit)) {
             PartyEntity partyUpdated = new PartyEntity();
 

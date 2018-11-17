@@ -113,6 +113,7 @@
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="8dp"
         android:text="@string/delete"
+        android:onClick="deleteVotingObject"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/votingObjectDateFieldEdit" />

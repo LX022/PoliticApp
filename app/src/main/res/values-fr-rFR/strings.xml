@@ -53,4 +53,5 @@
     <string name="blank">Blanc</string>
     <string name="voted">Vous avez déjà voté</string>
     <string name="votingobjectedit">Object de vote à modifier</string>
+    <string name="votingObjectNoDelete">L objet de vote est utilisé, ne peut pas être supprimé</string>
 </resources>

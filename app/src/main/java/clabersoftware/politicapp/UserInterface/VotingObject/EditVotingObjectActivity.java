@@ -6,11 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
+import clabersoftware.politicapp.DataBase.Entity.VotingLineEntity;
 import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
+import clabersoftware.politicapp.DataBase.async.VotingLineAsync;
 import clabersoftware.politicapp.DataBase.async.VotingObjectAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
@@ -18,7 +22,7 @@ import clabersoftware.politicapp.UserInterface.BaseActivity;
 public class EditVotingObjectActivity extends BaseActivity {
 
     private AppDatabase db;
-
+    private Toast mToastVotingObjectNotDeletable;
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
@@ -38,6 +42,8 @@ public class EditVotingObjectActivity extends BaseActivity {
 
         TextView date = (TextView) findViewById(R.id.votingObjectDateFieldEdit);
         date.setText(votingObjectToEdit.getDate());
+
+        mToastVotingObjectNotDeletable = Toast.makeText(this, getString(R.string.votingObjectNoDelete), Toast.LENGTH_LONG);
     }
 
     public void saveVotingObject(View view) throws ExecutionException, InterruptedException{
@@ -77,5 +83,52 @@ public class EditVotingObjectActivity extends BaseActivity {
             e.printStackTrace();
         }
         return votingObjectToEdit;
+    }
+
+    public void deleteVotingObject(View view) throws ExecutionException, InterruptedException{
+        Intent Intent = getIntent();
+        Long idVotingObjectToDelete = Intent.getLongExtra("VOTINGOBJECT_SELECTED",1);
+
+        if (DeleteAuthorization(idVotingObjectToDelete)) {
+            VotingObjectEntity votingObjectToDelete = new VotingObjectEntity();
+
+            TextView name = (TextView) findViewById(R.id.votingObjectNameFieldEdit);
+            votingObjectToDelete.setEntitled(name.getText().toString());
+
+            TextView details = (TextView) findViewById(R.id.votingObjectdetailsFieldEdit);
+            votingObjectToDelete.setDetails(details.getText().toString());
+
+            TextView date = (TextView) findViewById(R.id.votingObjectDateFieldEdit);
+            votingObjectToDelete.setDate(date.getText().toString());
+
+            Long idVotingObject = Intent.getLongExtra("VOTINGOBJECT_SELECTED", 1);
+            votingObjectToDelete.setIdVotingObject(idVotingObject);
+
+            new VotingObjectAsync(db, "delete", votingObjectToDelete).execute().get();
+
+            Intent intent = new Intent(this, VotingObjectsListActivity.class);
+            startActivity(intent);
+        }
+        else{
+            mToastVotingObjectNotDeletable.show();
+        }
+    }
+
+    private boolean DeleteAuthorization(Long idVotingObject){
+        ArrayList<VotingLineEntity> toControl = new ArrayList<>();
+        try {
+            toControl = (ArrayList) new VotingLineAsync(db, "getAll", 0).execute().get();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        for (VotingLineEntity vl :toControl){
+            if(vl.getFkVotingObject()==idVotingObject)
+                return false;
+        }
+        return true;
     }
 }
