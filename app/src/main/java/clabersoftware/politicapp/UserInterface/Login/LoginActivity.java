@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
 
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
-            return;
+            return; 
         }
 
         if(login.equals("Admin")){
