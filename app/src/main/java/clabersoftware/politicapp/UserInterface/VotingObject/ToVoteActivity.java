@@ -49,15 +49,15 @@ public class ToVoteActivity extends BaseActivity {
 
         TextView votingObjectNameField = (TextView) findViewById(R.id.votingObjectNameField);
         votingObjectNameField.setText(toVote.getEntitled());
-        votingObjectNameField.setEnabled(false);
+
 
         TextView votingObjectdetailsField = (TextView) findViewById(R.id.votingObjectdetailsField);
         votingObjectdetailsField.setText(toVote.getDetails());
-        votingObjectdetailsField.setEnabled(false);
+
 
         TextView votingObjectDateField = (TextView) findViewById(R.id.votingObjectDateField);
         votingObjectDateField.setText(toVote.getDate());
-        votingObjectDateField.setEnabled(false);
+
 
         voted =findViewById(R.id.alreadyVoted);
         voted.setEnabled(false);
