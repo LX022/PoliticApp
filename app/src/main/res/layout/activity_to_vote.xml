@@ -32,7 +32,7 @@
         android:id="@+id/detailsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="56dp"
         android:text="@string/details"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
         android:id="@+id/dateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="164dp"
         android:text="@string/date"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,10 +96,10 @@
         android:id="@+id/voteYesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
         android:onClick="voteYes"
         android:text="@string/yes"
@@ -108,33 +108,31 @@
         app:layout_constraintEnd_toStartOf="@+id/voteNoButton"
         app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateFieldEdit"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateFieldEdit" />
 
     <Button
         android:id="@+id/voteNoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="56dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
         android:onClick="voteNo"
         android:text="@string/no"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/voteBlankButton"
-        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateFieldEdit"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateFieldEdit" />
 
     <Button
         android:id="@+id/voteBlankButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
         android:onClick="voteBlank"
         android:text="@string/blank"
@@ -142,8 +140,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/alreadyVoted"
-        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateFieldEdit"
-        app:layout_constraintVertical_bias="0.676" />
+        app:layout_constraintTop_toBottomOf="@+id/votingObjectDateFieldEdit" />
 
     <TextView
         android:id="@+id/alreadyVoted"
