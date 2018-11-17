@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
+import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
 import clabersoftware.politicapp.DataBase.async.PartyAsync;
+import clabersoftware.politicapp.DataBase.async.PoliticianAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 
@@ -77,22 +80,42 @@ public class EditPartyActivity extends BaseActivity {
     }
 
     public void delete(View view) throws ExecutionException, InterruptedException{
-        PartyEntity partyUpdated = new PartyEntity();
-
-        TextView partyNameField = (TextView) findViewById(R.id.partyNameField);
-        partyUpdated.setLongName(partyNameField.getText().toString());
-
-        TextView partyAbbreviationField = (TextView) findViewById(R.id.partyAbbreviationField);
-        partyUpdated.setShortName(partyAbbreviationField.getText().toString());
-
         Intent Intent = getIntent();
         Long idPartyToEdit = Intent.getLongExtra("PARTY_SELECTED",1);
-        partyUpdated.setIdParty(idPartyToEdit);
 
-        System.out.println(partyUpdated.getShortName() + "    "+partyUpdated.getLongName());
-        new PartyAsync(db,"delete",partyUpdated).execute().get();
+        if (DeleteAuthorization(idPartyToEdit)) {
+            PartyEntity partyUpdated = new PartyEntity();
 
-        Intent intent = new Intent(this, PartiesListActivity.class);
-        startActivity(intent);
+            TextView partyNameField = (TextView) findViewById(R.id.partyNameField);
+            partyUpdated.setLongName(partyNameField.getText().toString());
+
+            TextView partyAbbreviationField = (TextView) findViewById(R.id.partyAbbreviationField);
+            partyUpdated.setShortName(partyAbbreviationField.getText().toString());
+
+            partyUpdated.setIdParty(idPartyToEdit);
+
+            new PartyAsync(db, "delete", partyUpdated).execute().get();
+
+            Intent intent = new Intent(this, PartiesListActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private boolean DeleteAuthorization(Long idParty){
+        ArrayList<PoliticianEntity> toControl = new ArrayList<>();
+        try {
+            toControl = (ArrayList) new PoliticianAsync(db, "getAll", 0).execute().get();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        for (PoliticianEntity p :toControl){
+            if(p.getFkParty()==idParty)
+                return false;
+        }
+        return true;
     }
 }
