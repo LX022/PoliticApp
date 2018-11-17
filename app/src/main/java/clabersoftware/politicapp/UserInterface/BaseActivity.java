@@ -51,7 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.action_language:
                 changeLanguage();
                     return true;
-            case R.id.action_search:
+            case R.id.action_reinitializeDB:
                 initializeDatabase();
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);

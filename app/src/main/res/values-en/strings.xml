@@ -56,4 +56,5 @@
     <string name="votingObjectNoDelete">Voting Object is used, cannot delete</string>
     <string name="partyNoDelete">Party is used, cannot delete</string>
     <string name="partyDeleted">Party deleted</string>
+    <string name="reinitializeDB">Reinitialize data base</string>
 </resources>

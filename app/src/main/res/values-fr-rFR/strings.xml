@@ -14,11 +14,11 @@
     <string name="addvotingobject">Ajouter un objet de vote</string>
     <string name="home">Accueil</string>
     <string name="consult">Consulter</string>
-    <string name="partylist">Liste des partis</string>
-    <string name="politicianlist">Liste des politiciens</string>
-    <string name="votinglist">Liste des votations</string>
+    <string name="partylist">Partis</string>
+    <string name="politicianlist">Politiciens</string>
+    <string name="votinglist">Votations</string>
     <string name="vote">Voter</string>
-    <string name="votingopenlist">Liste des votations ouvertes</string>
+    <string name="votingopenlist">Votations ouvertes</string>
     <string name="search">Rechercher</string>
     <string name="voting">Votation</string>
     <string name="politician">Politicien</string>
@@ -56,4 +56,5 @@
     <string name="votingObjectNoDelete">L objet de vote est utilisé, ne peut pas être supprimé</string>
     <string name="partyNoDelete">Party is used, cannot delete</string>
     <string name="partyDeleted">Parti supprimé</string>
+    <string name="reinitializeDB">Réinitialisation data base</string>
 </resources>
