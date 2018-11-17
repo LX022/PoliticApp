@@ -2,14 +2,12 @@ package clabersoftware.politicapp.UserInterface.VotingObject;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
@@ -47,17 +45,17 @@ public class ToVoteActivity extends BaseActivity {
 
         VotingObjectEntity toVote = getById(idVotingObject);
 
-        TextView votingObjectNameField = (TextView) findViewById(R.id.votingObjectNameField);
+        TextView votingObjectNameField = (TextView) findViewById(R.id.votingObjectNameFieldEdit);
         votingObjectNameField.setText(toVote.getEntitled());
-        votingObjectNameField.setEnabled(false);
 
-        TextView votingObjectdetailsField = (TextView) findViewById(R.id.votingObjectdetailsField);
+
+        TextView votingObjectdetailsField = (TextView) findViewById(R.id.votingObjectdetailsFieldEdit);
         votingObjectdetailsField.setText(toVote.getDetails());
-        votingObjectdetailsField.setEnabled(false);
 
-        TextView votingObjectDateField = (TextView) findViewById(R.id.votingObjectDateField);
+
+        TextView votingObjectDateField = (TextView) findViewById(R.id.votingObjectDateFieldEdit);
         votingObjectDateField.setText(toVote.getDate());
-        votingObjectDateField.setEnabled(false);
+
 
         voted =findViewById(R.id.alreadyVoted);
         voted.setEnabled(false);
