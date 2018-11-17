@@ -41,7 +41,8 @@ public class ToVoteActivity extends BaseActivity {
         connected =  ((GlobalData) this.getApplication()).getIdConnected();
 
         Intent Intent = getIntent();
-        idVotingObject = Intent.getLongExtra("VOTINGOBJECT_SELECTED",1);
+        idVotingObject = Intent.getLongExtra("VOTING_OBJECT_SELECTED",1);
+        System.out.println("IdVotingObject : " + idVotingObject);
 
         VotingObjectEntity toVote = getById(idVotingObject);
 
@@ -105,9 +106,6 @@ public class ToVoteActivity extends BaseActivity {
     private void vote(String vote){
         VotingLineEntity newVotingLine = new VotingLineEntity(vote,connected , idVotingObject);
         new VotingLineAsync(db,"add",newVotingLine).execute();
-        System.out.println("vote : " + newVotingLine.getVote());
-        System.out.println("connected : " + newVotingLine.getFkPolitician());
-        System.out.println("idVotingObject : " + newVotingLine.getFkVotingObject());
         Intent intent = new Intent(this, VoteListActivity.class);
         startActivity(intent);
 
@@ -125,14 +123,11 @@ public class ToVoteActivity extends BaseActivity {
         }
 
         for(VotingLineEntity vle :toControl){
-            System.out.println("vote : " + vle.getVote() + "idpoli : " + vle.getFkPolitician() + "idObje : " + vle.getFkVotingObject());
-            System.out.println("connected : " + connected + " VS " + vle.getFkPolitician());
-            if(vle.getFkPolitician()==connected){
-                System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Je n'autorise pas le vote");
+            if(vle.getFkPolitician()==connected && vle.getFkVotingObject()==idVotingObject){
+
                 return false;
             }
         }
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Je autorise la votation");
         return true;
     }
 }
