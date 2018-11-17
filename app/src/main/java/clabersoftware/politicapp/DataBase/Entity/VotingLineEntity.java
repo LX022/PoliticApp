@@ -9,6 +9,16 @@ import android.support.annotation.NonNull;
 
 import clabersoftware.politicapp.Model.ModelVotingLine;
 
+/*
+ * Objet VotingLine
+ *    fait le lien entre l'objet voté et le votant
+ * table votingLines
+ * Primary key autogénérée
+ * Constructeur sans id
+ * Constructeur vide
+ * Geter
+ * Seter*/
+
 @Entity(tableName = "votingLines",
         foreignKeys ={
         @ForeignKey(

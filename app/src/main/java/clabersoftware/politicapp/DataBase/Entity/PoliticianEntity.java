@@ -9,6 +9,15 @@ import android.support.annotation.NonNull;
 
 import clabersoftware.politicapp.Model.ModelPolitician;
 
+/*
+ * Objet Politician
+ * table politicians
+ * Primary key autogénérée
+ * Constructeur sans id
+ * Constructeur vide
+ * Geter
+ * Seter*/
+
 @Entity(tableName = "politicians",
         foreignKeys =
         @ForeignKey(
