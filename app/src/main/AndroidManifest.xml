@@ -11,9 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UserInterface.MainActivity" />
-        <activity android:name=".UserInterface.HomeActivity" />
+        <activity android:name=".UserInterface.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".UserInterface.Politician.PoliticiansActivity" />
-        <activity android:name=".UserInterface.Login.LoginActivity">
+        <activity android:name=".UserInterface.Login.LoginActivity"/>
 
             <!--
             <intent-filter>
@@ -22,14 +29,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             -->
-        </activity>
+
         <activity android:name=".UserInterface.Login.SignUpActivity" />
         <activity android:name=".UserInterface.Party.AddPartyActivity" />
         <activity android:name=".UserInterface.VotingObject.AddVotingObjectActivity" />
         <activity android:name=".Search.SearchActivity" />
         <activity android:name=".Search.SearchResultActivity" />
         <activity android:name=".UserInterface.Party.PartyActivity" />
-        <activity android:name=".UserInterface.Party.EditPartyActivity" />
+        <activity android:name=".UserInterface.Party.EditPartyActivity">
+
+        </activity>
         <activity android:name=".UserInterface.Party.PartiesListActivity" />
         <activity android:name=".UserInterface.VotingObject.VotingObjectsListActivity" />
         <activity android:name=".UserInterface.VotingObject.EditVotingObjectActivity" />
@@ -39,13 +48,7 @@
         <activity android:name=".UserInterface.VotingObject.ToVoteActivity" />
         <activity android:name=".UserInterface.VotingObject.ResultsListActivity" />
         <activity android:name=".UserInterface.VotingObject.PieChartResultActivity" />
-        <activity android:name=".UserInterface.Party.PartiesList_FBActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".UserInterface.Party.PartiesList_FBActivity"></activity>
     </application>
 
 </manifest>

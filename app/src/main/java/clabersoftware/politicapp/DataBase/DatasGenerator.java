@@ -1,5 +1,8 @@
 package clabersoftware.politicapp.DataBase;
 
+import android.util.Log;
+
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -8,6 +11,8 @@ import java.util.List;
 import java.util.UUID;
 
 import clabersoftware.politicapp.DataBase.Entity.PartyFB;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class DatasGenerator {
 
@@ -20,6 +25,19 @@ public class DatasGenerator {
     }
 
     public void GenerateData() {
+        //Clean all data
+        FirebaseDatabase.getInstance()
+                .getReference("parties")
+                .removeValue(new DatabaseReference.CompletionListener() {
+
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null) {
+                            Log.d(TAG, "Delete failure!", databaseError.toException());
+                        } else {
+                            Log.d(TAG, "Delete successful!");
+                        }
+                    }
+                });
 
 
 

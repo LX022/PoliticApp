@@ -35,20 +35,12 @@ public class PartiesListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parties_list__fb);
+        setContentView(R.layout.activity_parties_list);
         theListView = (ListView) findViewById(R.id.PoliticianListView);
         myIntent = new Intent(this, EditPartyActivity.class);
 
 
-        //Permet de générer les data si aucune
-        Boolean GenerateAll = true;
-        if (GenerateAll){
-            DatasGenerator d = new DatasGenerator();
-            d.GenerateData();
-        }
-
         data = new ArrayList<PartyFB>();
-
 
         FirebaseDatabase.getInstance()
                 .getReference("parties")
@@ -60,7 +52,9 @@ public class PartiesListActivity extends BaseActivity {
                                     data.clear();
                                     data = toParties(dataSnapshot);
                                     System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-
+                                        for(PartyFB p : data){
+                                            System.out.println("ShortName ==> " + p.getShortName());
+                                        }
                                     System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
                                 }
 
@@ -75,6 +69,7 @@ public class PartiesListActivity extends BaseActivity {
 
 
                 );
+
 
 
         ArrayAdapter<PartyFB> PartiesAdapter = new ArrayAdapter<PartyFB>(this, android.R.layout.simple_list_item_1, data);
@@ -101,6 +96,8 @@ public class PartiesListActivity extends BaseActivity {
             PartyFB itemValue = (PartyFB) theListView.getItemAtPosition( position );
             itemValue.getPartyUid();
             myIntent.putExtra("PARTY_SELECTED", itemValue.getPartyUid());
+            myIntent.putExtra("PartyShortName", itemValue.getShortName());
+            myIntent.putExtra("PartyLongName", itemValue.getLongName());
             startActivity(myIntent);
         }
     };
@@ -109,6 +106,13 @@ public class PartiesListActivity extends BaseActivity {
     public void addParty(View view) {
         Intent intent = new Intent(this, AddPartyActivity.class);
         startActivity(intent);
+    }
+
+    //envoie de la vue de l'ajout de party
+    public void showDatas(View view) {
+        ArrayAdapter<PartyFB> PartiesAdapter = new ArrayAdapter<PartyFB>(this, android.R.layout.simple_list_item_1, data);
+        theListView.setAdapter(PartiesAdapter);
+        theListView.setOnItemClickListener( listClick );
     }
 
 

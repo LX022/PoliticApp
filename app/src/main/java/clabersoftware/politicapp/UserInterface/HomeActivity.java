@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import clabersoftware.politicapp.DataBase.DatasGenerator;
 import clabersoftware.politicapp.DataBase.GlobalData;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.Party.PartiesListActivity;
@@ -20,6 +21,13 @@ public class HomeActivity extends BaseActivity {
         System.out.println("Id Connecté : "+((GlobalData) this.getApplication()).getIdConnected());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //Permet de générer les data si aucune
+        Boolean GenerateAll = true;
+        if (GenerateAll){
+            DatasGenerator d = new DatasGenerator();
+            d.GenerateData();
+        }
     }
     //liste des partis
     public void showPartiesList(View view) {
