@@ -45,7 +45,7 @@ public class VoteListActivity extends BaseActivity {
 
 
         FirebaseDatabase.getInstance()
-                .getReference("parties")
+                .getReference("votingObjects")
                 .addValueEventListener(
                         new ValueEventListener() {
                             @Override
