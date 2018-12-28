@@ -8,62 +8,103 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
+import clabersoftware.politicapp.DataBase.DatasGenerator;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
+import clabersoftware.politicapp.DataBase.Entity.PartyFB;
 import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 
 public class PartiesListActivity extends BaseActivity {
 
+    private ArrayList<PartyFB> data ;
     ListView theListView;
     Intent myIntent;
-    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parties_list);
+        setContentView(R.layout.activity_parties_list__fb);
+        theListView = (ListView) findViewById(R.id.PoliticianListView);
         myIntent = new Intent(this, EditPartyActivity.class);
 
-        theListView = (ListView) findViewById(R.id.PoliticianListView);
 
-        List<PartyEntity> datas = genererParties();
+        //Permet de générer les data si aucune
+        Boolean GenerateAll = true;
+        if (GenerateAll){
+            DatasGenerator d = new DatasGenerator();
+            d.GenerateData();
+        }
 
-        ArrayAdapter<PartyEntity> PartiesAdapter = new ArrayAdapter<PartyEntity>(this, android.R.layout.simple_list_item_1, datas);
+        data = new ArrayList<PartyFB>();
 
+
+        FirebaseDatabase.getInstance()
+                .getReference("parties")
+                .addValueEventListener(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange( DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists()) {
+                                    data.clear();
+                                    data = toParties(dataSnapshot);
+                                    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+                                    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+
+                        }
+
+
+                );
+
+
+        ArrayAdapter<PartyFB> PartiesAdapter = new ArrayAdapter<PartyFB>(this, android.R.layout.simple_list_item_1, data);
         theListView.setAdapter(PartiesAdapter);
-
         theListView.setOnItemClickListener( listClick );
+
     }
+
+    private ArrayList<PartyFB> toParties(DataSnapshot snapshot){
+        ArrayList<PartyFB> parties = new ArrayList<>();
+        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+            PartyFB entity = childSnapshot.getValue(PartyFB.class);
+            entity.setPartyUid(childSnapshot.getKey());
+            parties.add(entity);
+        }
+
+        return parties;
+
+    }
+
     //Envoi de l'id du parti cliqué
     private AdapterView.OnItemClickListener listClick = new AdapterView.OnItemClickListener () {
         public void onItemClick(AdapterView parent, View v, int position, long id) {
-            PartyEntity itemValue = (PartyEntity) theListView.getItemAtPosition( position );
-            itemValue.getIdParty();
-            myIntent.putExtra("PARTY_SELECTED", itemValue.getIdParty());
-            System.out.println(itemValue.getIdParty());
+            PartyFB itemValue = (PartyFB) theListView.getItemAtPosition( position );
+            itemValue.getPartyUid();
+            myIntent.putExtra("PARTY_SELECTED", itemValue.getPartyUid());
             startActivity(myIntent);
         }
     };
-    //génération de la liste des partis
-    private List<PartyEntity> genererParties(){
-        List<PartyEntity> parties = new ArrayList<>();
-        try {
-            parties = (ArrayList) new PartyAsync(db, "getAll", 0).execute().get();
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return parties;
-    }
     //envoie de la vue de l'ajout de party
     public void addParty(View view) {
         Intent intent = new Intent(this, AddPartyActivity.class);

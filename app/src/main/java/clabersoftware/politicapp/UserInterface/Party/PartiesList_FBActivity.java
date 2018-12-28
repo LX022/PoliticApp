@@ -41,11 +41,6 @@ public class PartiesList_FBActivity extends AppCompatActivity {
 
         data = new ArrayList<PartyFB>();
 
-        //sadfassadfdssfdsfsdf
-        //dsfsadfsdfasfsdfafdds
-        //dsfsadfsdfdsfdsdsfdsfds
-
-
 
         FirebaseDatabase.getInstance()
                 .getReference("parties")
