@@ -74,15 +74,7 @@ public class PartiesList_FBActivity extends AppCompatActivity {
                 );
 
 
-        ArrayList<PartyFB> test = new ArrayList<>();
-        PartyFB t1 = new PartyFB();
-        t1.setPartyUid(UUID.randomUUID().toString());
-        t1.setLongName("fdsfdasfsdfds");
-        t1.setShortName("sdf");
-        test.add(t1);
-
-
-        ArrayAdapter<PartyFB> PartiesAdapter = new ArrayAdapter<PartyFB>(this, android.R.layout.simple_list_item_1, test);
+        ArrayAdapter<PartyFB> PartiesAdapter = new ArrayAdapter<PartyFB>(this, android.R.layout.simple_list_item_1, data);
         theListView.setAdapter(PartiesAdapter);
         theListView.setOnItemClickListener( listClick );
 
