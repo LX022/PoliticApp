@@ -1,70 +1,97 @@
 package clabersoftware.politicapp.UserInterface.VotingObject;
 
-import android.arch.persistence.room.Room;
+
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
-import clabersoftware.politicapp.DataBase.AppDatabase;
-import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
-import clabersoftware.politicapp.DataBase.async.VotingObjectAsync;
+import clabersoftware.politicapp.DataBase.DatasGenerator;
+import clabersoftware.politicapp.DataBase.Entity.VotingObjectFB;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 
+
 public class VoteListActivity extends BaseActivity {
 
+    private ArrayList<VotingObjectFB> data ;
     ListView theListView;
     Intent myIntent;
-    private AppDatabase db;
 
     //Idem que les autre liste mais pour voter cette fois
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote_list);
 
-        myIntent = new Intent(this, ToVoteActivity.class);
+        theListView = (ListView) findViewById(R.id.PoliticianListView);
+        myIntent = new Intent(this, EditVotingObjectActivity.class);
 
-        theListView = (ListView) findViewById(R.id.VotingObjectsListView);
 
-        List<VotingObjectEntity> datas = genererVotingObjects();
+        //Permet de générer les data si aucune
+        Boolean GenerateAll = true;
+        if (GenerateAll){
+            DatasGenerator d = new DatasGenerator();
+            d.GenerateData();
+        }
 
-        ArrayAdapter<VotingObjectEntity> VotingObjectsAdapter = new ArrayAdapter<VotingObjectEntity>(this, android.R.layout.simple_list_item_1, datas);
+        data = new ArrayList<VotingObjectFB>();
 
+
+        FirebaseDatabase.getInstance()
+                .getReference("votingObjects")
+                .addValueEventListener(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange( DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists()) {
+                                    data.clear();
+                                    data = toVotingObject(dataSnapshot);
+                                    }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+
+                        }
+
+
+                );
+
+
+        ArrayAdapter<VotingObjectFB> VotingObjectsAdapter = new ArrayAdapter<VotingObjectFB>(this, android.R.layout.simple_list_item_1, data);
         theListView.setAdapter(VotingObjectsAdapter);
-
         theListView.setOnItemClickListener( listClick );
+
+    }
+
+    private ArrayList<VotingObjectFB> toVotingObject(DataSnapshot snapshot){
+        ArrayList<VotingObjectFB> votingObjects = new ArrayList<>();
+        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+            VotingObjectFB entity = childSnapshot.getValue(VotingObjectFB.class);
+            entity.setVotingObjectUid(childSnapshot.getKey());
+            votingObjects.add(entity);
+        }
+
+        return votingObjects;
+
     }
 
     private AdapterView.OnItemClickListener listClick = new AdapterView.OnItemClickListener () {
         public void onItemClick(AdapterView parent, View v, int position, long id) {
-            VotingObjectEntity itemValue = (VotingObjectEntity) theListView.getItemAtPosition( position );
-            itemValue.getIdVotingObject();
-            myIntent.putExtra("VOTING_OBJECT_SELECTED", itemValue.getIdVotingObject());
-            System.out.println("Item sélectionner:      " + itemValue.getIdVotingObject());
+            VotingObjectFB itemValue = (VotingObjectFB) theListView.getItemAtPosition( position );
+            itemValue.getVotingObjectUid();
+            myIntent.putExtra("VOTING_OBJECT_SELECTED", itemValue.getVotingObjectUid());
             startActivity(myIntent);
         }
     };
 
-    private List<VotingObjectEntity> genererVotingObjects(){
-        List<VotingObjectEntity> votingObjects = new ArrayList<>();
-        try {
-            votingObjects = (ArrayList) new VotingObjectAsync(db,   "getAll", 0).execute().get();
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return votingObjects;
-    }
 }
