@@ -14,11 +14,14 @@
         <activity android:name=".UserInterface.HomeActivity" />
         <activity android:name=".UserInterface.Politician.PoliticiansActivity" />
         <activity android:name=".UserInterface.Login.LoginActivity">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <activity android:name=".UserInterface.Login.SignUpActivity" />
         <activity android:name=".UserInterface.Party.AddPartyActivity" />
@@ -35,7 +38,14 @@
         <activity android:name=".UserInterface.VotingObject.VoteListActivity" />
         <activity android:name=".UserInterface.VotingObject.ToVoteActivity" />
         <activity android:name=".UserInterface.VotingObject.ResultsListActivity" />
-        <activity android:name=".UserInterface.VotingObject.PieChartResultActivity"></activity>
+        <activity android:name=".UserInterface.VotingObject.PieChartResultActivity" />
+        <activity android:name=".UserInterface.Party.PartiesList_FBActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
