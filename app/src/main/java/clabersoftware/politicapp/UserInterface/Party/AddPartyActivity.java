@@ -18,6 +18,7 @@ import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.R;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 
 public class AddPartyActivity extends BaseActivity {
 
@@ -71,5 +72,9 @@ public class AddPartyActivity extends BaseActivity {
         ref.child("parties").child(newParty.getPartyUid()).setValue(newParty);
     }
 
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this, HomeActivity.class));
+    }
 }
 

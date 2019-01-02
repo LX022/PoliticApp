@@ -25,6 +25,7 @@ import clabersoftware.politicapp.DataBase.async.VotingObjectAsync;
 
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 
 public class EditVotingObjectActivity extends BaseActivity {
 
@@ -165,6 +166,11 @@ public class EditVotingObjectActivity extends BaseActivity {
 
         Intent intent = new Intent(this, VotingObjectsListActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,HomeActivity.class));
     }
 }
 

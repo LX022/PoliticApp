@@ -27,6 +27,7 @@ import clabersoftware.politicapp.DataBase.async.VotingLineAsync;
 import clabersoftware.politicapp.DataBase.async.VotingObjectAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 
 public class PieChartResultActivity extends BaseActivity {
 
@@ -137,5 +138,10 @@ public class PieChartResultActivity extends BaseActivity {
 
         return votingLines;
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,HomeActivity.class));
     }
 }

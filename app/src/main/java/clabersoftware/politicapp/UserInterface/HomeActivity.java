@@ -23,7 +23,7 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
 
         //Permet de générer les data si aucune
-        Boolean GenerateAll = true;
+        Boolean GenerateAll = false;
         if (GenerateAll){
             DatasGenerator d = new DatasGenerator();
             d.GenerateData();
@@ -54,5 +54,8 @@ public class HomeActivity extends BaseActivity {
         Intent intent = new Intent(this, ResultsListActivity.class);
         startActivity(intent);
     }
-
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,HomeActivity.class));
+    }
 }

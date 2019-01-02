@@ -24,6 +24,7 @@ import clabersoftware.politicapp.DataBase.Entity.PartyFB;
 import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 
 public class PartiesListActivity extends BaseActivity {
 
@@ -114,6 +115,10 @@ public class PartiesListActivity extends BaseActivity {
         theListView.setOnItemClickListener( listClick );
     }
 
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,HomeActivity.class));
+    }
 
 }
 

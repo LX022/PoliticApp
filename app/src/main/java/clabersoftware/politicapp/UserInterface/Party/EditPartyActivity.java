@@ -24,6 +24,7 @@ import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.DataBase.async.PoliticianAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 import clabersoftware.politicapp.UserInterface.Politician.PoliticianListActivity;
 
 
@@ -135,5 +136,10 @@ public class EditPartyActivity extends BaseActivity {
                 return false;
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,HomeActivity.class));
     }
 }

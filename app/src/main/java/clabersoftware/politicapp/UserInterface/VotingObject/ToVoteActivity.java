@@ -18,6 +18,7 @@ import clabersoftware.politicapp.DataBase.async.VotingLineAsync;
 import clabersoftware.politicapp.DataBase.async.VotingObjectAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 
 import static android.view.View.INVISIBLE;
 
@@ -136,5 +137,10 @@ public class ToVoteActivity extends BaseActivity {
             }
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,HomeActivity.class));
     }
 }

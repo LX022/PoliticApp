@@ -10,14 +10,21 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
+import clabersoftware.politicapp.DataBase.DatasGenerator;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
+import clabersoftware.politicapp.DataBase.Entity.PoliticianFB;
 import clabersoftware.politicapp.DataBase.Entity.VotingLineEntity;
 import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
 import clabersoftware.politicapp.DataBase.GlobalData;
@@ -32,12 +39,19 @@ import clabersoftware.politicapp.R;
 public class LoginActivity extends AppCompatActivity {
 
     private AppDatabase db;
+    private ArrayList<PoliticianFB> data ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Boolean GenerateAll = true;
+        if (GenerateAll){
+            DatasGenerator d = new DatasGenerator();
+            d.GenerateData();
+        }
 
         /*
         * Si base vide alors on génère des données de base*/
@@ -47,6 +61,30 @@ public class LoginActivity extends AppCompatActivity {
             generateData();
 
         }
+
+        data = new ArrayList<PoliticianFB>();
+
+        FirebaseDatabase.getInstance()
+                .getReference("politicians")
+                .addValueEventListener(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange( DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists()) {
+                                    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ DatasnapShotExist");
+                                    data.clear();
+                                    data = toPoliticians(dataSnapshot);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        }
+
+                );
+
     }
 
 
@@ -69,8 +107,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String realPassword = "Admin0123456789";
 
-        Long idPoliticianConnected = new Long(0);
-        idPoliticianConnected = getIdByLogin(login);
+        String idPoliticianConnected = getIdByLogin(login);
 
         /*Control si le login existe si oui continue si non s'arrête et demande à l'utilisateur de se reconnecter */
         if (loginExist(login)){
@@ -79,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
             Context context = getApplicationContext();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-            CharSequence text = "Erreur d'identifiant ou de mot de passe";
+            CharSequence text = "Erreur d'identifiant";
             int duration = Toast.LENGTH_SHORT;
 
 
@@ -99,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
         /*
         * Contrôl que le pass et le login correspondent aux vrais valeurs*/
         if(realPassword.equals(password) || login.equals("Admin")){
-            ((GlobalData) this.getApplication()).setIdConnected(idPoliticianConnected           );
+            ((GlobalData) this.getApplication()).setUuidConnected(idPoliticianConnected);
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
 
@@ -107,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
             Context context = getApplicationContext();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-            CharSequence text = "Erreur d'identifiant ou de mot de passe";
+            CharSequence text = "Erreur de mot de passe";
             int duration = Toast.LENGTH_SHORT;
 
 
@@ -120,12 +157,10 @@ public class LoginActivity extends AppCompatActivity {
     * Obtient le pass en fonction du login*/
     private String getPassByLogin(String login){
         String pass = "null";
-        try {
-            pass = (String) new PoliticianAsync(db, "getPassByLogin", login).execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+
+        for(PoliticianFB p : data){
+            if (p.getLogin().equals(login))
+                pass = p.getPassword();
         }
 
         return pass;
@@ -134,32 +169,28 @@ public class LoginActivity extends AppCompatActivity {
     /*
     * Control si le login existe*/
     private boolean loginExist(String login){
-       Long Id = null;
-        try {
-            Id = (Long) new PoliticianAsync(db, "getIdByLogin", login).execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 
-        if (Id == null)
-            return false;
-        else
-            return true;
+        for(PoliticianFB p : data){
+
+            System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+p.getLogin());
+
+            if (p.getLogin().equals(login))
+                return true;
+        }
+        return false;
+
+
     }
 
 
     /*
     * Permet d'obtenir l'id d'un politicien existe en fonction du login*/
-    private Long getIdByLogin(String login){
-        Long id = new Long(0);
-        try {
-            id = (Long) new PoliticianAsync(db, "getIdByLogin", login).execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+    private String getIdByLogin(String login){
+        String id = null;
+        for(PoliticianFB p : data){
+            if (p.getLogin().equals(login))
+                id = p.getPoliticianUid();
         }
 
         return id;
@@ -238,4 +269,20 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private ArrayList<PoliticianFB> toPoliticians(DataSnapshot snapshot){
+        ArrayList<PoliticianFB> politicians = new ArrayList<>();
+        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+            PoliticianFB entity = childSnapshot.getValue(PoliticianFB.class);
+            entity.setPoliticianUid(childSnapshot.getKey());
+            politicians.add(entity);
+        }
+
+        return politicians;
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,LoginActivity.class));
+    }
 }

@@ -8,12 +8,14 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import clabersoftware.politicapp.DataBase.Entity.PoliticianFB;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 import clabersoftware.politicapp.UserInterface.Party.EditPartyActivity;
 
 public class PoliticianListActivity extends BaseActivity {
@@ -75,10 +77,34 @@ public class PoliticianListActivity extends BaseActivity {
         public void onItemClick(AdapterView parent, View v, int position, long id) {
             PoliticianFB itemValue = (PoliticianFB) theListView.getItemAtPosition( position );
             itemValue.getPoliticianUid();
-            myIntent.putExtra("POLITICIAN_SELECTED", itemValue.getPoliticianUid());
-            System.out.println(itemValue.getPoliticianUid());
+            myIntent.putExtra("PoUuid", itemValue.getPoliticianUid());
+            myIntent.putExtra("PoFirstName", itemValue.getFirstName());
+            myIntent.putExtra("PoLastName", itemValue.getLastName());
+            myIntent.putExtra("PoFkParty", itemValue.getFkParty());
+            myIntent.putExtra("PoLogin", itemValue.getLogin());
+            myIntent.putExtra("PoPwd", itemValue.getPassword());
+
+            FirebaseDatabase.getInstance()
+                    .getReference("politicians")
+                    .child(itemValue.getPoliticianUid())
+                    .updateChildren(itemValue.toMap(), new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                            if (databaseError != null) {
+
+                            } else {
+
+                            }
+
+                        }
+                    });
+
             startActivity(myIntent);
         }
     };
 
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,HomeActivity.class));
+    }
 }

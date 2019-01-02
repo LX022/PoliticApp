@@ -149,4 +149,9 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         }
         return id;
     }
+
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,LoginActivity.class));
+    }
 }

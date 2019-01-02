@@ -15,6 +15,7 @@ import clabersoftware.politicapp.DataBase.DatasGenerator;
 import clabersoftware.politicapp.DataBase.Entity.VotingObjectFB;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 
 public class VotingObjectsListActivity extends BaseActivity {
 
@@ -98,5 +99,10 @@ public class VotingObjectsListActivity extends BaseActivity {
     public void addVotingObject (View view) {
         Intent intent = new Intent(this, AddVotingObjectActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,HomeActivity.class));
     }
 }

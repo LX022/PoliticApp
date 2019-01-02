@@ -18,6 +18,7 @@ import clabersoftware.politicapp.DataBase.Entity.VotingObjectEntity;
 import clabersoftware.politicapp.DataBase.async.VotingObjectAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 
 public class ResultsListActivity extends BaseActivity {
 
@@ -69,5 +70,10 @@ public class ResultsListActivity extends BaseActivity {
             e.printStackTrace();
         }
         return votingObjects;
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,HomeActivity.class));
     }
 }

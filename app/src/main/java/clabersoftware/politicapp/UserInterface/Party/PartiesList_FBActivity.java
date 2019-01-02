@@ -21,6 +21,7 @@ import java.util.UUID;
 import clabersoftware.politicapp.DataBase.DatasGenerator;
 import clabersoftware.politicapp.DataBase.Entity.PartyFB;
 import clabersoftware.politicapp.R;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 
 public class PartiesList_FBActivity extends AppCompatActivity {
 
@@ -99,4 +100,9 @@ public class PartiesList_FBActivity extends AppCompatActivity {
             startActivity(myIntent);
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,HomeActivity.class));
+    }
 }

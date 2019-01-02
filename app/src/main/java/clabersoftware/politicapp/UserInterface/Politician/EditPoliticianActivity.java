@@ -21,6 +21,7 @@ import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.DataBase.async.PoliticianAsync;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
+import clabersoftware.politicapp.UserInterface.HomeActivity;
 
 public class EditPoliticianActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
@@ -88,7 +89,7 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
         politicianUpdated.setFkParty(idParty);
 
         Intent Intent = getIntent();
-        
+
 
 
 
@@ -198,5 +199,10 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
             e.printStackTrace();
         }
         return id;
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this,HomeActivity.class));
     }
 }
