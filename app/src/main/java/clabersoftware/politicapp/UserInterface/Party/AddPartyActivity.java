@@ -7,13 +7,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.UUID;
+
 import clabersoftware.politicapp.DataBase.AppDatabase;
+import clabersoftware.politicapp.DataBase.Entity.PartyFB;
 import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.R;
 
 public class AddPartyActivity extends BaseActivity {
+
+    private DatabaseReference ref;
+    private FirebaseDatabase database;
 
     private AppDatabase db;
     private Toast mToast;
@@ -29,6 +38,8 @@ public class AddPartyActivity extends BaseActivity {
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         mToast = Toast.makeText(this, getString(R.string.partyCreated), Toast.LENGTH_LONG);
         initializeForm();
+
+        ref = database.getInstance().getReference();
     }
     // initialisation du formulaire
     private void initializeForm() {
@@ -45,12 +56,19 @@ public class AddPartyActivity extends BaseActivity {
 
     //ajout d'un parti d'après les informations reçues dans le formulaire
     private void saveChanges(String color, String shortName, String longName){
-        PartyEntity newParty = new PartyEntity(color, shortName, longName);
-        new PartyAsync(db,"add",newParty).execute();
+        PartyFB newParty = new PartyFB();
+        String pUuid = UUID.randomUUID().toString();
+
+        newParty.setPartyUid(pUuid);
+        newParty.setShortName(shortName);
+        newParty.setLongName(longName);
+
         System.out.println("olééééé");
         mToast.show();
         Intent intent = new Intent(this, PartiesListActivity.class);
         startActivity(intent);
+
+        ref.child("parties").child(newParty.getPartyUid()).setValue(newParty);
     }
 
 }

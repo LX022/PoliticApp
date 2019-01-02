@@ -71,7 +71,6 @@ public class PartiesListActivity extends BaseActivity {
                 );
 
 
-
         ArrayAdapter<PartyFB> PartiesAdapter = new ArrayAdapter<PartyFB>(this, android.R.layout.simple_list_item_1, data);
         theListView.setAdapter(PartiesAdapter);
         theListView.setOnItemClickListener( listClick );

@@ -88,6 +88,13 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
         politicianUpdated.setFkParty(idParty);
 
         Intent Intent = getIntent();
+        
+
+
+
+
+
+
         Long idPoliticianToEdit = Intent.getLongExtra("POLITICIAN_SELECTED",1);
         System.out.println("On save :  " + idPoliticianToEdit);
         politicianUpdated.setIdPolitician(idPoliticianToEdit);
