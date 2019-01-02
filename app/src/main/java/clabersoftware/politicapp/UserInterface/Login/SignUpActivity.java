@@ -13,13 +13,20 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
+import clabersoftware.politicapp.DataBase.Entity.PartyFB;
 import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
+import clabersoftware.politicapp.DataBase.Entity.PoliticianFB;
 import clabersoftware.politicapp.DataBase.async.PartyAsync;
 import clabersoftware.politicapp.DataBase.async.PoliticianAsync;
 import clabersoftware.politicapp.R;
@@ -27,6 +34,9 @@ import clabersoftware.politicapp.R;
 public class SignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private AppDatabase db;
+
+    private DatabaseReference ref;
+    private FirebaseDatabase database;
 
     private Toast mToastok;
     private Toast passNotOk;
@@ -40,6 +50,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ref = database.getInstance().getReference();
         db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
@@ -89,10 +100,19 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     private void saveChanges(String firstName, String lastName, String login, String partyName, String pass, String confirmPass){
 
         if(pass.equals(confirmPass)){
-            long idParty = getIdByName(partyName);
+            System.out.println("OK POUR CREATION____________________________________________________________________:::::::::");
+            String idParty = getIdByName(partyName);
             System.out.println(idParty);
-            PoliticianEntity newPolitician = new PoliticianEntity(firstName, lastName, pass, idParty, login);
-            new PoliticianAsync(db,"add",newPolitician).execute();
+            PoliticianFB newPolitician = new PoliticianFB();
+            newPolitician.setLastName(lastName);
+            newPolitician.setFkParty(idParty);
+            newPolitician.setFirstName(firstName);
+            newPolitician.setLogin(login);
+            newPolitician.setPassword(pass);
+            newPolitician.setPoliticianUid(UUID.randomUUID().toString());
+
+            ref.child("politicians").child(newPolitician.getPoliticianUid()).setValue(newPolitician);
+
             mToastok.show();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
@@ -116,42 +136,35 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     private List<String> getAllPartiesName(){
-        List<PartyEntity> parties = new ArrayList<>();
         List<String> partiesToSend = new ArrayList<>();
 
-        try {
-            parties = (ArrayList) new PartyAsync(db, "getAll", 0).execute().get();
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-
-        for(PartyEntity p: parties){
-            partiesToSend.add(p.getShortName());
-        }
+        partiesToSend.add("PS");
+        partiesToSend.add("PLR");
+        partiesToSend.add("PDC");
+        partiesToSend.add("Sans parti");
 
 
         return partiesToSend;
     }
 
-    private Long getIdByName(String name){
-        Long id = new Long(0);
-
-        try {
-            id = (Long) new PartyAsync(db, "getIdByName", name).execute().get();
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return id;
+    private String getIdByName(String name){
+        return name;
     }
 
     @Override
     public void onBackPressed() {
         this.startActivity(new Intent(this,LoginActivity.class));
+    }
+
+    private ArrayList<PartyFB> toParties(DataSnapshot snapshot){
+        ArrayList<PartyFB> parties = new ArrayList<>();
+        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+            PartyFB entity = childSnapshot.getValue(PartyFB.class);
+            entity.setPartyUid(childSnapshot.getKey());
+            parties.add(entity);
+        }
+
+        return parties;
+
     }
 }

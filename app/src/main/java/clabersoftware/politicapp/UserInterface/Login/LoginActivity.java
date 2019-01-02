@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Boolean GenerateAll = true;
+        Boolean GenerateAll = false;
         if (GenerateAll){
             DatasGenerator d = new DatasGenerator();
             d.GenerateData();
