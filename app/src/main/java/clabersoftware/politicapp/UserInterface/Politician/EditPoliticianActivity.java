@@ -10,52 +10,64 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import clabersoftware.politicapp.DataBase.AppDatabase;
 import clabersoftware.politicapp.DataBase.Entity.PartyEntity;
 import clabersoftware.politicapp.DataBase.Entity.PoliticianEntity;
+import clabersoftware.politicapp.DataBase.Entity.PoliticianFB;
 import clabersoftware.politicapp.DataBase.async.PartyAsync;
-import clabersoftware.politicapp.DataBase.async.PoliticianAsync;
+
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
 import clabersoftware.politicapp.UserInterface.HomeActivity;
 
 public class EditPoliticianActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
-    private AppDatabase db;
     private Spinner mParty;
-    PoliticianEntity politicianToEdit;
     int position = 0;
+
+    private DatabaseReference ref;
+    private FirebaseDatabase database;
+    String politicianUid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        db = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_politician);
         //récupération du politicien cliqué
         Intent Intent = getIntent();
-        Long idPoliticianToEdit = Intent.getLongExtra("POLITICIAN_SELECTED", 1);
+
+        politicianUid = getIntent().getExtras().getString("PoUuid");
+        String firstName = getIntent().getExtras().getString("PoFirstName");
+        String password = getIntent().getExtras().getString("PoPwd");
+        String lastName = getIntent().getExtras().getString("PoLastName");
+        String login = getIntent().getExtras().getString("PoLogin");
+        String fkParty = getIntent().getExtras().getString("PoFkParty");
 
         //initialisation du formulaire
-        politicianToEdit = getById(idPoliticianToEdit);
 
-        TextView firstName = (TextView) findViewById(R.id.firstNameField);
-        firstName.setText(politicianToEdit.getFirstName());
+        TextView tfirstName = (TextView) findViewById(R.id.firstNameField);
+        tfirstName.setText(firstName);
 
-        TextView name = (TextView) findViewById(R.id.lastNameField);
-        name.setText(politicianToEdit.getLastName());
+        TextView tname = (TextView) findViewById(R.id.lastNameField);
+        tname.setText(lastName);
 
-        TextView login = (TextView) findViewById(R.id.loginField);
-        login.setText(politicianToEdit.getLogin());
+        TextView tlogin = (TextView) findViewById(R.id.loginField);
+        tlogin.setText(login);
 
-        TextView password = (TextView) findViewById(R.id.passField);
-        password.setText(politicianToEdit.getPassword());
+        TextView tpassword = (TextView) findViewById(R.id.passField);
+        tpassword.setText(password);
 
-        TextView confirmation = (TextView) findViewById(R.id.passConfirmationField);
-        confirmation.setText(politicianToEdit.getPassword());
+        TextView tconfirmation = (TextView) findViewById(R.id.passConfirmationField);
+        tconfirmation.setText(password);
 
         Spinner spinnerParty = (Spinner) findViewById(R.id.partySpinner);
         spinnerParty.setOnItemSelectedListener(this);
@@ -68,7 +80,7 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
     }
     //enregistrement du politicien
     public void savePolitician(View view) throws ExecutionException, InterruptedException{
-        PoliticianEntity politicianUpdated = new PoliticianEntity();
+        PoliticianFB politicianUpdated = new PoliticianFB();
 
         TextView firstName = (TextView) findViewById(R.id.firstNameField);
         politicianUpdated.setFirstName(firstName.getText().toString());
@@ -84,94 +96,43 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
 
         Spinner party = (Spinner) findViewById(R.id.partySpinner);
         String partyName = party.getSelectedItem().toString();
-        long idParty = getIdByName(partyName);
 
-        politicianUpdated.setFkParty(idParty);
+
 
         Intent Intent = getIntent();
 
+        politicianUpdated.setFkParty(partyName);
+        politicianUpdated.setPoliticianUid(UUID.randomUUID().toString());
 
-
-
-
-
-
-        Long idPoliticianToEdit = Intent.getLongExtra("POLITICIAN_SELECTED",1);
-        System.out.println("On save :  " + idPoliticianToEdit);
-        politicianUpdated.setIdPolitician(idPoliticianToEdit);
-
-        new PoliticianAsync(db,"update",politicianUpdated).execute().get();
+        ref.child("politicians").child(politicianUpdated.getPoliticianUid()).setValue(politicianUpdated);
 
         Intent intent = new Intent(this, PoliticianListActivity.class);
         startActivity(intent);
     }
-    //initialisation de la liste des politiciens
-    private PoliticianEntity getById(Long id){
-        PoliticianEntity politicianToEdit = new PoliticianEntity();
-        try {
-            politicianToEdit = (PoliticianEntity) new PoliticianAsync(db, "getById", id).execute().get();
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return politicianToEdit;
-    }
     //supression du politicien
-    public void deletePolitician(View view) throws ExecutionException, InterruptedException{
-        PoliticianEntity politicianToDelete = new PoliticianEntity();
+    public void deletePolitician(View view){
 
-        TextView firstName = (TextView) findViewById(R.id.firstNameField);
-        politicianToDelete.setFirstName(firstName.getText().toString());
+        FirebaseDatabase.getInstance()
+                .getReference("politicians")
+                .child(politicianUid)
+                .removeValue(new DatabaseReference.CompletionListener() {
 
-        TextView name = (TextView) findViewById(R.id.lastNameField);
-        politicianToDelete.setLastName(name.getText().toString());
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
 
-        TextView login = (TextView) findViewById(R.id.loginField);
-        politicianToDelete.setLogin(login.getText().toString());
-
-        TextView password = (TextView) findViewById(R.id.passField);
-        politicianToDelete.setPassword(password.getText().toString());
-
-        Spinner party = (Spinner) findViewById(R.id.partySpinner);
-        String partyName = party.getSelectedItem().toString();
-        long idParty = getIdByName(partyName);
-
-        politicianToDelete.setFkParty(idParty);
-
-
-        Intent Intent = getIntent();
-        Long idPoliticianToDelete = Intent.getLongExtra("POLITICIAN_SELECTED",1);
-        politicianToDelete.setIdPolitician(idPoliticianToDelete);
-
-        new PoliticianAsync(db,"delete",politicianToDelete).execute().get();
+                    }
+                });
 
         Intent intent = new Intent(this, PoliticianListActivity.class);
         startActivity(intent);
     }
     //récupération des partis pour les affectés aux politiciens
     private List<String> getAllPartiesName(){
-        int i=-1;
-        List<PartyEntity> parties = new ArrayList<>();
         List<String> partiesToSend = new ArrayList<>();
 
-        try {
-            parties = (ArrayList) new PartyAsync(db, "getAll", 0).execute().get();
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-
-        for(PartyEntity p: parties){
-            i++;
-            partiesToSend.add(p.getShortName());
-            if(p.getIdParty()==politicianToEdit.getFkParty()){
-                position=i;
-            }
-        }
+        partiesToSend.add("PS");
+        partiesToSend.add("PLR");
+        partiesToSend.add("PDC");
 
 
         return partiesToSend;
@@ -184,22 +145,9 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-     //On fait rien
+        //On fait rien
     }
-    //récupération de l'id du parti pour initialiser l'édition du politicien
-    private Long getIdByName(String name){
-        Long id = new Long(0);
 
-        try {
-            id = (Long) new PartyAsync(db, "getIdByName", name).execute().get();
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return id;
-    }
 
     @Override
     public void onBackPressed() {
