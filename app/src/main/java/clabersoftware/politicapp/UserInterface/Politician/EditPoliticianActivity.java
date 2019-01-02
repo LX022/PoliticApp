@@ -45,6 +45,8 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
         //récupération du politicien cliqué
         Intent Intent = getIntent();
 
+
+
         politicianUid = getIntent().getExtras().getString("PoUuid");
         String firstName = getIntent().getExtras().getString("PoFirstName");
         String password = getIntent().getExtras().getString("PoPwd");
@@ -102,9 +104,22 @@ public class EditPoliticianActivity extends BaseActivity implements AdapterView.
         Intent Intent = getIntent();
 
         politicianUpdated.setFkParty(partyName);
-        politicianUpdated.setPoliticianUid(UUID.randomUUID().toString());
 
-        ref.child("politicians").child(politicianUpdated.getPoliticianUid()).setValue(politicianUpdated);
+        FirebaseDatabase.getInstance()
+                .getReference("politicians")
+                .child(politicianUid)
+                .updateChildren(politicianUpdated.toMap(), new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null) {
+
+                        } else {
+
+                        }
+
+                    }
+                });
+        
 
         Intent intent = new Intent(this, PoliticianListActivity.class);
         startActivity(intent);

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -12,6 +13,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+
+import clabersoftware.politicapp.DataBase.Entity.PartyFB;
 import clabersoftware.politicapp.DataBase.Entity.PoliticianFB;
 import clabersoftware.politicapp.R;
 import clabersoftware.politicapp.UserInterface.BaseActivity;
@@ -31,7 +34,7 @@ public class PoliticianListActivity extends BaseActivity {
         setContentView(R.layout.activity_politician_list);
 
         theListView = (ListView) findViewById(R.id.PoliticianListView);
-        myIntent = new Intent(this, EditPartyActivity.class);
+        myIntent = new Intent(this, EditPoliticianActivity.class);
 
         data = new ArrayList<PoliticianFB>();
 
@@ -102,6 +105,13 @@ public class PoliticianListActivity extends BaseActivity {
             startActivity(myIntent);
         }
     };
+
+    //envoie de la vue de l'ajout de party
+    public void showDataPolitician(View view) {
+        ArrayAdapter<PoliticianFB> PoliticianAdapter = new ArrayAdapter<PoliticianFB>(this, android.R.layout.simple_list_item_1, data);
+        theListView.setAdapter(PoliticianAdapter);
+        theListView.setOnItemClickListener( listClick );
+    }
 
     @Override
     public void onBackPressed() {
