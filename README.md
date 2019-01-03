@@ -30,3 +30,5 @@ A partir de là 2 options s'offre à l'utilisateur :
 
 Il est possible de créer un politicien sur le sign-up de la page de login. De plus pour afficher les politiciens il faut aller sur "Liste politiciens" et cliquer sur show data en haut à droite. Il est possible de le supprimer et de l'éditer comme pour les parties.
 
+## Conclusion
+Voilà ce qui a été possible dans le temps imparti avec les problèmes rencontrés.
